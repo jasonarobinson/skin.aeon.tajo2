@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--##################################################################################     VISTA Shelf - ID 595     #############################################################################-->
 	<include name="ShelfFixedList">
@@ -163,10 +162,10 @@
 							<top>153</top>
 							<left>1354</left>
 							<include condition="Skin.HasSetting(SearchExtras)" content="Extras_view">
-								<param name="View_n" value="595" />
-								<param name="HeightList" value="292" />
-								<param name="Num_control" value="8541" />
-								<param name="Num_movement" value="6" />
+								<param name="View_n" value="595"/>
+								<param name="HeightList" value="292"/>
+								<param name="Num_control" value="8541"/>
+								<param name="Num_movement" value="6"/>
 							</include>
 						</control>
 					</control>
@@ -264,7 +263,7 @@
 					<height>358</height>
 					<font>font28</font>
 					<align>center</align>
-					<label>[B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground17_label]:[/COLOR][/B] [COLOR=FFFFFAF0]$VAR[value_ground17_value][/COLOR]$VAR[Seasons_Year_Label][B][COLOR $INFO[Skin.String(theme_text)]]    $VAR[value_ground14_label]:[/B][/COLOR] [COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]   [B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label]:[/COLOR][/B][/CAPITALIZE] [COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][COLOR $INFO[Skin.String(theme_text)]][B]$VAR[value_ground12_label]:[/B][/COLOR] [COLOR=FFFFFAF0]$VAR[value_ground12_value][/COLOR]$VAR[Original][CR][B][COLOR $INFO[Skin.String(theme_text)]]$LOCALIZE[207]:[/B][/COLOR] $VAR[value_plot]</label>
+					<label>[B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground17_label,,: ][/COLOR][/B][COLOR=FFFFFAF0]$VAR[value_ground17_value][/COLOR]$VAR[Seasons_Year_Label][B][COLOR $INFO[Skin.String(theme_text)]]    $VAR[value_ground14_label,,: ][/B][/COLOR][COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]   [B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label,,: ][/COLOR][/B][/CAPITALIZE][COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][COLOR $INFO[Skin.String(theme_text)]][B]$VAR[value_ground12_label,,: ][/B][/COLOR][COLOR=FFFFFAF0]$VAR[value_ground12_value][/COLOR]$VAR[Original][CR][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_plot,[B]$LOCALIZE[207]: [/COLOR][/B],[COLOR=FFFFFAF0]][/COLOR]</label>
 					<autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 				</control>
 				<control type="textbox">
@@ -278,7 +277,7 @@
 					<height>390</height>
 					<font>font28</font>
 					<align>center</align>
-					<label>[B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground17_label]:[/COLOR][/B] [COLOR=FFFFFAF0]$VAR[value_ground17_value][/COLOR]$VAR[Seasons_Year_Label][B][COLOR $INFO[Skin.String(theme_text)]]    $VAR[value_ground14_label]:[/B][/COLOR] [COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]   [B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label]:[/COLOR][/B][/CAPITALIZE] [COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][COLOR $INFO[Skin.String(theme_text)]][B]$VAR[value_ground12_label]:[/B][/COLOR] [COLOR=FFFFFAF0]$VAR[value_ground12_value][/COLOR]$VAR[Original][CR][B][COLOR $INFO[Skin.String(theme_text)]]$LOCALIZE[207]:[/B][/COLOR] $VAR[value_plot]</label>
+					<label>[B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground17_label,,: ][/COLOR][/B][COLOR=FFFFFAF0]$VAR[value_ground17_value][/COLOR]$VAR[Seasons_Year_Label][B][COLOR $INFO[Skin.String(theme_text)]]    $VAR[value_ground14_label,,: ][/B][/COLOR][COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]   [B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label,,: ][/COLOR][/B][/CAPITALIZE][COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][COLOR $INFO[Skin.String(theme_text)]][B]$VAR[value_ground12_label,,: ][/B][/COLOR][COLOR=FFFFFAF0]$VAR[value_ground12_value][/COLOR]$VAR[Original][CR][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_plot,[B]$LOCALIZE[207]: [/COLOR][/B],[COLOR=FFFFFAF0]][/COLOR]</label>
 					<autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 				</control>
 				<control type="textbox">
@@ -706,8 +705,10 @@
 				<visible>System.IdleTime(3) + Integer.IsGreater(Container(524).NumItems,0) + !ListItem.IsCollection + Skin.HasSetting(showCast) + !Skin.HasSetting(Sh2) + !Container.Content(seasons)</visible>
 				<visible>!ListItem.IsParentFolder</visible>
 				<control type="list" id="527">
-					<itemlayout></itemlayout>
-					<focusedlayout></focusedlayout>
+					<itemlayout>
+					</itemlayout>
+					<focusedlayout>
+					</focusedlayout>
 					<content>
 						<item>
 							<label>$INFO[Container(524).ListItemAbsolute(0).Thumb]</label>
@@ -980,10 +981,10 @@
 			</control>
 			<control type="group">
 				<animation type="Focus" reversible="false">
-					<effect type="zoom" delay="400" center="-10,400" start="100" end="140" time="600" tween="cubic" easing="out" />
+					<effect type="zoom" delay="400" center="-10,400" start="100" end="140" time="600" tween="cubic" easing="out"/>
 				</animation>
 				<animation type="Conditional" reversible="false" condition="Control.HasFocus(59560) | Control.HasFocus(5929) | Control.HasFocus(8541) | Window.IsVisible(1196)">
-					<effect type="zoom" center="-10,400" end="140" time="0" />
+					<effect type="zoom" center="-10,400" end="140" time="0"/>
 				</animation>
 				<animation effect="zoom" end="100,105" center="auto" time="0" condition="true">Conditional</animation>
 				<visible>!Skin.HasSetting(Sh3D)</visible>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--#############################################################################   VISTA RIGHTLIST - ID 596   #############################################################################-->
 	<include name="ViewRightList">
@@ -6,7 +5,8 @@
 			<left>-20</left>
 			<top>35</top>
 			<visible>Control.IsVisible(596)</visible>
-			<control type="group"></control>
+			<control type="group">
+			</control>
 			<control type="image">
 				<visible>Integer.IsGreater(Player.Time,0) + Player.HasVideo + Skin.HasSetting(playTrailer) + !String.IsEmpty(ListItem.Trailer) + !String.Contains(Player.Filenameandpath,theme.mp3) + !Control.HasFocus(8543)</visible>
 				<left>-60</left>
@@ -231,7 +231,7 @@
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation effect="zoom" delay="0" center="auto" start="140" end="140" time="0" condition="true">Conditional</animation>
 					<animation type="Conditional" condition="System.IdleTime(4)" reversible="false">
-						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 					</animation>
 					<left>580</left>
 					<top>335</top>
@@ -252,8 +252,8 @@
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation effect="zoom" delay="0" center="auto" start="140" end="140" time="0" condition="true">Conditional</animation>
 					<animation type="Visible" reversible="false">
-						<effect type="rotatey" center="615" start="180" end="0" time="800" tween="quadratic" easing="out" />
-						<effect type="fade" delay="200" start="0" end="100" time="100" />
+						<effect type="rotatey" center="615" start="180" end="0" time="800" tween="quadratic" easing="out"/>
+						<effect type="fade" delay="200" start="0" end="100" time="100"/>
 					</animation>
 					<left>580</left>
 					<top>335</top>
@@ -265,7 +265,7 @@
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation effect="zoom" delay="0" center="auto" start="140" end="140" time="0" condition="true">Conditional</animation>
 					<animation type="Visible" reversible="false">
-						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 					</animation>
 					<left>580</left>
 					<top>335</top>
@@ -279,14 +279,14 @@
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation effect="zoom" end="90,100" center="100" time="0" condition="true">Conditional</animation>
 					<animation type="Visible" reversible="false">
-						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(11) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="rotatey" delay="0" center="356" start="0" end="-180" time="800" tween="quadratic" easing="out" />
-						<effect type="fade" delay="200" start="100" end="0" time="100" />
+						<effect type="rotatey" delay="0" center="356" start="0" end="-180" time="800" tween="quadratic" easing="out"/>
+						<effect type="fade" delay="200" start="100" end="0" time="100"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(11) + !ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 					</animation>
 					<control type="group">
 						<visible>String.IsEmpty(ListItem.Art(back))</visible>
@@ -481,10 +481,10 @@
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation effect="zoom" end="90,100" center="100" time="0" condition="true">Conditional</animation>
 					<animation type="Visible" reversible="false">
-						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(11)" reversible="false">
-						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 					</animation>
 					<control type="group">
 						<left>8</left>
@@ -892,14 +892,14 @@
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation effect="zoom" end="90,100" center="100" time="0" condition="true">Conditional</animation>
 					<animation type="Visible" reversible="false">
-						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(11) + !ListItem.IsCollection + !String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="rotatey" center="356" start="0" end="-180" time="800" tween="quadratic" easing="out" />
-						<effect type="fade" delay="200" start="100" end="0" time="100" />
+						<effect type="rotatey" center="356" start="0" end="-180" time="800" tween="quadratic" easing="out"/>
+						<effect type="fade" delay="200" start="100" end="0" time="100"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(11) + !ListItem.IsCollection + String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 					</animation>
 					<control type="group">
 						<left>8</left>
@@ -1007,15 +1007,15 @@
 				<height>324</height>
 				<visible>!ListItem.IsCollection + Control.HasFocus(596) + System.IdleTime(7)</visible>
 				<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-					<effect type="fade" start="0" end="100" time="450" />
-					<effect type="slide" end="0,803" time="2250" tween="bounce" easing="out" />
-					<effect type="slide" end="500,0" delay="800" time="2200" tween="sine" easing="out" />
-					<effect type="rotate" start="0" center="auto" end="-360" time="3000" tween="quadratic" easing="out" />
+					<effect type="fade" start="0" end="100" time="450"/>
+					<effect type="slide" end="0,803" time="2250" tween="bounce" easing="out"/>
+					<effect type="slide" end="500,0" delay="800" time="2200" tween="sine" easing="out"/>
+					<effect type="rotate" start="0" center="auto" end="-360" time="3000" tween="quadratic" easing="out"/>
 				</animation>
 				<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-					<effect type="fade" delay="6000" start="100" end="0" time="1200" />
-					<effect type="slide" start="0,0" end="2000,0" time="2500" delay="5650" tween="cubic" easing="out" />
-					<effect type="rotate" start="360" center="auto" end="-180" delay="5650" time="2500" tween="cubic" easing="out" />
+					<effect type="fade" delay="6000" start="100" end="0" time="1200"/>
+					<effect type="slide" start="0,0" end="2000,0" time="2500" delay="5650" tween="cubic" easing="out"/>
+					<effect type="rotate" start="360" center="auto" end="-180" delay="5650" time="2500" tween="cubic" easing="out"/>
 				</animation>
 				<control type="image">
 					<visible>System.IdleTime(5)</visible>
@@ -1033,14 +1033,14 @@
 				<height>324</height>
 				<visible>!ListItem.IsCollection + Control.HasFocus(596) + System.IdleTime(7)</visible>
 				<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-					<effect type="fade" start="0" end="100" time="450" />
-					<effect type="slide" end="0,-803" time="2250" tween="bounce" easing="out" />
-					<effect type="slide" end="500,0" delay="800" time="2200" tween="sine" easing="out" />
-					<effect type="rotate" start="0" center="auto" end="360" time="3000" tween="quadratic" easing="out" />
+					<effect type="fade" start="0" end="100" time="450"/>
+					<effect type="slide" end="0,-803" time="2250" tween="bounce" easing="out"/>
+					<effect type="slide" end="500,0" delay="800" time="2200" tween="sine" easing="out"/>
+					<effect type="rotate" start="0" center="auto" end="360" time="3000" tween="quadratic" easing="out"/>
 				</animation>
 				<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-					<effect type="slide" start="0,0" end="2000,0" time="2500" delay="5650" tween="cubic" easing="out" />
-					<effect type="rotate" start="-360" center="auto" end="180" delay="5650" time="2500" tween="cubic" easing="out" />
+					<effect type="slide" start="0,0" end="2000,0" time="2500" delay="5650" tween="cubic" easing="out"/>
+					<effect type="rotate" start="-360" center="auto" end="180" delay="5650" time="2500" tween="cubic" easing="out"/>
 				</animation>
 				<control type="image">
 					<visible>System.IdleTime(5) + !String.IsEmpty(ListItem.Art(discart))</visible>
@@ -1106,8 +1106,8 @@
 						<width>45</width>
 						<height>45</height>
 						<aspectratio>keep</aspectratio>
-						<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-						<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+						<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+						<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 					</control>
 				</itemlayout>
 				<focusedlayout condition="Container.Content(favourites)" height="90">
@@ -1693,10 +1693,10 @@
 				<top>148</top>
 				<left>1867</left>
 				<include condition="Skin.HasSetting(SearchExtras)" content="Extras_view2">
-					<param name="View_n" value="596" />
-					<param name="HeightList" value="451" />
-					<param name="Num_control" value="8543" />
-					<param name="Num_movement" value="11" />
+					<param name="View_n" value="596"/>
+					<param name="HeightList" value="451"/>
+					<param name="Num_control" value="8543"/>
+					<param name="Num_movement" value="11"/>
 				</include>
 			</control>
 		</control>
@@ -1726,6 +1726,24 @@
 					<control type="label">
 						<visible>Container.Content(artists) + System.IdleTime(3)</visible>
 						<visible>!ListItem.IsParentFolder</visible>
+						<visible>!String.IsEmpty(ListItem.DBID)</visible>
+						<visible>!Integer.IsEqual(Container(6725).NumItems,0)</visible>
+						<visible>!Container.Content(musicvideos) + !String.StartsWith(container.folderpath,library://video/musicvideos/) + !String.StartsWith(container.folderpath,videodb://musicvideos)</visible>
+						<left>640</left>
+						<top>180</top>
+						<width>1220</width>
+						<height>45</height>
+						<font>font15t</font>
+						<align>right</align>
+						<aligny>center</aligny>
+						<textcolor>FFFFFAF0</textcolor>
+						<selectedcolor>Skin.String(theme_text)</selectedcolor>
+						<label>$INFO[ListItem.Property(Artist_Style),,  •  ][B][COLOR $INFO[Skin.String(theme_text)]]$INFO[Container(6725).NumItems,$LOCALIZE[20389]: [/COLOR],  •  ][/B][B][COLOR $INFO[Skin.String(theme_text)]]$LOCALIZE[132]: [/COLOR]$INFO[Container(5108).NumItems][/B]</label>
+					</control>
+					<control type="label">
+						<visible>Container.Content(artists) + System.IdleTime(3)</visible>
+						<visible>!ListItem.IsParentFolder</visible>
+						<visible>Integer.IsEqual(Container(6725).NumItems,0) | String.IsEmpty(ListItem.DBID)</visible>
 						<visible>!Container.Content(musicvideos) + !String.StartsWith(container.folderpath,library://video/musicvideos/) + !String.StartsWith(container.folderpath,videodb://musicvideos)</visible>
 						<left>640</left>
 						<top>180</top>
@@ -1793,8 +1811,8 @@
 				<control type="list" id="5969">
 					<visible>!Container.Content(songs)</visible>
 					<visible>!Container.Content(musicvideos) + !String.StartsWith(container.folderpath,library://video/musicvideos/) + !String.StartsWith(container.folderpath,videodb://musicvideos)</visible>
-					<itemlayout />
-					<focusedlayout />
+					<itemlayout/>
+					<focusedlayout/>
 					<content target="music" sortby="track">$INFO[Container(596).ListItem.FolderPath]</content>
 				</control>
 				<control type="group">
@@ -2627,7 +2645,7 @@
 					<height>37</height>
 					<font>font15d</font>
 					<align>center</align>
-					<texturefocus />
+					<texturefocus/>
 					<onup>596</onup>
 					<onup>Control.Move(596,-1)</onup>
 					<ondown>596</ondown>
@@ -2719,10 +2737,10 @@
 				<top>542</top>
 				<left>640</left>
 				<include condition="Skin.HasSetting(SearchExtrasMusic)" content="Extras_view_m2">
-					<param name="View_n" value="596" />
-					<param name="HeightList" value="418" />
-					<param name="Num_control" value="8549" />
-					<param name="Num_movement" value="10" />
+					<param name="View_n" value="596"/>
+					<param name="HeightList" value="418"/>
+					<param name="Num_control" value="8549"/>
+					<param name="Num_movement" value="10"/>
 				</include>
 			</control>
 			<control type="group">
@@ -2802,7 +2820,7 @@
 						<visible>Control.HasFocus(596)</visible>
 						<visible>!ListItem.IsParentFolder</visible>
 						<animation type="Conditional" condition="System.IdleTime(4) + !String.StartsWith(ListItem.Label,*)" reversible="false">
-							<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+							<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 						</animation>
 						<left>150</left>
 						<top>-20</top>
@@ -2813,8 +2831,8 @@
 						<visible>System.IdleTime(10) + Control.HasFocus(596) + !String.IsEmpty(ListItem.Art(discart)) + !String.StartsWith(ListItem.Label,*)</visible>
 						<visible>!ListItem.IsParentFolder</visible>
 						<animation type="Visible" reversible="false">
-							<effect type="rotatey" center="216,0" start="180" end="0" time="800" tween="quadratic" easing="out" />
-							<effect type="fade" delay="100" start="0" end="100" time="100" />
+							<effect type="rotatey" center="216,0" start="180" end="0" time="800" tween="quadratic" easing="out"/>
+							<effect type="fade" delay="100" start="0" end="100" time="100"/>
 						</animation>
 						<left>150</left>
 						<top>-20</top>
@@ -2825,7 +2843,7 @@
 						<visible>System.IdleTime(10) + Control.HasFocus(596) + String.IsEmpty(ListItem.Art(discart)) + !String.StartsWith(ListItem.Label,*)</visible>
 						<visible>!ListItem.IsParentFolder</visible>
 						<animation type="Visible" reversible="false">
-							<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+							<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 						</animation>
 						<left>150</left>
 						<top>-20</top>
@@ -2846,14 +2864,14 @@
 					<visible>System.IdleTime(4) + !System.IdleTime(11) + Control.HasFocus(596) + !String.StartsWith(ListItem.Label,*)</visible>
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation type="Visible" reversible="false">
-						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(10) + !String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="rotatey" center="350,0" start="360" end="180" time="800" tween="quadratic" easing="out" />
-						<effect type="fade" delay="300" start="100" end="0" time="100" />
+						<effect type="rotatey" center="350,0" start="360" end="180" time="800" tween="quadratic" easing="out"/>
+						<effect type="fade" delay="300" start="100" end="0" time="100"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(10) + String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 					</animation>
 					<control type="group">
 						<left>-20</left>
@@ -3337,14 +3355,14 @@
 					<visible>System.IdleTime(4) + !System.IdleTime(11) + Control.HasFocus(596) + !String.StartsWith(ListItem.Label,*)</visible>
 					<visible>!ListItem.IsParentFolder</visible>
 					<animation type="Visible" reversible="false">
-						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out" />
+						<effect type="slide" delay="1300" start="-750,-10" end="0,0" time="1200" tween="sine" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(10) + !String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="rotatey" center="350,0" start="360" end="180" time="800" tween="quadratic" easing="out" />
-						<effect type="fade" delay="300" start="100" end="0" time="100" />
+						<effect type="rotatey" center="350,0" start="360" end="180" time="800" tween="quadratic" easing="out"/>
+						<effect type="fade" delay="300" start="100" end="0" time="100"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(10) + String.IsEmpty(ListItem.Art(discart))" reversible="false">
-						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in" />
+						<effect type="slide" end="-750,-10" time="1200" tween="sine" easing="in"/>
 					</animation>
 					<control type="group">
 						<left>-20</left>
@@ -3641,15 +3659,15 @@
 					<height>324</height>
 					<visible>Container.Content(albums) + Control.HasFocus(596) + System.IdleTime(7)</visible>
 					<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-						<effect type="fade" start="0" end="100" time="450" />
-						<effect type="slide" end="0,823" time="2250" tween="bounce" easing="out" />
-						<effect type="slide" end="500,-20" delay="800" time="2200" tween="sine" easing="out" />
-						<effect type="rotate" start="0" center="auto" end="-360" time="3000" tween="quadratic" easing="out" />
+						<effect type="fade" start="0" end="100" time="450"/>
+						<effect type="slide" end="0,823" time="2250" tween="bounce" easing="out"/>
+						<effect type="slide" end="500,-20" delay="800" time="2200" tween="sine" easing="out"/>
+						<effect type="rotate" start="0" center="auto" end="-360" time="3000" tween="quadratic" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-						<effect type="fade" delay="4400" start="100" end="0" time="1200" />
-						<effect type="slide" start="0,0" end="2000,0" time="2500" delay="4325" tween="cubic" easing="out" />
-						<effect type="rotate" start="360" center="auto" end="-180" delay="4325" time="2500" tween="cubic" easing="out" />
+						<effect type="fade" delay="4400" start="100" end="0" time="1200"/>
+						<effect type="slide" start="0,0" end="2000,0" time="2500" delay="4325" tween="cubic" easing="out"/>
+						<effect type="rotate" start="360" center="auto" end="-180" delay="4325" time="2500" tween="cubic" easing="out"/>
 					</animation>
 					<control type="image">
 						<visible>System.IdleTime(5)</visible>
@@ -3664,14 +3682,14 @@
 					<height>324</height>
 					<visible>Container.Content(albums) + Control.HasFocus(596) + System.IdleTime(7)</visible>
 					<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-						<effect type="fade" start="0" end="100" time="450" />
-						<effect type="slide" end="0,-823" time="2250" tween="bounce" easing="out" />
-						<effect type="slide" end="500,-20" delay="800" time="2200" tween="sine" easing="out" />
-						<effect type="rotate" start="0" center="auto" end="360" time="3000" tween="quadratic" easing="out" />
+						<effect type="fade" start="0" end="100" time="450"/>
+						<effect type="slide" end="0,-823" time="2250" tween="bounce" easing="out"/>
+						<effect type="slide" end="500,-20" delay="800" time="2200" tween="sine" easing="out"/>
+						<effect type="rotate" start="0" center="auto" end="360" time="3000" tween="quadratic" easing="out"/>
 					</animation>
 					<animation type="Conditional" condition="System.IdleTime(7)" reversible="false">
-						<effect type="slide" start="0,0" end="2000,0" time="2500" delay="4325" tween="cubic" easing="out" />
-						<effect type="rotate" start="-360" center="auto" end="180" delay="4325" time="2500" tween="cubic" easing="out" />
+						<effect type="slide" start="0,0" end="2000,0" time="2500" delay="4325" tween="cubic" easing="out"/>
+						<effect type="rotate" start="-360" center="auto" end="180" delay="4325" time="2500" tween="cubic" easing="out"/>
 					</animation>
 					<control type="image">
 						<visible>!String.IsEmpty(ListItem.Art(discart))</visible>

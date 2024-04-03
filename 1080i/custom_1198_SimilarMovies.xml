@@ -130,8 +130,8 @@
 							<width>35</width>
 							<height>35</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>Integer.IsGreater(Container(6225).ListItem.PlayCount,0)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>Integer.IsGreater(Container(6225).ListItem.PlayCount,0) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<focusedlayout height="234" width="200">
@@ -158,11 +158,11 @@
 							<width>35</width>
 							<height>35</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>Integer.IsGreater(Container(6225).ListItem.PlayCount,0)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>Integer.IsGreater(Container(6225).ListItem.PlayCount,0) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</focusedlayout>
-					<content sortby="random" limit="16">$INFO[Window(Home).Property(Type_Similar)]</content>
+					<content sortby="random" limit="16" browse="never">$INFO[Window(Home).Property(Type_Similar)]</content>
 				</control>
 				<control type="button" id="6222">
 					<animation effect="slide" end="14,-1083" time="0" condition="true">Conditional</animation>
@@ -496,11 +496,11 @@
 				<description>progress control</description>
 				<width>1</width>
 				<height>1</height>
-				<texturebg />
-				<lefttexture />
-				<midtexture />
-				<righttexture />
-				<overlaytexture />
+				<texturebg/>
+				<lefttexture/>
+				<midtexture/>
+				<righttexture/>
+				<overlaytexture/>
 			</control>
 			<control type="group">
 				<include>DialogOpenCloseAnimation</include>

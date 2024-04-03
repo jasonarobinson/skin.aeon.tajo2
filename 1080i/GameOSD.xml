@@ -79,8 +79,8 @@
 							<bottom>0</bottom>
 							<left>0</left>
 							<right>0</right>
-							<texturefocus />
-							<texturenofocus />
+							<texturefocus/>
+							<texturenofocus/>
 							<onclick>Action(close)</onclick>
 						</control>
 					</control>

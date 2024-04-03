@@ -11,7 +11,7 @@
 	<onunload>ClearProperty(RowArtist,Home)</onunload>
 	<onunload>ClearProperty(RowYearm,Home)</onunload>
 	<onunload>ClearProperty(Extras_info_music,Home)</onunload>
-	<views>50,580,581,584,585,588,591,593,596,597,598,599</views>
+	<views>50,501,580,581,584,585,588,591,593,596,597,598,599</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<control type="fadelabel" id="5864">
@@ -46,14 +46,14 @@
 		<control type="list" id="6983">
 			<visible>Skin.HasSetting(SearchExtrasMusic) + !String.IsEmpty(Window(Home).Property(extras_music_yes)) + System.IdleTime(1)</visible>
 			<visible>!Window.IsActive(musicinformation) + !Window.IsActive(songinformation)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>$VAR[Extras_lookup]</content>
 		</control>
 		<control type="list" id="6989">
 			<visible>Skin.HasSetting(SearchExtrasMusic) + Container.Content(albums)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>$INFO[Container.ListItem.DBID,musicdb://albums/,/*]</content>
 		</control>
 		<include condition="Skin.HasSetting(PlayPreviewM)">PlayPreviewMusic</include>
@@ -63,8 +63,10 @@
 			<visible>!String.IsEqual(Container.Viewmode,$LOCALIZE[21888])</visible>
 			<scrolltime>3000</scrolltime>
 			<autoscroll>true</autoscroll>
-			<itemlayout></itemlayout>
-			<focusedlayout></focusedlayout>
+			<itemlayout>
+			</itemlayout>
+			<focusedlayout>
+			</focusedlayout>
 			<content>plugin://script.embuary.helper/?info=getresourceimages&amp;addon=resource.images.recordlabels.white&amp;string='$ESCINFO[ListItem.Property(Album_Label)]'</content>
 		</control>
 		<control type="list" id="6774">
@@ -72,13 +74,17 @@
 			<visible>!String.Contains(Container(5850).ListItem.Label2,singer) + [Control.HasFocus(5850) | Control.HasFocus(5852)]</visible>
 			<scrolltime>3000</scrolltime>
 			<autoscroll>true</autoscroll>
-			<itemlayout></itemlayout>
-			<focusedlayout></focusedlayout>
+			<itemlayout>
+			</itemlayout>
+			<focusedlayout>
+			</focusedlayout>
 			<content>plugin://script.embuary.helper/?info=getresourceimages&amp;addon=resource.images.recordlabels.white&amp;string='$ESCINFO[Container(5850).ListItem.Property(Album_Label)]'</content>
 		</control>
 		<control type="group">
 			<include>MusicList</include>
 			<!-- view id = 50 -->
+			<include>ViewCenterListm</include>
+			<!-- view id = 501 -->
 			<include>ViewDiscog</include>
 			<!-- view id = 588 -->
 			<include>ViewMultiSortm</include>
@@ -234,6 +240,16 @@
 					<label>653</label>
 					<altlabel>13353</altlabel>
 					<usealttexture>library.isscanningmusic</usealttexture>
+				</control>
+				<control type="button" id="193">
+					<visible>System.HasAddon(script.videolinks)</visible>
+					<description>Search videolinks</description>
+					<label>32078</label>
+					<textwidth>365</textwidth>
+					<include>ButtonCommonValues</include>
+					<onclick>ClearProperty(MediaMenu,Home)</onclick>
+					<onclick>SetFocus(50)</onclick>
+					<onclick>RunScript(script.videolinks)</onclick>
 				</control>
 				<control type="button" id="613">
 					<description>Get more</description>

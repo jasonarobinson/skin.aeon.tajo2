@@ -72,27 +72,27 @@
 		<control type="list" id="59631">
 			<visible>ListItem.IsCollection</visible>
 			<content sortby="year" sortorder="ascending">$INFO[ListItem.FolderPath]</content>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 		</control>
 		<control type="list" id="59632">
 			<visible>Container.Content(tvshows)</visible>
 			<content sortby="year" sortorder="ascending">$INFO[ListItem.FolderPath]</content>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 		</control>
 		<control type="list" id="3322">
 			<visible>[String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)] + Skin.HasSetting(SearchExtras) + Skin.HasSetting(SettingCommon) + !Window.IsActive(movieinformation)</visible>
 			<content>musicdb://songs/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[ListItem.Title]%22%5D%7D%2C%7B%22field%22%3A%22year%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[ListItem.Year]%22%5D%7D%5D%7D%2C%22type%22%3A%22songs%22%7D</content>
 			<content>$VAR[Title_xsp]</content>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 		</control>
 		<control type="list" id="6983">
 			<visible>Skin.HasSetting(SearchExtras) + !String.IsEmpty(Window(Home).Property(extras_yes)) + System.IdleTime(1)</visible>
 			<visible>!Window.IsActive(movieinformation)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>$VAR[Extras_lookup]</content>
 		</control>
 		<control type="fadelabel" id="6410">

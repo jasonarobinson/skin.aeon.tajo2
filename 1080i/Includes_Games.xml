@@ -55,7 +55,7 @@
 					<height>60</height>
 					<align>center</align>
 					<aligny>center</aligny>
-					<texturenofocus />
+					<texturenofocus/>
 				</control>
 			</control>
 			<control type="gamecontroller" id="31">
@@ -101,7 +101,7 @@
 					<right>20</right>
 					<align>center</align>
 					<aligny>center</aligny>
-					<texturenofocus />
+					<texturenofocus/>
 				</control>
 				<control type="label" id="8">
 					<description>Feature group title</description>
@@ -173,7 +173,7 @@
 				<shadowcolor>black</shadowcolor>
 				<textcolor>grey</textcolor>
 				<font>font15_title</font>
-				<label />
+				<label/>
 			</control>
 			<control type="group">
 				<description>Content area</description>
@@ -448,8 +448,8 @@
 			<top>0</top>
 			<width>100%</width>
 			<bottom>540</bottom>
-			<texturefocus />
-			<texturenofocus />
+			<texturefocus/>
+			<texturenofocus/>
 			<onclick>Action(close)</onclick>
 		</control>
 		<control type="group">
@@ -836,8 +836,8 @@
 			<top>0</top>
 			<width>100%</width>
 			<bottom>540</bottom>
-			<texturefocus />
-			<texturenofocus />
+			<texturefocus/>
+			<texturenofocus/>
 			<onclick>Action(close)</onclick>
 		</control>
 		<control type="group">

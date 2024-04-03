@@ -38,7 +38,7 @@
 				<top>8</top>
 				<left>50</left>
 				<font>titlesort</font>
-				<label />
+				<label/>
 				<shadowcolor>black</shadowcolor>
 			</control>
 			<control type="group">

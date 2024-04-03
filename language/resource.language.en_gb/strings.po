@@ -145,43 +145,43 @@ msgid "Live DVD Cases"
 msgstr ""
 
 msgctxt "#31029"
-msgid "Recent movies"
+msgid "Recent Movies"
 msgstr ""
 
 msgctxt "#31030"
-msgid "Recent episodes"
+msgid "Recent Episodes"
 msgstr ""
 
 msgctxt "#31031"
-msgid "Random movies"
+msgid "Random Movies"
 msgstr ""
 
 msgctxt "#31032"
-msgid "Recommended movies"
+msgid "Recommended Movies"
 msgstr ""
 
 msgctxt "#31033"
-msgid "Random episodes"
+msgid "Random Episodes"
 msgstr ""
 
 msgctxt "#31034"
-msgid "Recommended episodes"
+msgid "Recommended Episodes"
 msgstr ""
 
 msgctxt "#31035"
-msgid "Random songs"
+msgid "Random Songs"
 msgstr ""
 
 msgctxt "#31036"
-msgid "Random albums"
+msgid "Random Albums"
 msgstr ""
 
 msgctxt "#31037"
-msgid "Recent albums"
+msgid "Recent Albums"
 msgstr ""
 
 msgctxt "#31038"
-msgid "Recommended albums"
+msgid "Recommended Albums"
 msgstr ""
 
 msgctxt "#31039"
@@ -1577,7 +1577,7 @@ msgid "Show only background"
 msgstr ""
 
 msgctxt "#32016"
-msgid "TheMovieDb Helper provides data to display online ratings for movies and TV shows"
+msgid "TheMovieDb Helper provides data to display online ratings and additional information for movies and TV shows"
 msgstr ""
 
 msgctxt "#32017"
@@ -1890,4 +1890,60 @@ msgstr ""
 
 msgctxt "#32094"
 msgid "Allows to quickly identify video file quality using a color strip code when browsing movies and episodes in video views"
+msgstr ""
+
+msgctxt "#32095"
+msgid "Library using Global Search"
+msgstr ""
+
+msgctxt "#32096"
+msgid "TheMovieDB"
+msgstr ""
+
+msgctxt "#32097"
+msgid "Most Voted Movies"
+msgstr ""
+
+msgctxt "#32098"
+msgid "Crew"
+msgstr ""
+
+msgctxt "#32099"
+msgid "Most Voted Shows"
+msgstr ""
+
+msgctxt "#32100"
+msgid "Random Shows"
+msgstr ""
+
+msgctxt "#32101"
+msgid "Random Artists"
+msgstr ""
+
+msgctxt "#32102"
+msgid "Online info from themoviedb.org for videos"
+msgstr ""
+
+msgctxt "#32103"
+msgid "Get online info from themoviedb.org in movie and TVshow's info screen and widgets"
+msgstr ""
+
+msgctxt "#32104"
+msgid "Snow effect - Off"
+msgstr ""
+
+msgctxt "#32105"
+msgid "Snow effect - Light"
+msgstr ""
+
+msgctxt "#32106"
+msgid "Snow effect - Medium"
+msgstr ""
+
+msgctxt "#32107"
+msgid "Snow effect - Heavy"
+msgstr ""
+
+msgctxt "#32108"
+msgid "Snow effect - Blizzard"
 msgstr ""

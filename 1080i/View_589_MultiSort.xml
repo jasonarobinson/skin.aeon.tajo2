@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--#############################################################################   VISTA MULTISORT - ID 589   #############################################################################-->
 	<include name="ViewMultiSort">
@@ -268,11 +267,12 @@
 							<width>40</width>
 							<height>40</height>
 							<aspectratio>keep</aspectratio>
-							<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="System.IdleTime(6) + !Control.HasFocus(58960) + !Control.HasFocus(5919) + !ListItem.IsParentFolder" height="325"></focusedlayout>
+					<focusedlayout condition="System.IdleTime(6) + !Control.HasFocus(58960) + !Control.HasFocus(5919) + !ListItem.IsParentFolder" height="325">
+					</focusedlayout>
 					<focusedlayout condition="!System.IdleTime(6) | Control.HasFocus(58960) | Control.HasFocus(5919) | ListItem.IsParentFolder" height="190">
 						<control type="button" id="2858">
 							<include>HiddenObject</include>
@@ -644,7 +644,7 @@
 						<align>left</align>
 						<scrolltime>200</scrolltime>
 						<shadowcolor>black</shadowcolor>
-						<label>[B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label]:[/B][/COLOR] [/CAPITALIZE][COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground14_label]:[/B][/COLOR] [COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]$VAR[Original][CR][B][COLOR $INFO[Skin.String(theme_text)]]$LOCALIZE[207]:[/B][/COLOR] $VAR[value_plot]</label>
+						<label>[B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label,,: ][/B][/COLOR][/CAPITALIZE][COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground14_label,,: ][/B][/COLOR][COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]$VAR[Original][CR][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_plot,[B]$LOCALIZE[207]: [/COLOR][/B],[COLOR=FFFFFAF0]][/COLOR]</label>
 						<autoscroll delay="8000" time="2000" repeat="8000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 					</control>
 					<control type="textbox">
@@ -657,7 +657,7 @@
 						<align>left</align>
 						<scrolltime>200</scrolltime>
 						<shadowcolor>black</shadowcolor>
-						<label>[B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label]:[/B][/COLOR] [/CAPITALIZE][COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground14_label]:[/B][/COLOR] [COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]$VAR[Original][CR][B][COLOR $INFO[Skin.String(theme_text)]]$LOCALIZE[207]:[/B][/COLOR] $VAR[value_plot]</label>
+						<label>[B][COLOR $INFO[Skin.String(theme_text)]][CAPITALIZE]$VAR[value_ground11_label,,: ][/B][/COLOR][/CAPITALIZE][COLOR=FFFFFAF0]$VAR[value_ground11_value][/COLOR][CR][B][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_ground14_label,,: ][/B][/COLOR][COLOR=FFFFFAF0]$VAR[value_ground14_value][/COLOR]$VAR[Original][CR][COLOR $INFO[Skin.String(theme_text)]]$VAR[value_plot,[B]$LOCALIZE[207]: [/COLOR][/B],[COLOR=FFFFFAF0]][/COLOR]</label>
 						<autoscroll delay="8000" time="2000" repeat="8000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 					</control>
 					<control type="textbox">
@@ -1244,8 +1244,8 @@
 					<width>40</width>
 					<height>40</height>
 					<aspectratio>keep</aspectratio>
-					<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-					<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+					<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+					<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				</control>
 			</control>
 			<control type="group">

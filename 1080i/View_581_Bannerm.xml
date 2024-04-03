@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--##################################################################################   VISTA Banner - ID 581   ##################################################################################-->
 	<include name="ViewBannerm">
@@ -184,6 +183,7 @@
 					<visible>Container.Content(artists) + !String.IsEmpty(ListItem.Artist)</visible>
 					<control type="textbox">
 						<visible>String.IsEmpty(ListItem.Appearances)</visible>
+						<visible>![System.IdleTime(3) + !Integer.IsEqual(Container(6725).NumItems,0) + !String.IsEmpty(ListItem.DBID)]</visible>
 						<top>372</top>
 						<left>25</left>
 						<height>40</height>
@@ -193,6 +193,20 @@
 						<align>left</align>
 						<textcolor>Skin.String(theme_text)</textcolor>
 						<label>[B]$LOCALIZE[132]: [COLOR=FFFFFAF0]$INFO[Container(5671).NumItems][/B][/COLOR]</label>
+					</control>
+					<control type="textbox">
+						<visible>String.IsEmpty(ListItem.Appearances)</visible>
+						<visible>System.IdleTime(3) + !Integer.IsEqual(Container(6725).NumItems,0)</visible>
+						<visible>!String.IsEmpty(ListItem.DBID)</visible>
+						<top>372</top>
+						<left>25</left>
+						<height>40</height>
+						<width>510</width>
+						<font>font13</font>
+						<aligny>center</aligny>
+						<align>left</align>
+						<textcolor>Skin.String(theme_text)</textcolor>
+						<label>[B]$LOCALIZE[132]: [COLOR=FFFFFAF0]$INFO[Container(5671).NumItems][/B][/COLOR]       [B]$LOCALIZE[20389]: [/B][COLOR=FFFFFAF0][B]$INFO[Container(6725).NumItems][/B][/COLOR]</label>
 					</control>
 					<control type="textbox">
 						<visible>!String.IsEmpty(ListItem.Appearances)</visible>

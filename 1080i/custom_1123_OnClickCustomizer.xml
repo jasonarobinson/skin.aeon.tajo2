@@ -111,13 +111,13 @@
 				</item>
 				<item>
 					<label>$LOCALIZE[20012]</label>
-					<onclick>Skin.SetFile(ItemToEdit.Path,.xsp|.m3u,special://profile/playlists/video/)</onclick>
+					<onclick>Skin.SetFile(ItemToEdit.Path,.xsp|.m3u|.m3u8,special://profile/playlists/video/)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.Path,ActivateWindow(Videos,$INFO[Skin.String(ItemToEdit.Path)],return))</onclick>
 					<onclick>Dialog.Close(1123)</onclick>
 				</item>
 				<item>
 					<label>$LOCALIZE[20011]</label>
-					<onclick>Skin.SetFile(ItemToEdit.Path,.xsp|.m3u,special://profile/playlists/music/)</onclick>
+					<onclick>Skin.SetFile(ItemToEdit.Path,.xsp|.m3u|.m3u8,special://profile/playlists/music/)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.Path,ActivateWindow(Music,$INFO[Skin.String(ItemToEdit.Path)],return))</onclick>
 					<onclick>Dialog.Close(1123)</onclick>
 				</item>

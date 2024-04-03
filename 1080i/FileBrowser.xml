@@ -33,7 +33,6 @@
 			</control>
 			<control type="label" id="412">
 				<description>Path label</description>
-				<label>1023</label>
 				<left>25</left>
 				<top>15</top>
 				<width>1510</width>
@@ -41,7 +40,6 @@
 				<textoffsetx>15</textoffsetx>
 				<wrapmultiline>true</wrapmultiline>
 				<font>font15_title</font>
-				<label>$LOCALIZE[13406]</label>
 				<align>center</align>
 				<aligny>center</aligny>
 				<textcolor>grey</textcolor>
@@ -70,7 +68,7 @@
 							<textoffsetx>15</textoffsetx>
 							<textcolor>grey2</textcolor>
 							<selectedcolor>green</selectedcolor>
-							<info>ListItem.Label</info>
+							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
 					<focusedlayout height="60" width="960">
@@ -88,7 +86,7 @@
 							<font>font14</font>
 							<textoffsetx>15</textoffsetx>
 							<selectedcolor>green</selectedcolor>
-							<info>ListItem.Label</info>
+							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</focusedlayout>
 				</control>

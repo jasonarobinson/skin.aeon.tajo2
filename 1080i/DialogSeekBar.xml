@@ -18,9 +18,9 @@
 				<height>50</height>
 				<texturebg border="3" colordiffuse="60FFFFFF">colors/white50.png</texturebg>
 				<midtexture border="2">osd/midtexture2.png</midtexture>
-				<lefttexture />
-				<righttexture />
-				<overlaytexture />
+				<lefttexture/>
+				<righttexture/>
+				<overlaytexture/>
 				<info>Player.ProgressCache</info>
 			</control>
 			<control type="progress">
@@ -29,9 +29,9 @@
 				<height>50</height>
 				<texturebg border="3" colordiffuse="grey3">colors/white.png</texturebg>
 				<midtexture colordiffuse="$INFO[Skin.String(flat_back)]">colors/white.png</midtexture>
-				<lefttexture />
-				<righttexture />
-				<overlaytexture />
+				<lefttexture/>
+				<righttexture/>
+				<overlaytexture/>
 				<info>Player.Progress</info>
 			</control>
 			<control type="image">
@@ -150,20 +150,20 @@
 			<visible>!VideoPlayer.Content(LiveTV) + [Player.Paused + !Window.IsActive(subtitlesearch)]</visible>
 			<visible>[Window.IsActive(videoosd) | Window.IsActive(fullscreeninfo) | Player.ShowInfo | Player.Seeking | Player.HasPerformedSeek(3) | Player.Paused | Player.Forwarding | Player.Rewinding] + !Window.IsVisible(MusicOSD) + [VideoPlayer.IsFullscreen | [Player.HasVideo + Window.IsActive(movieinformation) + Window.IsActive(videoosd)] | [Player.HasVideo + Window.IsActive(musicinformation) + Window.IsActive(videoosd)] | [Player.HasVideo + Window.IsActive(songinformation) + Window.IsActive(videoosd)]]</visible>
 			<animation type="WindowOpen" reversible="false">
-				<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic" easing="out" />
-				<effect type="fade" end="100" time="150" />
+				<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic" easing="out"/>
+				<effect type="fade" end="100" time="150"/>
 			</animation>
 			<animation type="WindowClose" reversible="false">
-				<effect type="fade" start="100" end="0" time="100" delay="100" />
-				<effect type="zoom" start="100" end="130" center="960,540" time="200" tween="cubic" easing="in" />
+				<effect type="fade" start="100" end="0" time="100" delay="100"/>
+				<effect type="zoom" start="100" end="130" center="960,540" time="200" tween="cubic" easing="in"/>
 			</animation>
 			<animation type="Visible" reversible="false">
-				<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic" easing="out" />
-				<effect type="fade" end="100" time="150" />
+				<effect type="zoom" start="150" end="100" center="960,540" time="300" tween="cubic" easing="out"/>
+				<effect type="fade" end="100" time="150"/>
 			</animation>
 			<animation type="Hidden" reversible="false">
-				<effect type="fade" start="100" end="0" time="100" delay="100" />
-				<effect type="zoom" start="100" end="130" center="960,540" time="200" tween="cubic" easing="in" />
+				<effect type="fade" start="100" end="0" time="100" delay="100"/>
+				<effect type="zoom" start="100" end="130" center="960,540" time="200" tween="cubic" easing="in"/>
 			</animation>
 			<control type="image">
 				<width>186</width>

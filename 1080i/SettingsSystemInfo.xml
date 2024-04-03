@@ -7,8 +7,10 @@
 			<visible>Skin.HasSetting(melodyForHome)</visible>
 			<scrolltime>350</scrolltime>
 			<autoscroll>true</autoscroll>
-			<itemlayout></itemlayout>
-			<focusedlayout></focusedlayout>
+			<itemlayout>
+			</itemlayout>
+			<focusedlayout>
+			</focusedlayout>
 			<content>$INFO[Skin.String(melodyPlaylist)]</content>
 		</control>
 		<control type="image">
@@ -230,7 +232,7 @@
 					<description>Label 1</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(2))</visible>
@@ -239,7 +241,7 @@
 					<description>Label 2</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(3))</visible>
@@ -248,7 +250,7 @@
 					<description>Label 3</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(4))</visible>
@@ -257,7 +259,7 @@
 					<description>Label 4</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(5))</visible>
@@ -266,7 +268,7 @@
 					<description>Label 5</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(6))</visible>
@@ -275,7 +277,7 @@
 					<description>Label 6</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(7))</visible>
@@ -284,7 +286,7 @@
 					<description>Label 7</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(8))</visible>
@@ -293,7 +295,7 @@
 					<description>Label 8</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(9))</visible>
@@ -302,7 +304,7 @@
 					<description>Label 9</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(10))</visible>
@@ -311,7 +313,7 @@
 					<description>Label 10</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(11))</visible>
@@ -320,7 +322,7 @@
 					<description>Label 11</description>
 					<width>1316</width>
 					<height>90</height>
-					<label />
+					<label/>
 					<font>font15</font>
 					<shadowcolor>shadow</shadowcolor>
 					<visible>!String.IsEmpty(Control.GetLabel(12))</visible>
@@ -332,7 +334,7 @@
 				<top>32</top>
 				<width>1286</width>
 				<height max="720">auto</height>
-				<label />
+				<label/>
 				<font>font15_textbox</font>
 				<textcolor>grey2</textcolor>
 				<shadowcolor>shadow</shadowcolor>

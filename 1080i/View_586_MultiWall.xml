@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<include name="Animation_NewWallFloat3D">
 		<animation effect="slide" end="0,-330" delay="100" time="500" tween="cubic" easing="inout" condition="Integer.IsGreater(Container(586).Row,1)">Conditional</animation>
@@ -59,7 +58,7 @@
 							<top>10</top>
 							<width>220</width>
 							<height>310</height>
-							<texture diffuse="tajo/mask_cover3.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+							<texture fallback="blackk.jpg" diffuse="tajo/mask_cover3.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 							<aspectratio align="center">stretch</aspectratio>
 						</control>
 						<control type="image">
@@ -79,8 +78,8 @@
 							<left>180</left>
 							<width>50</width>
 							<height>50</height>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 						<control type="image">
 							<visible>!ListItem.IsParentFolder</visible>
@@ -145,16 +144,16 @@
 							<animation effect="slide" start="0,0" end="-710,0" time="0" condition="Integer.IsGreater(Container(586).Column,13)">Conditional</animation>
 							<animation effect="slide" start="0,0" end="0,16" time="0" condition="Integer.IsEqual(Container(586).Row,3)">Conditional</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + [!Integer.IsGreater(Container(586).Column,2) | Integer.IsGreater(Container(586).Column,4)] + !Integer.IsGreater(Container(586).Column,13)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="185.5,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="185.5,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + [Integer.IsGreater(Container(586).Column,2) + !Integer.IsGreater(Container(586).Column,4)]">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-156,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-156,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + Integer.IsGreater(Container(586).Column,13)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-164,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-164,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation effect="slide" end="0,-124" time="0" condition="Integer.IsEqual(Container(586).Row,3)">Conditional</animation>
 							<texture background="true">white.jpg</texture>
@@ -174,16 +173,16 @@
 							<animation effect="slide" start="0,0" end="720,0" time="0" condition="!Integer.IsGreater(Container(586).Column,2)">Conditional</animation>
 							<animation effect="slide" start="0,0" end="-710,0" time="0" condition="Integer.IsGreater(Container(586).Column,13)">Conditional</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + [!Integer.IsGreater(Container(586).Column,2) | Integer.IsGreater(Container(586).Column,4)] + !Integer.IsGreater(Container(586).Column,13)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="185.5,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="185.5,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + [Integer.IsGreater(Container(586).Column,2) + !Integer.IsGreater(Container(586).Column,4)]">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-156,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-156,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + Integer.IsGreater(Container(586).Column,13)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-164,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-164,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation effect="slide" end="0,-123" time="0" condition="Integer.IsEqual(Container(586).Row,3)">Conditional</animation>
 							<texture background="true">white.jpg</texture>
@@ -203,16 +202,16 @@
 							<animation effect="slide" start="0,0" end="720,0" time="0" condition="!Integer.IsGreater(Container(586).Column,2)">Conditional</animation>
 							<animation effect="slide" start="0,0" end="-710,0" time="0" condition="Integer.IsGreater(Container(586).Column,13)">Conditional</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + [!Integer.IsGreater(Container(586).Column,2) | Integer.IsGreater(Container(586).Column,4)] + !Integer.IsGreater(Container(586).Column,13)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="184.5,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="184.5,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + [Integer.IsGreater(Container(586).Column,2) + !Integer.IsGreater(Container(586).Column,4)]">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-156,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-156,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(7) + Integer.IsGreater(Container(586).Column,13)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-164,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-164,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -227,12 +226,12 @@
 							<width>180</width>
 							<height>269</height>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-541,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-541,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + !Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="557,0" time="600" tween="cubic" easing="inout" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="557,0" time="600" tween="cubic" easing="inout"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -247,12 +246,12 @@
 							<width>180</width>
 							<height>269</height>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-380,0" time="400" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-380,0" time="400"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + !Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="400,0" time="400" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="400,0" time="400"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -267,12 +266,12 @@
 							<width>180</width>
 							<height>269</height>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-205,0" time="300" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-205,0" time="300"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + !Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="230,0" time="300" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="230,0" time="300"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -287,12 +286,12 @@
 							<width>180</width>
 							<height>269</height>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="-100,0" time="200" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="-100,0" time="200"/>
 							</animation>
 							<animation type="Conditional" reversible="false" condition="System.IdleTime(4) + !Integer.IsGreater(Container(586).Column,4)">
-								<effect type="zoom" start="100" end="130" center="auto" time="0" />
-								<effect type="slide" end="100,0" time="200" />
+								<effect type="zoom" start="100" end="130" center="auto" time="0"/>
+								<effect type="slide" end="100,0" time="200"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -305,7 +304,7 @@
 							<visible>Integer.IsGreater(Container(586).Column,13) + !Integer.IsEqual(Container(586).Row,3)</visible>
 							<visible>!Skin.HasSetting(MultiWall_simple)</visible>
 							<animation type="Visible" reversible="false">
-								<effect type="slide" end="0,175" time="300" tween="back" easing="out" />
+								<effect type="slide" end="0,175" time="300" tween="back" easing="out"/>
 							</animation>
 							<control type="image">
 								<visible>!ListItem.IsParentFolder</visible>
@@ -325,7 +324,7 @@
 							<visible>Integer.IsGreater(Container(586).Column,13) + Integer.IsEqual(Container(586).Row,3)</visible>
 							<visible>!Skin.HasSetting(MultiWall_simple)</visible>
 							<animation type="Visible" reversible="false">
-								<effect type="slide" end="0,-266" time="300" tween="back" easing="out" />
+								<effect type="slide" end="0,-266" time="300" tween="back" easing="out"/>
 							</animation>
 							<control type="image">
 								<visible>!ListItem.IsParentFolder</visible>
@@ -351,7 +350,7 @@
 							<height>230</height>
 							<animation effect="slide" start="0,0" end="-700,0" time="0" condition="Integer.IsGreater(Container(586).Column,4)">Conditional</animation>
 							<animation type="Visible" reversible="false">
-								<effect type="slide" end="0,175" time="300" tween="back" easing="out" />
+								<effect type="slide" end="0,175" time="300" tween="back" easing="out"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -370,7 +369,7 @@
 							<height>230</height>
 							<animation effect="slide" start="0,0" end="-700,0" time="0" condition="Integer.IsGreater(Container(586).Column,4)">Conditional</animation>
 							<animation type="Visible" reversible="false">
-								<effect type="slide" end="0,-266" time="300" tween="back" easing="out" />
+								<effect type="slide" end="0,-266" time="300" tween="back" easing="out"/>
 							</animation>
 							<texture background="true">white.jpg</texture>
 							<colordiffuse>black</colordiffuse>
@@ -383,7 +382,7 @@
 							<top>10</top>
 							<width>220</width>
 							<height>310</height>
-							<texture diffuse="tajo/mask_cover3.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+							<texture fallback="blackk.jpg" diffuse="tajo/mask_cover3.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 							<aspectratio align="center">stretch</aspectratio>
 						</control>
 						<control type="image">
@@ -404,8 +403,8 @@
 							<left>180</left>
 							<width>50</width>
 							<height>50</height>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 						<control type="image">
 							<visible>!ListItem.IsParentFolder</visible>
@@ -637,7 +636,7 @@
 					<width>646</width>
 					<height>172</height>
 					<font>font28b</font>
-					<label>[B]$INFO[ListItem.Year,,  • ] $VAR[ItemDuration,,  • ] $INFO[ListItem.Rating,,  • ] $INFO[ListItem.Genre,,  • ][/B] $VAR[value_plot]</label>
+					<label>[B]$INFO[ListItem.Year,,  •  ]$VAR[ItemDuration]$INFO[ListItem.Rating,  •  ,]$INFO[ListItem.Genre,  •  ,][/B]$VAR[value_plot,  •  ,]</label>
 					<autoscroll delay="10000" time="2500" repeat="2500">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 					<textcolor>white</textcolor>
 				</control>
@@ -704,8 +703,8 @@
 						<visible>!ListItem.IsCollection</visible>
 						<animation effect="slide" end="0,-585" time="0" condition="Integer.IsEqual(Container(586).Row,3)">Conditional</animation>
 						<animation type="Visible" reversible="false">
-							<effect type="zoom" start="100" end="90" center="auto" time="0" />
-							<effect type="fade" start="0" end="100" delay="300" time="400" />
+							<effect type="zoom" start="100" end="90" center="auto" time="0"/>
+							<effect type="fade" start="0" end="100" delay="300" time="400"/>
 						</animation>
 						<top>-620</top>
 						<left>375</left>
@@ -716,8 +715,8 @@
 						<visible>!ListItem.IsCollection</visible>
 						<animation effect="slide" end="0,-455" time="0" condition="Integer.IsEqual(Container(586).Row,3)">Conditional</animation>
 						<animation type="Visible" reversible="false">
-							<effect type="zoom" start="100" end="90" center="auto" time="0" />
-							<effect type="fade" start="0" end="100" delay="300" time="400" />
+							<effect type="zoom" start="100" end="90" center="auto" time="0"/>
+							<effect type="fade" start="0" end="100" delay="300" time="400"/>
 						</animation>
 						<left>925</left>
 						<width>450</width>
@@ -2025,7 +2024,7 @@
 					<top>350</top>
 					<width>220</width>
 					<height>310</height>
-					<texture diffuse="tajo/mask_cover3.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+					<texture fallback="blackk.jpg" diffuse="tajo/mask_cover3.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio align="center">stretch</aspectratio>
 				</control>
 				<control type="image">
@@ -2053,8 +2052,8 @@
 					<left>1138</left>
 					<width>50</width>
 					<height>50</height>
-					<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-					<visible>String.IsEqual(Container(586).ListItemNoWrap(-17).Overlay,OverlayWatched.png)</visible>
+					<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+					<visible>String.IsEqual(Container(586).ListItemNoWrap(-17).Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				</control>
 				<control type="image">
 					<visible>!ListItem.IsParentFolder</visible>
@@ -2098,8 +2097,8 @@
 					<left>1138</left>
 					<width>50</width>
 					<height>50</height>
-					<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-					<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+					<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+					<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				</control>
 				<control type="image">
 					<visible>!ListItem.IsParentFolder</visible>

@@ -159,7 +159,7 @@
 							<aspectratio aligny="bottom" align="center">keep</aspectratio>
 						</control>
 					</focusedlayout>
-					<content sortby="random" limit="16">$INFO[Window(Home).Property(Type_Similarm)]</content>
+					<content sortby="random" limit="16" browse="never">$INFO[Window(Home).Property(Type_Similarm)]</content>
 				</control>
 				<control type="button" id="7222">
 					<animation effect="slide" end="1,-1084" time="0" condition="true">Conditional</animation>
@@ -478,11 +478,11 @@
 					<description>progress control</description>
 					<width>1</width>
 					<height>1</height>
-					<texturebg />
-					<lefttexture />
-					<midtexture />
-					<righttexture />
-					<overlaytexture />
+					<texturebg/>
+					<lefttexture/>
+					<midtexture/>
+					<righttexture/>
+					<overlaytexture/>
 				</control>
 				<control type="group">
 					<include>DialogOpenCloseAnimation</include>

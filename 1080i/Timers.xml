@@ -28,7 +28,61 @@
 		<name>homemelody</name>
 		<description>Timer to play melody in home menu</description>
 		<start reset="true">Skin.HasSetting(melodyForHome) + [Window.IsActive(home) | Window.IsActive(settings) | Window.IsActive(skinsettings) | Window.IsActive(settingscategory.xml) | Window.IsActive(systeminfo) | Window.IsActive(profiles)] + !Player.Caching + !Window.IsActive(DialogButtonMenu.xml) + !Player.HasMedia + !Pvr.IsPlayingTv + !Pvr.IsPlayingRadio + !Player.IsInternetStream + !Window.IsActive(Favouritesbrowser) + !System.HasMediadvd</start>
-		<stop>[!Window.IsActive(home) + !Window.IsActive(settings) + !Window.IsActive(skinsettings) + !Window.IsActive(settingscategory.xml) + !Window.IsActive(systeminfo) + !Window.IsActive(profiles)] | Window.IsActive(DialogButtonMenu.xml)</stop>
-		<reset>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(homemelody), 3) | [!Window.IsActive(home) + !Window.IsActive(settings) + !Window.IsActive(skinsettings) + !Window.IsActive(settingscategory.xml) + !Window.IsActive(systeminfo) + !Window.IsActive(profiles)] | Window.IsActive(DialogButtonMenu.xml)</reset>
+		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(homemelody),4) | [!Window.IsActive(home) + !Window.IsActive(settings) + !Window.IsActive(skinsettings) + !Window.IsActive(settingscategory.xml) + !Window.IsActive(systeminfo) + !Window.IsActive(profiles)] | Window.IsActive(DialogButtonMenu.xml)</stop>
+		<reset>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(homemelody),4) | [!Window.IsActive(home) + !Window.IsActive(settings) + !Window.IsActive(skinsettings) + !Window.IsActive(settingscategory.xml) + !Window.IsActive(systeminfo) + !Window.IsActive(profiles)] | Window.IsActive(DialogButtonMenu.xml)</reset>
+	</timer>
+	<timer>
+		<name>windowtimer</name>
+		<description>Play all musicvideos</description>
+		<start reset="true">Control.HasFocus(4329) + String.IsEmpty(Player.Filenameandpath) + !Integer.IsEqual(Window(home).Property(MyResult),Container(6728).NumItems)</start>
+		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(windowtimer),5)</stop>
+		<onstart>SetProperty(New_Notif,True,home)</onstart>
+		<onstart>AlarmClock(Nomore,ClearProperty(New_Notif,home),00:10,silent)</onstart>
+		<onstart condition="!String.IsEmpty(Container(6728).ListItem.Art(videothumb))">SetProperty(Notif_icon,$INFO[Container(6728).ListItem.Art(videothumb)],home)</onstart>
+		<onstart condition="String.IsEmpty(Container(6728).ListItem.Art(videothumb))">SetProperty(Notif_icon,$INFO[Container(6728).ListItem.Icon],home)</onstart>
+		<onstart>SetProperty(Next_Song,$ESCINFO[Container(6728).ListItem.Label],home)</onstart>
+		<onstart>SetProperty(Next_Song_Year,$INFO[Container(6728).ListItem.Year],home)</onstart>
+		<onstart>SetProperty(Next_Song_Current,$INFO[Container(6728).CurrentItem],home)</onstart>
+		<onstart>SetProperty(Next_Song_Total,$INFO[Container(6728).NumItems],home)</onstart>
+		<onstart condition="String.IsEmpty(Container(6728).ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[Container(6728).ListItem.FileNameAndPath],1)</onstart>
+		<onstart condition="!String.IsEmpty(Container(6728).ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[Container(6728).ListItem.Property(SongVideoURL)],1)</onstart>
+		<onstart>AlarmClock(Nomore1,Notification(,, 5000),00:05,silent)</onstart>
+		<onstart>Control.Move(6728,1)</onstart>
+		<onstart>SetProperty(Contador,$INFO[Window(home).Property(MyResult)],home)</onstart>
+		<onstart>RunScript(script.embuary.helper,action=calc,do='"$INFO[Window(home).Property(Contador)] + 1"',prop=MyResult)</onstart>
+	</timer>
+	<timer>
+		<name>albumwindowtimer</name>
+		<description>Play all musicvideos</description>
+		<start reset="true">Control.HasFocus(4339) + String.IsEmpty(Player.Filenameandpath) + !Integer.IsEqual(Window(home).Property(2MyResult),Container(6828).NumItems)</start>
+		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(albumwindowtimer),5)</stop>
+		<onstart>SetProperty(2New_Notif,True,home)</onstart>
+		<onstart>AlarmClock(Nomore2,ClearProperty(2New_Notif,home),00:10,silent)</onstart>
+		<onstart condition="!String.IsEmpty(Container(6828).ListItem.Art(videothumb))">SetProperty(2Notif_icon,$INFO[Container(6828).ListItem.Art(videothumb)],home)</onstart>
+		<onstart condition="String.IsEmpty(Container(6828).ListItem.Art(videothumb))">SetProperty(2Notif_icon,$INFO[Container(6828).ListItem.Icon],home)</onstart>
+		<onstart>SetProperty(2Next_Song,$ESCINFO[Container(6828).ListItem.Label],home)</onstart>
+		<onstart>SetProperty(2Next_Song_Year,$INFO[Container(6828).ListItem.Year],home)</onstart>
+		<onstart>SetProperty(2Next_Song_Current,$INFO[Container(6828).CurrentItem],home)</onstart>
+		<onstart>SetProperty(2Next_Song_Total,$INFO[Container(6828).NumItems],home)</onstart>
+		<onstart condition="String.IsEmpty(Container(6828).ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[Container(6828).ListItem.FileNameAndPath],1)</onstart>
+		<onstart condition="!String.IsEmpty(Container(6828).ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[Container(6828).ListItem.Property(SongVideoURL)],1)</onstart>
+		<onstart>AlarmClock(Nomore3,Notification(,, 5000),00:05,silent)</onstart>
+		<onstart>Control.Move(6828,1)</onstart>
+		<onstart>SetProperty(2Contador,$INFO[Window(home).Property(2MyResult)],home)</onstart>
+		<onstart>RunScript(script.embuary.helper,action=calc,do='"$INFO[Window(home).Property(2Contador)] + 1"',prop=2MyResult)</onstart>
+	</timer>
+	<timer>
+		<name>windowcloser</name>
+		<description>Close window musicvideos</description>
+		<start reset="true">Control.HasFocus(4329) + String.IsEmpty(Player.Filenameandpath) + Integer.IsEqual(Window(home).Property(MyResult),Container(6728).NumItems)</start>
+		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(windowcloser),2)</stop>
+		<onstop>SetFocus(639)</onstop>
+	</timer>
+	<timer>
+		<name>albumwindowcloser</name>
+		<description>Close window musicvideos</description>
+		<start reset="true">Control.HasFocus(4339) + String.IsEmpty(Player.Filenameandpath) + Integer.IsEqual(Window(home).Property(2MyResult),Container(6828).NumItems)</start>
+		<stop>Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(albumwindowcloser),2)</stop>
+		<onstop>SetFocus(659)</onstop>
 	</timer>
 </timers>

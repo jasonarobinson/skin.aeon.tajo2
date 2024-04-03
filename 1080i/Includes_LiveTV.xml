@@ -248,8 +248,8 @@
 						<info2>PVR.TimeshiftProgressPlayPos</info2>
 						<texturebg border="0" colordiffuse="FF0110FA">colors/white50.png</texturebg>
 						<lefttexture>colors/white50.png</lefttexture>
-						<midtexture />
-						<righttexture />
+						<midtexture/>
+						<righttexture/>
 					</control>
 					<control type="progress">
 						<left>380</left>
@@ -858,8 +858,8 @@
 					<info2>PVR.TimeshiftProgressPlayPos</info2>
 					<texturebg border="0" colordiffuse="FF0110FA">colors/white50.png</texturebg>
 					<lefttexture>colors/white50.png</lefttexture>
-					<midtexture />
-					<righttexture />
+					<midtexture/>
+					<righttexture/>
 				</control>
 				<control type="progress">
 					<left>380</left>

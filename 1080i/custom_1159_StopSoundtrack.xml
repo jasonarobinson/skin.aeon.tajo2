@@ -9,5 +9,5 @@
 	<visible>Container.Content(sets) | Container.Content(movies) | Container.Content(tvshows)</visible>
 	<visible>!Window.IsActive(movieinformation) + Skin.HasSetting(playTheme)</visible>
 	<visible>!System.HasActiveModalDialog</visible>
-	<controls />
+	<controls/>
 </window>

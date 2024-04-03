@@ -19,7 +19,7 @@
 			<description>fake heading label</description>
 			<width>0</width>
 			<height>0</height>
-			<font />
+			<font/>
 			<visible>false</visible>
 		</control>
 		<control type="image">
@@ -57,7 +57,7 @@
 			<width>825</width>
 			<height>282</height>
 			<font>font15_textbox</font>
-			<label />
+			<label/>
 			<textcolor>white</textcolor>
 			<shadowcolor>black</shadowcolor>
 			<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>

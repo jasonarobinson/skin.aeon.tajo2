@@ -5,5 +5,5 @@
 	<onload>ClearProperty(PlayingOST,Home)</onload>
 	<visible>!String.IsEmpty(Window(Home).Property(script.preshowexperience.running))</visible>
 	<visible>Player.Playing + String.Contains(Player.Filenameandpath,theme.mp3)</visible>
-	<controls />
+	<controls/>
 </window>

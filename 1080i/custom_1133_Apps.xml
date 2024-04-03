@@ -118,6 +118,7 @@
 							<property name="AppsContent">addons://user</property>
 							<property name="AppsSortBy">title</property>
 							<onclick>ActivateWindow(addonbrowser,addons://user/,return)</onclick>
+							
 						</item>
 						<item id="2">
 							<label>$LOCALIZE[1037]</label>
@@ -127,6 +128,7 @@
 							<property name="AppsContent">addons://sources/video/</property>
 							<property name="AppsSortBy">lastused</property>
 							<onclick>ActivateWindow(Videos,Addons,return)</onclick>
+							
 						</item>
 						<item id="3">
 							<label>$LOCALIZE[1038]</label>
@@ -136,6 +138,7 @@
 							<property name="AppsContent">addons://sources/audio/</property>
 							<property name="AppsSortBy">lastused</property>
 							<onclick>ActivateWindow(Music,Addons,return)</onclick>
+							
 						</item>
 						<item id="4">
 							<label>$LOCALIZE[1043]</label>

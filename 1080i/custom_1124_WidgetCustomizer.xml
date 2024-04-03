@@ -106,83 +106,51 @@
 				</item>
 				<item>
 					<label>$LOCALIZE[31985]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/movie/trending)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=trending_week&amp;type=movie)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31985])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[31986]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/movie/upcoming)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=upcoming&amp;type=movie)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31986])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[31987]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/movie/now_playing)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=now_playing&amp;type=movie)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31987])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[31988]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/movie/top_rated)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=top_rated&amp;type=movie)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31988])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[31989]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/movie/popular)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=popular&amp;type=movie)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31989])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
 				</item>
 				<item>
-					<label>$LOCALIZE[31990]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/discover/movie/all)</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31990])</onclick>
+					<label>$LOCALIZE[32097]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=most_voted&amp;type=movie)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[32097])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
-				</item>
-				<item>
-					<label>$LOCALIZE[31991]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/tv/trending)</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31991])</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
-					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
-				</item>
-				<item>
-					<label>$LOCALIZE[31992]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/tv/top_rated)</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31992])</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
-					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
-				</item>
-				<item>
-					<label>$LOCALIZE[31993]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/tv/popular)</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31993])</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
-					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
-				</item>
-				<item>
-					<label>$LOCALIZE[31994]</label>
-					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://script.embuary.info/discover/tv/all)</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31994])</onclick>
-					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
-					<onclick>Dialog.Close(1124)</onclick>
-					<visible>System.HasAddon(script.embuary.info)</visible>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
 				</item>
 				<item>
 					<label>$LOCALIZE[31029]</label>
@@ -202,6 +170,45 @@
 					<label>$LOCALIZE[31032]</label>
 					<onclick>Skin.SetString(ItemToEdit.Widget,special://skin/extras/playlists/recommendedmovies.xsp)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31032])</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
+					<onclick>Dialog.Close(1124)</onclick>
+				</item>
+				<item>
+					<label>$LOCALIZE[31991]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=trending_week&amp;type=tv)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31991])</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
+					<onclick>Dialog.Close(1124)</onclick>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[31992]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=top_rated&amp;type=tv)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31992])</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
+					<onclick>Dialog.Close(1124)</onclick>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[31993]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=popular&amp;type=tv)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[31993])</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
+					<onclick>Dialog.Close(1124)</onclick>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[32099]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,plugin://plugin.video.themoviedb.helper?info=most_voted&amp;type=tv)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[32099])</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
+					<onclick>Dialog.Close(1124)</onclick>
+					<visible>System.HasAddon(plugin.video.themoviedb.helper)</visible>
+				</item>
+				<item>
+					<label>$LOCALIZE[32100]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,special://skin/extras/playlists/random_tvshows.xsp)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[32100])</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>
 				</item>
@@ -255,6 +262,13 @@
 					<onclick>Dialog.Close(1124)</onclick>
 				</item>
 				<item>
+					<label>$LOCALIZE[32101]</label>
+					<onclick>Skin.SetString(ItemToEdit.Widget,special://skin/extras/playlists/random_artists.xsp)</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[32101])</onclick>
+					<onclick>Skin.SetString(ItemToEdit.WidgetType,1)</onclick>
+					<onclick>Dialog.Close(1124)</onclick>
+				</item>
+				<item>
 					<label>$LOCALIZE[12600]</label>
 					<onclick>Skin.SetString(ItemToEdit.Widget,11)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel,$LOCALIZE[12600])</onclick>
@@ -278,7 +292,7 @@
 				</item>
 				<item>
 					<label>$LOCALIZE[20011]</label>
-					<onclick>Skin.SetFile(ItemToEdit.Widget,.xsp|.m3u,special://profile/playlists/music/)</onclick>
+					<onclick>Skin.SetFile(ItemToEdit.Widget,.xsp|.m3u|.m3u8,special://profile/playlists/music/)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetLabel)</onclick>
 					<onclick>Skin.SetString(ItemToEdit.WidgetType,2)</onclick>
 					<onclick>Dialog.Close(1124)</onclick>

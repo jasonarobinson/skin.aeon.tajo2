@@ -297,6 +297,13 @@
 			<size>79</size>
 		</font>
 		<font>
+			<name>font_musicviz2</name>
+			<filename>Titles.ttf</filename>
+			<style>uppercase</style>
+			<linespacing>0.8</linespacing>
+			<size>79</size>
+		</font>
+		<font>
 			<name>font_Extras</name>
 			<filename>Titles.ttf</filename>
 			<style>uppercase</style>
@@ -796,6 +803,12 @@
 			<size>54</size>
 		</font>
 		<font>
+			<name>font53n</name>
+			<filename>Text.ttf</filename>
+			<linespacing>0.85</linespacing>
+			<size>54</size>
+		</font>
+		<font>
 			<name>font40_bold</name>
 			<filename>Text.ttf</filename>
 			<style>bold</style>
@@ -1248,6 +1261,13 @@
 			<name>font_musicviz</name>
 			<filename>Montserrat.ttf</filename>
 			<style>uppercase</style>
+			<size>79</size>
+		</font>
+		<font>
+			<name>font_musicviz2</name>
+			<filename>Montserrat.ttf</filename>
+			<style>uppercase</style>
+			<linespacing>0.8</linespacing>
 			<size>79</size>
 		</font>
 		<font>
@@ -1743,6 +1763,12 @@
 			<size>54</size>
 		</font>
 		<font>
+			<name>font53n</name>
+			<filename>Quicksand.ttf</filename>
+			<linespacing>0.85</linespacing>
+			<size>54</size>
+		</font>
+		<font>
 			<name>font40_bold</name>
 			<filename>Quicksand.ttf</filename>
 			<style>bold</style>
@@ -2202,6 +2228,12 @@
 		<font>
 			<name>font_musicviz</name>
 			<filename>Arialuni.ttf</filename>
+			<size>92</size>
+		</font>
+		<font>
+			<name>font_musicviz2</name>
+			<filename>Arialuni.ttf</filename>
+			<linespacing>0.90</linespacing>
 			<size>92</size>
 		</font>
 		<font>

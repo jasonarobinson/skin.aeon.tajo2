@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--#############################################################################   VISTA TRIPLEm - ID 591   #############################################################################-->
 	<include name="ViewTriplem">
@@ -526,7 +525,7 @@
 				<height>37</height>
 				<font>font15d</font>
 				<align>center</align>
-				<texturefocus />
+				<texturefocus/>
 				<onup>5912</onup>
 				<onup>Control.Move(5912,-1)</onup>
 				<ondown>5912</ondown>
@@ -931,6 +930,19 @@
 						<font>font28b</font>
 						<label>[B]$LOCALIZE[20389]: [/B][COLOR=FFFFFAF0][B]$INFO[ListItem.Appearances][/B][/COLOR]</label>
 						<textcolor>Skin.String(theme_text)</textcolor>
+					</control>
+					<control type="textbox">
+						<visible>System.IdleTime(2) + !Integer.IsEqual(Container(6725).NumItems,0)</visible>
+						<visible>!String.IsEmpty(ListItem.DBID)</visible>
+						<animation effect="fade" start="0" end="100" delay="750" time="100" reversible="false">Visible</animation>
+						<top>580</top>
+						<left>-40</left>
+						<width>715</width>
+						<height>40</height>
+						<align>right</align>
+						<aligny>top</aligny>
+						<include>ShelfmLabel_Fanart</include>
+						<label>[B]$LOCALIZE[20389]: [/B][COLOR=FFFFFAF0][B]$INFO[Container(6725).NumItems][/B][/COLOR]</label>
 					</control>
 				</control>
 			</control>

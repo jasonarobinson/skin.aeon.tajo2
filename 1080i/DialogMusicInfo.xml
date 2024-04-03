@@ -3,6 +3,7 @@
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<onload>ClearProperty(Extras_info_music,Home)</onload>
 	<onload>ClearProperty(Show_clips,home)</onload>
+	<onload>ClearProperty(NextClip,Home)</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(PlayingMusicPreviewAlbum)) + Player.Playing">Stop</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(PlayingMusicPreviewAlbum))">ClearProperty(PlayingMusicPreviewAlbum,Home)</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(PlayingMusicPreview)) + Player.Playing">Stop</onload>
@@ -25,6 +26,7 @@
 	<onunload>ClearProperty(Extras_info_music,Home)</onunload>
 	<onunload condition="!String.IsEmpty(Window(Home).Property(extras_music_yes))">ClearProperty(extras_music_yes,home)</onunload>
 	<onunload condition="Player.Playing + Player.HasVideo">Stop</onunload>
+	<onunload>ClearProperty(NextClip,Home)</onunload>
 	<controls>
 		<control type="fadelabel" id="6988">
 			<top>-1000</top>
@@ -74,8 +76,8 @@
 		</control>
 		<control type="panel" id="9287">
 			<visible>String.IsEqual(ListItem.DBTYPE,artist)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>
 				<item id="1">
 					<visible>!String.IsEmpty(ListItem.Property(Artist_YearsActive))</visible>
@@ -125,8 +127,8 @@
 		</control>
 		<control type="panel" id="9288">
 			<visible>String.IsEqual(ListItem.DBTYPE,album)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>
 				<item id="1">
 					<visible>!String.IsEmpty(ListItem.Property(Album_Label))</visible>
@@ -181,8 +183,8 @@
 		</control>
 		<control type="panel" id="9289">
 			<visible>String.IsEqual(ListItem.DBTYPE,song)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>
 				<item id="1">
 					<visible>!String.IsEmpty(ListItem.TrackNumber)</visible>
@@ -275,8 +277,8 @@
 		<include condition="!String.IsEmpty(ListItem.Property(Album_Label))">GetRecordLabel</include>
 		<control type="list" id="5983">
 			<visible>String.IsEqual(ListItem.DBTYPE,song)</visible>
-			<itemlayout />
-			<focusedlayout />
+			<itemlayout/>
+			<focusedlayout/>
 			<content>videodb://musicvideos/titles/?xsp=%7B%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Window(home).Property(EncodedAlbumName)]%22%5D%7D%2C%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Window(home).Property(EncodedSongName)]%22%5D%7D%5D%7D%2C%22type%22%3A%22musicvideos%22%7D</content>
 		</control>
 		<control type="group">
@@ -412,8 +414,13 @@
 							<onclick condition="!String.IsEmpty(Window(home).Property(PlayingMusicPreview))">ClearProperty(PlayingMusicPreview,Home)</onclick>
 							<onclick>SetProperty(Show_clips,$ESCINFO[ListItem.FileNameAndPath],home)</onclick>
 							<onclick condition="Player.HasVideo">ActivateWindow(videoosd)</onclick>
-							<onclick condition="!Player.HasVideo + String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.FileNameAndPath],1)</onclick>
-							<onclick condition="!Player.HasVideo + !String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.Property(SongVideoURL)],1)</onclick>
+							<onclick condition="!Player.HasVideo + String.IsEmpty(Window(home).Property(ChooseStart)) + String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.FileNameAndPath],1)</onclick>
+							<onclick condition="!Player.HasVideo + String.IsEmpty(Window(home).Property(ChooseStart)) + !String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.Property(SongVideoURL)],1)</onclick>
+							<onclick condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(ChooseStart))">RunScript(script.embuary.helper,action=calc,do='"$INFO[Container(6728).CurrentItem] - 1"',prop=MyResult)</onclick>
+							<onclick condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(ChooseStart))">ClearProperty(ChooseStart,Home)</onclick>
+							<onclick condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(ChooseStart))">SetFocus(4329)</onclick>
+							<onclick condition="String.IsEmpty(Window(Home).Property(FirstTime)) + !Player.HasVideo + !String.IsEmpty(Window(home).Property(ChooseStart))">Notification($LOCALIZE[32089],$LOCALIZE[32090],3000)</onclick>
+							<onclick condition="String.IsEmpty(Window(Home).Property(FirstTime)) + !Player.HasVideo + !String.IsEmpty(Window(home).Property(ChooseStart))">SetProperty(FirstTime,True,home)</onclick>
 							<itemlayout width="675" height="43">
 								<control type="label">
 									<visible>!String.IsEmpty(Window(Home).Property(Show_clips))</visible>
@@ -641,8 +648,13 @@
 							<onclick condition="!String.IsEmpty(Window(home).Property(PlayingMusicPreview))">ClearProperty(PlayingMusicPreview,Home)</onclick>
 							<onclick>SetProperty(Show_clips,$ESCINFO[ListItem.FileNameAndPath],home)</onclick>
 							<onclick condition="Player.HasVideo">ActivateWindow(videoosd)</onclick>
-							<onclick condition="!Player.HasVideo + String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.FileNameAndPath],1)</onclick>
-							<onclick condition="!Player.HasVideo + !String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.Property(SongVideoURL)],1)</onclick>
+							<onclick condition="!Player.HasVideo + String.IsEmpty(Window(home).Property(2ChooseStart)) + String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.FileNameAndPath],1)</onclick>
+							<onclick condition="!Player.HasVideo + String.IsEmpty(Window(home).Property(2ChooseStart)) + !String.IsEmpty(ListItem.Property(SongVideoURL))">PlayMedia($ESCINFO[ListItem.Property(SongVideoURL)],1)</onclick>
+							<onclick condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(2ChooseStart))">RunScript(script.embuary.helper,action=calc,do='"$INFO[Container(6828).CurrentItem] - 1"',prop=2MyResult)</onclick>
+							<onclick condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(2ChooseStart))">ClearProperty(2ChooseStart,Home)</onclick>
+							<onclick condition="!Player.HasVideo + !String.IsEmpty(Window(home).Property(2ChooseStart))">SetFocus(4339)</onclick>
+							<onclick condition="String.IsEmpty(Window(Home).Property(FirstTimeAlbum)) + !Player.HasVideo + !String.IsEmpty(Window(home).Property(2ChooseStart))">Notification($LOCALIZE[32089],$LOCALIZE[32090],3000)</onclick>
+							<onclick condition="String.IsEmpty(Window(Home).Property(FirstTimeAlbum)) + !Player.HasVideo + !String.IsEmpty(Window(home).Property(2ChooseStart))">SetProperty(FirstTimeAlbum,True,home)</onclick>
 							<itemlayout width="675" height="43">
 								<control type="label">
 									<visible>!String.IsEmpty(Window(Home).Property(Show_clips))</visible>
@@ -1116,7 +1128,7 @@
 				<top>550</top>
 				<right>0</right>
 				<width>1195</width>
-				<texturenofocus />
+				<texturenofocus/>
 				<disabledcolor>grey</disabledcolor>
 				<font>font15_bold</font>
 				<align>center</align>
@@ -1146,7 +1158,7 @@
 					<description>Extras</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<onclick>SetProperty(Extras_info_music,True,home)</onclick>
 					<onclick>SetFocus(8345)</onclick>
@@ -1157,7 +1169,7 @@
 					<description>Play Album</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick condition="!String.IsEmpty(Window(home).Property(PlayingMusicPreviewAlbum))">ClearProperty(PlayingMusicPreviewAlbum,Home)</onclick>
@@ -1168,7 +1180,7 @@
 					<description>Albums</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onfocus>ClearProperty(Show_clips,home)</onfocus>
@@ -1179,7 +1191,7 @@
 					<description>Songs</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onfocus>ClearProperty(Show_clips,home)</onfocus>
@@ -1193,17 +1205,17 @@
 					<onfocus condition="Player.HasVideo">ActivateWindow(videoosd)</onfocus>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
-					<onclick>PlayMedia($ESCINFO[ListItem.FolderPath],1)</onclick>
+					<onclick>PlayMedia($ESCINFO[ListItem.FileNameAndPath],1)</onclick>
 				</control>
 				<control type="button" id="657">
 					<visible>Player.HasAudio</visible>
 					<description>OSD</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onfocus>ClearProperty(Show_clips,home)</onfocus>
@@ -1214,7 +1226,7 @@
 					<description>Local Videoclip</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick>SetProperty(Show_clips,$ESCINFO[Container(5983).ListItemAbsolute(0).FileNameAndPath],home)</onclick>
@@ -1227,7 +1239,7 @@
 					<description>Online Videoclip</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick>PlayMedia($ESCINFO[ListItem.SongVideoURL],1)</onclick>
@@ -1237,24 +1249,78 @@
 					<description>Videoclips</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onfocus>SetProperty(Show_clips,True,home)</onfocus>
 					<onclick>SetProperty(Show_clips,True,home)</onclick>
 					<onclick>SetFocus(6728)</onclick>
 				</control>
+				<control type="button" id="639">
+					<visible>String.IsEqual(ListItem.DBTYPE,artist) + Integer.IsGreater(Container(6728).NumItems,1) + Skin.HasSetting(SettingCommon)</visible>
+					<description>Play all Artist's Videoclips</description>
+					<font>IconMediumMD</font>
+					<width>65</width>
+					<texturenofocus/>
+					<include>ButtonInfoDialogsCommonValues</include>
+					<label></label>
+					<onfocus>SetProperty(Show_clips,True,home)</onfocus>
+					<onfocus>ClearProperty(NextClip,Home)</onfocus>
+					<onfocus>ClearProperty(Stop_RA,Home)</onfocus>
+					<onclick>SetProperty(Show_clips,True,home)</onclick>
+					<onclick>ClearProperty(Stop_RA,Home)</onclick>
+					<onclick>ClearProperty(Contador,Home)</onclick>
+					<onclick>ClearProperty(MyResult,Home)</onclick>
+					<onclick>SetProperty(NextClip,True,home)</onclick>
+					<onclick condition="Integer.IsEqual(Container(6728).NumItems,1)">SetFocus(6728,0,absolute)</onclick>
+					<onclick condition="Integer.IsEqual(Container(6728).NumItems,1)">SetFocus(4329)</onclick>
+					<onclick condition="Integer.IsGreater(Container(6728).NumItems,1)">Notification($LOCALIZE[32081],$LOCALIZE[32082],3000,$INFO[ListItem.Icon])</onclick>
+					<onclick condition="Integer.IsGreater(Container(6728).NumItems,1)">SetProperty(ChooseStart,True,home)</onclick>
+					<onclick condition="Integer.IsGreater(Container(6728).NumItems,1)">SetFocus(6728)</onclick>
+				</control>
+				<control type="button" id="931">
+					<description>Scrape music videos</description>
+					<font>IconMediumMD</font>
+					<width>65</width>
+					<texturenofocus/>
+					<include>ButtonInfoDialogsCommonValues</include>
+					<label></label>
+					<onclick>RunScript(script.videolinks,$INFO[ListItem.DBID])</onclick>
+					<visible>System.HasAddon(script.videolinks) + String.IsEqual(ListItem.DBType,artist)</visible>
+				</control>
 				<control type="button" id="649">
 					<visible>String.IsEqual(ListItem.DBTYPE,album) + Integer.IsGreater(Container(6828).NumItems,0)</visible>
 					<description>Videoclips</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onfocus>SetProperty(Show_clips,True,home)</onfocus>
 					<onclick>SetProperty(Show_clips,True,home)</onclick>
 					<onclick>SetFocus(6828)</onclick>
+				</control>
+				<control type="button" id="659">
+					<visible>String.IsEqual(ListItem.DBTYPE,album) + Integer.IsGreater(Container(6828).NumItems,1) + Skin.HasSetting(SettingCommon)</visible>
+					<description>Play all Album's Videoclips</description>
+					<font>IconMediumMD</font>
+					<width>65</width>
+					<texturenofocus/>
+					<include>ButtonInfoDialogsCommonValues</include>
+					<label></label>
+					<onfocus>SetProperty(Show_clips,True,home)</onfocus>
+					<onfocus>ClearProperty(NextClip,Home)</onfocus>
+					<onfocus>ClearProperty(Stop_RA,Home)</onfocus>
+					<onclick>SetProperty(Show_clips,True,home)</onclick>
+					<onclick>ClearProperty(Stop_RA,Home)</onclick>
+					<onclick>ClearProperty(2Contador,Home)</onclick>
+					<onclick>ClearProperty(2MyResult,Home)</onclick>
+					<onclick>SetProperty(NextClip,True,home)</onclick>
+					<onclick condition="Integer.IsEqual(Container(6828).NumItems,1)">SetFocus(6828,0,absolute)</onclick>
+					<onclick condition="Integer.IsEqual(Container(6828).NumItems,1)">SetFocus(4339)</onclick>
+					<onclick condition="Integer.IsGreater(Container(6828).NumItems,1)">Notification($LOCALIZE[32081],$LOCALIZE[32082],3000,$INFO[ListItem.Icon])</onclick>
+					<onclick condition="Integer.IsGreater(Container(6828).NumItems,1)">SetProperty(2ChooseStart,True,home)</onclick>
+					<onclick condition="Integer.IsGreater(Container(6828).NumItems,1)">SetFocus(6828)</onclick>
 				</control>
 				<control type="button" id="6271">
 					<description>Show similar</description>
@@ -1282,7 +1348,7 @@
 					<description>Wikipedia</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick>RunScript(script.wikipedia,wikipedia=$VAR[Title_MusicW],language=$INFO[skin.string(Wiki_lang)])</onclick>
@@ -1297,8 +1363,8 @@
 					<font>IconMediumMD</font>
 					<width>65</width>
 					<include>ButtonInfoDialogsCommonValues</include>
-					<texturenofocus />
-					<alttexturenofocus />
+					<texturenofocus/>
+					<alttexturenofocus/>
 					<label></label>
 					<altlabel></altlabel>
 					<usealttexture>!String.IsEmpty(ListItem.UserRating)</usealttexture>
@@ -1310,7 +1376,7 @@
 					<onfocus condition="Player.HasVideo + String.IsEqual(ListItem.DBTYPE,song)">ActivateWindow(videoosd)</onfocus>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick>SendClick(10)</onclick>
@@ -1319,7 +1385,7 @@
 					<description>Refresh</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick>SendClick(6)</onclick>
@@ -1328,7 +1394,7 @@
 					<description>FS Fanart button</description>
 					<font>IconMediumMD</font>
 					<width>65</width>
-					<texturenofocus />
+					<texturenofocus/>
 					<include>ButtonInfoDialogsCommonValues</include>
 					<label></label>
 					<onclick condition="!String.IsEmpty(ListItem.Art(fanart))">SetProperty(FSFanart,$INFO[ListItem.Art(fanart)],musicinformation)</onclick>
@@ -1573,126 +1639,239 @@
 				</focusedlayout>
 				<content>
 					<include content="Filter_files_music">
-						<param name="id" value="0" />
+						<param name="id" value="0"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="1" />
+						<param name="id" value="1"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="2" />
+						<param name="id" value="2"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="3" />
+						<param name="id" value="3"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="4" />
+						<param name="id" value="4"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="5" />
+						<param name="id" value="5"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="6" />
+						<param name="id" value="6"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="7" />
+						<param name="id" value="7"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="8" />
+						<param name="id" value="8"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="9" />
+						<param name="id" value="9"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="10" />
+						<param name="id" value="10"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="11" />
+						<param name="id" value="11"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="12" />
+						<param name="id" value="12"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="13" />
+						<param name="id" value="13"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="14" />
+						<param name="id" value="14"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="15" />
+						<param name="id" value="15"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="16" />
+						<param name="id" value="16"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="17" />
+						<param name="id" value="17"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="18" />
+						<param name="id" value="18"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="19" />
+						<param name="id" value="19"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="20" />
+						<param name="id" value="20"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="21" />
+						<param name="id" value="21"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="22" />
+						<param name="id" value="22"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="23" />
+						<param name="id" value="23"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="24" />
+						<param name="id" value="24"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="25" />
+						<param name="id" value="25"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="26" />
+						<param name="id" value="26"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="27" />
+						<param name="id" value="27"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="28" />
+						<param name="id" value="28"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="29" />
+						<param name="id" value="29"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="30" />
+						<param name="id" value="30"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="31" />
+						<param name="id" value="31"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="32" />
+						<param name="id" value="32"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="33" />
+						<param name="id" value="33"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="34" />
+						<param name="id" value="34"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="35" />
+						<param name="id" value="35"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="36" />
+						<param name="id" value="36"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="37" />
+						<param name="id" value="37"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="38" />
+						<param name="id" value="38"/>
 					</include>
 					<include content="Filter_files_music">
-						<param name="id" value="39" />
+						<param name="id" value="39"/>
 					</include>
 				</content>
+			</control>
+			<control type="image">
+				<visible>Control.HasFocus(4329) | Control.HasFocus(4339)</visible>
+				<include>FullscreenDimensions</include>
+				<texture>black.png</texture>
+			</control>
+			<control type="image">
+				<visible>Control.HasFocus(4329)</visible>
+				<include>FullscreenDimensions</include>
+				<texture>$INFO[ListItem.Art(fanart)]</texture>
+			</control>
+			<control type="image">
+				<visible>Control.HasFocus(4339)</visible>
+				<include>FullscreenDimensions</include>
+				<texture>$INFO[ListItem.Art(artist.fanart)]</texture>
+			</control>
+			<control type="image">
+				<visible>Control.HasFocus(4329)</visible>
+				<left>150</left>
+				<top>625</top>
+				<width>840</width>
+				<height>275</height>
+				<aspectratio align="center" aligny="bottom">keep</aspectratio>
+				<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+			</control>
+			<control type="image">
+				<visible>Control.HasFocus(4339)</visible>
+				<left>150</left>
+				<top>625</top>
+				<width>840</width>
+				<height>275</height>
+				<aspectratio align="center" aligny="bottom">keep</aspectratio>
+				<texture background="true">$INFO[ListItem.Art(artist.clearlogo)]</texture>
+			</control>
+			<control type="group">
+				<visible>Control.HasFocus(4329)</visible>
+				<visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+				<left>150</left>
+				<top>700</top>
+				<control type="textbox">
+					<top>32</top>
+					<left>59</left>
+					<align>left</align>
+					<aligny>center</aligny>
+					<width>1450</width>
+					<height>200</height>
+					<font>font_musicviz</font>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>black</textcolor>
+				</control>
+				<control type="textbox">
+					<top>31</top>
+					<left>59</left>
+					<align>left</align>
+					<aligny>center</aligny>
+					<width>1450</width>
+					<height>200</height>
+					<font>font_musicviz</font>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>black</textcolor>
+				</control>
+				<control type="textbox">
+					<top>32</top>
+					<left>60</left>
+					<align>left</align>
+					<aligny>center</aligny>
+					<width>1450</width>
+					<height>200</height>
+					<font>font_musicviz</font>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>white</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+			</control>
+			<control type="group">
+				<visible>Control.HasFocus(4339)</visible>
+				<visible>String.IsEmpty(ListItem.Art(artist.clearlogo))</visible>
+				<left>150</left>
+				<top>700</top>
+				<control type="textbox">
+					<top>32</top>
+					<left>59</left>
+					<align>left</align>
+					<aligny>center</aligny>
+					<width>1450</width>
+					<height>200</height>
+					<font>font_musicviz</font>
+					<label>$INFO[ListItem.Artist]</label>
+					<textcolor>black</textcolor>
+				</control>
+				<control type="textbox">
+					<top>31</top>
+					<left>59</left>
+					<align>left</align>
+					<aligny>center</aligny>
+					<width>1450</width>
+					<height>200</height>
+					<font>font_musicviz</font>
+					<label>$INFO[ListItem.Artist]</label>
+					<textcolor>black</textcolor>
+				</control>
+				<control type="textbox">
+					<top>32</top>
+					<left>60</left>
+					<align>left</align>
+					<aligny>center</aligny>
+					<width>1450</width>
+					<height>200</height>
+					<font>font_musicviz</font>
+					<label>$INFO[ListItem.Artist]</label>
+					<textcolor>white</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
 			</control>
 			<control type="image">
 				<visible>Player.HasVideo</visible>
@@ -1719,5 +1898,24 @@
 			<description>Get Fanart</description>
 			<include>HiddenObject</include>
 		</control>
+		<control type="button" id="4329">
+			<visible>String.IsEmpty(Window(Home).Property(Stop_RA))</visible>
+			<include>HiddenObject</include>
+			<onclick>ActivateWindow(videoosd)</onclick>
+			<onup>ActivateWindow(videoosd)</onup>
+			<ondown>ActivateWindow(videoosd)</ondown>
+			<onright>ActivateWindow(videoosd)</onright>
+			<onleft>ActivateWindow(videoosd)</onleft>
+		</control>
+		<control type="button" id="4339">
+			<visible>String.IsEmpty(Window(Home).Property(Stop_RA))</visible>
+			<include>HiddenObject</include>
+			<onclick>ActivateWindow(videoosd)</onclick>
+			<onup>ActivateWindow(videoosd)</onup>
+			<ondown>ActivateWindow(videoosd)</ondown>
+			<onright>ActivateWindow(videoosd)</onright>
+			<onleft>ActivateWindow(videoosd)</onleft>
+		</control>
+		<include condition="!String.IsEmpty(skin.string(snow_type)) + !Player.HasVideo">Snowing</include>
 	</controls>
 </window>

@@ -99,22 +99,13 @@
 							<visible>!String.IsEmpty(Container(10051).ListItem.Duration)</visible>
 							<width>280</width>
 							<control type="label">
-								<top>2</top>
+								<top>18</top>
 								<width>280</width>
 								<height>50</height>
 								<font>font40_bold</font>
 								<align>center</align>
 								<textcolor>grey</textcolor>
 								<label>$VAR[MinsToHourDurationVar]</label>
-							</control>
-							<control type="label">
-								<top>46</top>
-								<width>280</width>
-								<height>30</height>
-								<align>center</align>
-								<label>$LOCALIZE[19081]: $INFO[Container(10051).ListItem.EndTime]</label>
-								<font>font13</font>
-								<textcolor>grey</textcolor>
 							</control>
 						</control>
 						<control type="image">
@@ -318,7 +309,7 @@
 					<top>542</top>
 					<control type="button">
 						<width>615</width>
-						<texturenofocus />
+						<texturenofocus/>
 						<disabledcolor>grey</disabledcolor>
 						<font>font15_bold</font>
 						<align>right</align>
@@ -329,7 +320,7 @@
 					</control>
 					<control type="button">
 						<width>615</width>
-						<texturenofocus />
+						<texturenofocus/>
 						<disabledcolor>grey</disabledcolor>
 						<font>font15_bold</font>
 						<align>right</align>
@@ -353,7 +344,7 @@
 						<description>Play/browse to Show</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
-						<texturenofocus />
+						<texturenofocus/>
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
 						<altlabel></altlabel>
@@ -367,7 +358,7 @@
 						<description>Cast</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
-						<texturenofocus />
+						<texturenofocus/>
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
 						<onclick>SetFocus(10052)</onclick>
@@ -377,7 +368,7 @@
 						<description>Search Trailer</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
-						<texturenofocus />
+						<texturenofocus/>
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
 						<onclick>Dialog.Close(all,force)</onclick>
@@ -389,7 +380,7 @@
 						<description>Extras</description>
 						<font>IconMediumMD</font>
 						<width>65</width>
-						<texturenofocus />
+						<texturenofocus/>
 						<include>ButtonInfoDialogsCommonValues</include>
 						<label></label>
 						<onclick>Addon.OpenSettings(script.embuary.info)</onclick>
@@ -788,7 +779,7 @@
 									<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
 								</control>
 								<control type="textbox">
-									<autoscroll delay="1000" time="1000" repeat="1000" />
+									<autoscroll delay="1000" time="1000" repeat="1000"/>
 									<left>13</left>
 									<top>340</top>
 									<width>354</width>
@@ -884,12 +875,13 @@
 					</control>
 				</control>
 				<control type="group">
-					<top>980</top>
-					<left>5</left>
+					<top>985</top>
+					<left>45</left>
 					<visible>String.IsEqual(Container(10051).ListItem.DBTYPE,movie)</visible>
 					<control type="grouplist">
-						<visible>Control.HasFocus(90002)</visible>
-						<width>1200</width>
+						<animation effect="zoom" end="80" time="0" condition="true">Conditional</animation>
+						<visible>!Control.HasFocus(10052) + !Control.HasFocus(10053) + !Control.HasFocus(10054) + !Control.HasFocus(10055) + !Control.HasFocus(10056)</visible>
+						<width>1400</width>
 						<height>90</height>
 						<itemgap>45</itemgap>
 						<align>center</align>
@@ -933,12 +925,13 @@
 					</control>
 				</control>
 				<control type="group">
-					<top>980</top>
-					<left>5</left>
+					<top>985</top>
+					<left>45</left>
 					<visible>String.IsEqual(Container(10051).ListItem.DBTYPE,tvshow)</visible>
 					<control type="grouplist">
-						<visible>Control.HasFocus(90002)</visible>
-						<width>1200</width>
+						<animation effect="zoom" end="80" time="0" condition="true">Conditional</animation>
+						<visible>!Control.HasFocus(10052) + !Control.HasFocus(10053) + !Control.HasFocus(10054) + !Control.HasFocus(10055) + !Control.HasFocus(10056)</visible>
+						<width>1400</width>
 						<height>90</height>
 						<itemgap>45</itemgap>
 						<align>center</align>

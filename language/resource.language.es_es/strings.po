@@ -1455,8 +1455,8 @@ msgid "Show only background"
 msgstr "Mostrar solo imagen de fondo"
 
 msgctxt "#32016"
-msgid "TheMovieDb Helper provides data to display online ratings for movies and TV shows"
-msgstr "TheMovieDb Helper hace posible mostrar calificaciones online en películas y series"
+msgid "TheMovieDb Helper provides data to display online ratings and additional information for movies and TV shows"
+msgstr "TheMovieDb Helper hace posible mostrar calificaciones online e información adicional en películas y series"
 
 msgctxt "#32017"
 msgid "Show online ratings for movies and TV shows"
@@ -1727,8 +1727,8 @@ msgid "Show OSD controls"
 msgstr "Mostrar controles de reproducción"
 
 msgctxt "#32084"
-msgid "Preparing list of music videos. Please wait..."
-msgstr "Preparando la lista de videoclips, espere por favor..."
+msgid "Preparing list of music videos, please wait..."
+msgstr "Preparando la lista de videoclips. Espere por favor..."
 
 msgctxt "#32085"
 msgid "Songs party mode"
@@ -1769,3 +1769,63 @@ msgstr "Mostrar franjas de colores en vistas de video"
 msgctxt "#32094"
 msgid "Allows to quickly identify video file quality using a color strip code when browsing movies and episodes in video views"
 msgstr "Permite identificar rápidamente la calidad del archivo de video usando un código de franjas de colores al explorar películas y episodios en vistas de video."
+
+msgctxt "#32095"
+msgid "Library using Global Search"
+msgstr "Colección usando Búsqueda Global"
+
+msgctxt "#32096"
+msgid "TheMovieDB"
+msgstr "TheMovieDB"
+
+msgctxt "#32097"
+msgid "Most Voted Movies"
+msgstr "Películas más votadas"
+
+msgctxt "#32098"
+msgid "Crew"
+msgstr "Equipo"
+
+msgctxt "#32099"
+msgid "Most Voted Shows"
+msgstr "Series más votadas"
+
+msgctxt "#32100"
+msgid "Random Shows"
+msgstr "Series aleatorias"
+
+msgctxt "#32101"
+msgid "Random Artists"
+msgstr "Artistas aleatorios"
+
+msgctxt "#32102"
+msgid "Online info from themoviedb.org for videos"
+msgstr "Información online de themoviedb.org para videos"
+
+msgctxt "#32103"
+msgid "Get online info from themoviedb.org in movie and TVshow's info screen and widgets"
+msgstr "Obtener información online de themoviedb.org en la pantalla de información de películas y series y en los widgets"
+
+msgctxt "#32104"
+msgid "Snow effect - Off"
+msgstr "Efecto nieve - Apagado"
+
+msgctxt "#32105"
+msgid "Snow effect - Light"
+msgstr "Efecto nieve - Ligero"
+
+msgctxt "#32106"
+msgid "Snow effect - Medium"
+msgstr "Efecto nieve - Medio"
+
+msgctxt "#32107"
+msgid "Snow effect - Heavy"
+msgstr "Efecto nieve - Intenso"
+
+msgctxt "#32108"
+msgid "Snow effect - Blizzard"
+msgstr "Efecto nieve - Tormenta"
+
+msgctxt "#32109"
+msgid "Click or arrow keys to exit"
+msgstr "Haga click o pulse una tecla de dirección para salir"

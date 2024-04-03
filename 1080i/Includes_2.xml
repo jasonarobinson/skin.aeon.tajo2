@@ -1166,8 +1166,8 @@
 			<top>168</top>
 			<width>40</width>
 			<height>40</height>
-			<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+			<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 		</control>
 		<control type="image">
 			<visible>!ListItem.IsParentFolder</visible>
@@ -1271,8 +1271,8 @@
 			<top>169</top>
 			<width>40</width>
 			<height>40</height>
-			<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+			<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 		</control>
 		<control type="image">
 			<visible>!ListItem.IsParentFolder</visible>
@@ -1515,8 +1515,8 @@
 			<width>45</width>
 			<height>45</height>
 			<aspectratio>keep</aspectratio>
-			<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+			<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 		</control>
 	</include>
 	<include name="MultiSort">
@@ -2704,12 +2704,12 @@
 		</control>
 	</include>
 	<include name="musicv_disc">
-		<effect type="slide" start="-10,0" end="650,-15" time="2000" tween="cubic" easing="inout" />
-		<effect type="rotate" start="-180" center="auto" end="-360" time="2000" tween="cubic" easing="inout" />
-		<effect type="slide" end="-530,30" time="2000" delay="2000" tween="cubic" easing="inout" />
-		<effect type="rotate" center="auto" start="-160" end="0" delay="2000" time="2000" tween="cubic" easing="inout" />
-		<effect type="slide" end="-1400,100" time="3000" delay="9000" tween="cubic" easing="inout" />
-		<effect type="rotate" start="360" center="auto" end="630" delay="9000" time="3000" tween="cubic" easing="inout" />
+		<effect type="slide" start="-10,0" end="650,-15" time="2000" tween="cubic" easing="inout"/>
+		<effect type="rotate" start="-180" center="auto" end="-360" time="2000" tween="cubic" easing="inout"/>
+		<effect type="slide" end="-530,30" time="2000" delay="2000" tween="cubic" easing="inout"/>
+		<effect type="rotate" center="auto" start="-160" end="0" delay="2000" time="2000" tween="cubic" easing="inout"/>
+		<effect type="slide" end="-1400,100" time="3000" delay="9000" tween="cubic" easing="inout"/>
+		<effect type="rotate" start="360" center="auto" end="630" delay="9000" time="3000" tween="cubic" easing="inout"/>
 	</include>
 	<include name="musicv_disc2">
 		<control type="image">
@@ -2718,12 +2718,12 @@
 		</control>
 	</include>
 	<include name="musicv_discr">
-		<effect type="slide" start="-10,0" end="650,-15" time="2000" tween="cubic" easing="inout" />
-		<effect type="rotate" start="180" center="auto" end="360" time="2000" tween="cubic" easing="inout" />
-		<effect type="slide" end="-530,30" time="2000" delay="2000" tween="cubic" easing="inout" />
-		<effect type="rotate" center="auto" start="160" end="0" delay="2000" time="2000" tween="cubic" easing="inout" />
-		<effect type="slide" end="-1400,100" time="3000" delay="9000" tween="cubic" easing="inout" />
-		<effect type="rotate" start="-360" center="auto" end="-630" delay="9000" time="3000" tween="cubic" easing="inout" />
+		<effect type="slide" start="-10,0" end="650,-15" time="2000" tween="cubic" easing="inout"/>
+		<effect type="rotate" start="180" center="auto" end="360" time="2000" tween="cubic" easing="inout"/>
+		<effect type="slide" end="-530,30" time="2000" delay="2000" tween="cubic" easing="inout"/>
+		<effect type="rotate" center="auto" start="160" end="0" delay="2000" time="2000" tween="cubic" easing="inout"/>
+		<effect type="slide" end="-1400,100" time="3000" delay="9000" tween="cubic" easing="inout"/>
+		<effect type="rotate" start="-360" center="auto" end="-630" delay="9000" time="3000" tween="cubic" easing="inout"/>
 	</include>
 	<include name="musicv_disc2r">
 		<control type="image">
@@ -2759,7 +2759,7 @@
 			<width>940</width>
 			<height>40</height>
 			<font>font15_title</font>
-			<label />
+			<label/>
 			<align>center</align>
 			<textcolor>grey</textcolor>
 		</control>
@@ -2934,13 +2934,13 @@
 			<control type="button" id="8">
 				<description>Add art type</description>
 				<width>300</width>
-				<label />
+				<label/>
 				<texturefocus colordiffuse="$INFO[Skin.String(flat_back)]" border="5">listselect_fo.png</texturefocus>
 			</control>
 			<control type="button" id="7">
 				<description>Cancel button</description>
 				<width>300</width>
-				<label />
+				<label/>
 				<texturefocus colordiffuse="$INFO[Skin.String(flat_back)]" border="5">listselect_fo.png</texturefocus>
 			</control>
 		</control>
@@ -3028,8 +3028,8 @@
 				<left>540</left>
 				<width>40</width>
 				<height>40</height>
-				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				<aspectratio align="center" aligny="top">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -3062,8 +3062,8 @@
 	<include name="Banner_itemlayoutmovie">
 		<control type="group">
 			<animation type="Conditional" condition="true" reversible="false">
-				<effect type="zoom" end="75" time="0" />
-				<effect type="slide" end="61,12" time="0" />
+				<effect type="zoom" end="75" time="0"/>
+				<effect type="slide" end="61,12" time="0"/>
 			</animation>
 			<control type="image">
 				<animation effect="rotate" end="180" center="auto" condition="true">Conditional</animation>
@@ -3127,8 +3127,8 @@
 				<left>540</left>
 				<width>40</width>
 				<height>40</height>
-				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				<aspectratio align="center" aligny="top">scale</aspectratio>
 			</control>
 		</control>
@@ -3205,8 +3205,8 @@
 				<left>540</left>
 				<width>40</width>
 				<height>40</height>
-				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				<aspectratio align="center" aligny="top">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -3238,7 +3238,7 @@
 			<left>14</left>
 			<top>16</top>
 			<animation type="Focus" reversible="false">
-				<effect type="zoom" delay="400" center="250,0" start="100" end="110" time="300" tween="cubic" easing="out" />
+				<effect type="zoom" delay="400" center="250,0" start="100" end="110" time="300" tween="cubic" easing="out"/>
 			</animation>
 			<control type="image">
 				<left>-16</left>
@@ -3311,8 +3311,8 @@
 				<left>540</left>
 				<width>40</width>
 				<height>40</height>
-				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				<aspectratio align="center" aligny="top">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -3345,8 +3345,8 @@
 	<include name="Banner_focusedlayout_movie">
 		<control type="group">
 			<animation type="Conditional" condition="true" reversible="false">
-				<effect type="zoom" end="75" time="0" />
-				<effect type="slide" end="61,12" time="0" />
+				<effect type="zoom" end="75" time="0"/>
+				<effect type="slide" end="61,12" time="0"/>
 			</animation>
 			<control type="image">
 				<animation effect="rotate" end="180" center="auto" condition="true">Conditional</animation>
@@ -3410,8 +3410,8 @@
 				<left>540</left>
 				<width>40</width>
 				<height>40</height>
-				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				<aspectratio align="center" aligny="top">scale</aspectratio>
 			</control>
 		</control>
@@ -3489,8 +3489,8 @@
 				<left>540</left>
 				<width>40</width>
 				<height>40</height>
-				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+				<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 				<aspectratio align="center" aligny="top">scale</aspectratio>
 			</control>
 			<control type="image">
@@ -3584,7 +3584,7 @@
 			<left>14</left>
 			<top>16</top>
 			<animation type="Focus" reversible="false">
-				<effect type="zoom" delay="400" center="250,0" start="100" end="110" time="300" tween="cubic" easing="out" />
+				<effect type="zoom" delay="400" center="250,0" start="100" end="110" time="300" tween="cubic" easing="out"/>
 			</animation>
 			<control type="image">
 				<left>-16</left>
@@ -3897,8 +3897,8 @@
 						<left>394</left>
 						<width>55</width>
 						<height>55</height>
-						<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-						<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+						<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+						<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 					</control>
 					<control type="image">
 						<visible>!ListItem.IsParentFolder</visible>
@@ -4036,8 +4036,8 @@
 						<left>394</left>
 						<width>55</width>
 						<height>55</height>
-						<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-						<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+						<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+						<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 					</control>
 					<control type="image">
 						<visible>!ListItem.IsParentFolder</visible>
@@ -4542,7 +4542,8 @@
 				<texture>$VAR[VideoListPosterVar]</texture>
 				<aspectratio aligny="top">keep</aspectratio>
 			</control>
-			<control type="list" id="3"></control>
+			<control type="list" id="3">
+			</control>
 			<control type="list" id="6">
 				<left>440</left>
 				<top>100</top>
@@ -4555,7 +4556,7 @@
 				<pagecontrol>61</pagecontrol>
 				<scrolltime>200</scrolltime>
 				<include content="MediaInfoListLayout">
-					<param name="label_1" value="$INFO[ListItem.VideoVersionName]" />
+					<param name="label_1" value="$INFO[ListItem.VideoVersionName]"/>
 				</include>
 			</control>
 			<control type="scrollbar" id="61">
@@ -4574,12 +4575,12 @@
 				<onright>6</onright>
 				<control type="button" id="5">
 					<width>310</width>
-					<label />
+					<label/>
 					<visible>false</visible>
 				</control>
 				<control type="button" id="8">
 					<width>310</width>
-					<label />
+					<label/>
 					<visible>false</visible>
 				</control>
 				<control type="button" id="7">
@@ -4633,8 +4634,9 @@
 			<animation effect="zoom" end="84" time="0" condition="true">Conditional</animation>
 			<control type="image">
 				<left>220</left>
-				<include condition="Skin.HasSetting(Coloured.icons)">FlagImage3</include>
-				<include condition="!Skin.HasSetting(Coloured.icons)">FlagImage3w</include>
+				<top>6</top>
+				<include condition="Skin.HasSetting(Coloured.icons)">FlagImage4</include>
+				<include condition="!Skin.HasSetting(Coloured.icons)">FlagImage4w</include>
 				<texture fallback="resources/flag_default.png">$VAR[videocodec]</texture>
 			</control>
 			<control type="image">
@@ -4664,7 +4666,7 @@
 		</control>
 	</include>
 	<include name="ViewCast">
-		<param name="list_id" />
+		<param name="list_id"/>
 		<definition>
 			<control type="group">
 				<visible>!Container.OnNext + !Container.OnPrevious</visible>
@@ -4686,8 +4688,10 @@
 				<control type="list" id="$PARAM[list_id]">
 					<scrolltime>3500</scrolltime>
 					<autoscroll>true</autoscroll>
-					<itemlayout></itemlayout>
-					<focusedlayout></focusedlayout>
+					<itemlayout>
+					</itemlayout>
+					<focusedlayout>
+					</focusedlayout>
 					<content>
 						<item>
 							<label>$INFO[Container(524).ListItemAbsolute(0).Label]</label>
@@ -4841,7 +4845,7 @@
 		</definition>
 	</include>
 	<include name="ViewCastLite">
-		<param name="list_id" />
+		<param name="list_id"/>
 		<definition>
 			<control type="group">
 				<visible>!ListItem.IsParentFolder + !ListItem.IsCollection + !Container.Content(seasons) + !Container.Content(episodes) + Skin.HasSetting(showCast)</visible>
@@ -4849,8 +4853,10 @@
 				<control type="list" id="$PARAM[list_id]">
 					<scrolltime>3500</scrolltime>
 					<autoscroll>true</autoscroll>
-					<itemlayout></itemlayout>
-					<focusedlayout></focusedlayout>
+					<itemlayout>
+					</itemlayout>
+					<focusedlayout>
+					</focusedlayout>
 					<content>
 						<item>
 							<label>$INFO[Container(524).ListItemAbsolute(0).Label]</label>
@@ -4927,7 +4933,7 @@
 		</definition>
 	</include>
 	<include name="ViewCastMedium">
-		<param name="list_id" />
+		<param name="list_id"/>
 		<definition>
 			<control type="group">
 				<visible>!Container.OnNext + !Container.OnPrevious</visible>
@@ -4949,8 +4955,10 @@
 				<control type="list" id="$PARAM[list_id]">
 					<scrolltime>3500</scrolltime>
 					<autoscroll>true</autoscroll>
-					<itemlayout></itemlayout>
-					<focusedlayout></focusedlayout>
+					<itemlayout>
+					</itemlayout>
+					<focusedlayout>
+					</focusedlayout>
 					<content>
 						<item>
 							<label>$INFO[Container(524).ListItemAbsolute(0).Label]</label>
@@ -5160,10 +5168,10 @@
 			<left>-450</left>
 			<top>600</top>
 			<animation type="WindowOpen" reversible="false">
-				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="1000" />
+				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="1000"/>
 			</animation>
 			<animation type="WindowClose" reversible="false">
-				<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="1000" />
+				<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="1000"/>
 			</animation>
 			<control type="image">
 				<visible>!String.IsEmpty(Player.Filenameandpath)</visible>
@@ -5284,10 +5292,10 @@
 			<left>-450</left>
 			<top>600</top>
 			<animation type="WindowOpen" reversible="false">
-				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="1000" />
+				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="1000"/>
 			</animation>
 			<animation type="WindowClose" reversible="false">
-				<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="1000" />
+				<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="1000"/>
 			</animation>
 			<control type="image">
 				<visible>!String.IsEmpty(Player.Filenameandpath)</visible>
@@ -5408,10 +5416,10 @@
 			<left>-450</left>
 			<top>600</top>
 			<animation type="WindowOpen" reversible="false">
-				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="1000" />
+				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="1000"/>
 			</animation>
 			<animation type="WindowClose" reversible="false">
-				<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="1000" />
+				<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="1000"/>
 			</animation>
 			<control type="image">
 				<visible>!String.IsEmpty(Player.Filenameandpath)</visible>
@@ -5533,6 +5541,13 @@
 					<pauseatend>1000</pauseatend>
 				</control>
 			</control>
+		</control>
+	</include>
+	<include name="HiddenDataList">
+		<control type="list" id="19001">
+			<itemlayout/>
+			<focusedlayout/>
+			<content>$VAR[Looking_Info]</content>
 		</control>
 	</include>
 </includes>

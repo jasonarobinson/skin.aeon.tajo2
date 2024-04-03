@@ -16,7 +16,7 @@
 			<width>100%</width>
 			<height>64</height>
 			<texturesliderbar>seekslider2.png</texturesliderbar>
-			<textureslidernib />
+			<textureslidernib/>
 			<textureslidernibfocus>osd/osd_slider_nib.png</textureslidernibfocus>
 			<action>seek</action>
 			<visible>!VideoPlayer.Content(LiveTV)</visible>
@@ -159,6 +159,17 @@
 					<width>100</width>
 					<height>100</height>
 					<onclick>PlayerControl(Next)</onclick>
+				</control>
+				<control type="button" id="626">
+					<visible>!String.IsEmpty(Window(home).Property(NextClip))</visible>
+					<texturefocus>tajo/recua4.png</texturefocus>
+					<font>IconMediumMD</font>
+					<label></label>
+					<focusedcolor>Skin.String(theme_text)</focusedcolor>
+					<width>100</width>
+					<height>100</height>
+					<onclick>PlayerControl(Stop)</onclick>
+					<onclick>Dialog.Close(videoosd)</onclick>
 				</control>
 				<control type="button" id="703">
 					<texturefocus>tajo/recua4.png</texturefocus>

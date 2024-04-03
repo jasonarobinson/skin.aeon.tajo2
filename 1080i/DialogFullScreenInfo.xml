@@ -66,7 +66,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)| VideoPlayer.Content(musicvideos)</visible>
+			<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(musicvideos)</visible>
 			<animation effect="slide" end="0,0" start="0,-540" time="200" tween="quadratic" easing="out">WindowOpen</animation>
 			<animation effect="slide" start="0,0" end="0,-540" time="200" tween="quadratic" easing="out">WindowClose</animation>
 			<control type="group">

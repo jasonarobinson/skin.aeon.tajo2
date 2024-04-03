@@ -5,5 +5,5 @@
 	<onload>ClearProperty(theme_ready,home)</onload>
 	<visible>String.Contains(Player.Filenameandpath,theme.mp3) + [!Window.IsActive(videos) | [String.IsEqual(ListItem.DBTYPE,episode) + String.IsEmpty(ListItem.VideoCodec)] | [String.IsEqual(ListItem.DBTYPE,movie) + String.IsEmpty(ListItem.VideoCodec)] | [Player.Paused + System.IdleTime(2)]]</visible>
 	<visible>Skin.HasSetting(playTheme)</visible>
-	<controls />
+	<controls/>
 </window>

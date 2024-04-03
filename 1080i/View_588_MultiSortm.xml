@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--#############################################################################   VISTA MULTISORTm - ID 588   #############################################################################-->
 	<include name="ViewMultiSortm">
@@ -284,7 +283,8 @@
 							<shadowcolor>black</shadowcolor>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="System.IdleTime(6) + !Control.HasFocus(58860) + !Control.HasFocus(5689) + !Control.HasFocus(5919) + !ListItem.IsParentFolder" height="325"></focusedlayout>
+					<focusedlayout condition="System.IdleTime(6) + !Control.HasFocus(58860) + !Control.HasFocus(5689) + !Control.HasFocus(5919) + !ListItem.IsParentFolder" height="325">
+					</focusedlayout>
 					<focusedlayout condition="!System.IdleTime(6) | Control.HasFocus(58860) | Control.HasFocus(5689) | Control.HasFocus(5919) | ListItem.IsParentFolder" height="190">
 						<control type="button" id="1858">
 							<include>HiddenObject</include>
@@ -302,7 +302,7 @@
 					<height>37</height>
 					<font>font15d</font>
 					<align>center</align>
-					<texturefocus />
+					<texturefocus/>
 					<onup>588</onup>
 					<onup>Control.Move(588,-1)</onup>
 					<ondown>588</ondown>

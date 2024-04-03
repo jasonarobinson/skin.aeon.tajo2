@@ -76,8 +76,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="60" width="1140" condition="[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)] + Skin.HasSetting(NarrowList)">
@@ -114,8 +114,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="120" width="1140" condition="Container.Content(episodes) + !Skin.HasSetting(NarrowList)">
@@ -161,8 +161,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="60" width="1140" condition="Container.Content(episodes) + Skin.HasSetting(NarrowList)">
@@ -199,8 +199,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="120" width="1140" condition="Container.Content(seasons) + !Skin.HasSetting(NarrowList)">
@@ -255,8 +255,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="60" width="1140" condition="Container.Content(seasons) + Skin.HasSetting(NarrowList)">
@@ -303,8 +303,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="120" width="1140" condition="Container.Content(addons)">
@@ -419,8 +419,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<itemlayout height="120" width="1140" condition="![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(addons) | Container.Content(seasons) | Container.Content(videos)]">
@@ -485,8 +485,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</itemlayout>
 					<focusedlayout height="120" width="1140" condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)">
@@ -541,8 +541,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</focusedlayout>
 					<focusedlayout height="120" width="1140" condition="Container.Content(episodes)">
@@ -589,8 +589,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</focusedlayout>
 					<focusedlayout height="120" width="1140" condition="Container.Content(seasons)">
@@ -646,8 +646,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</focusedlayout>
 					<focusedlayout height="120" width="1140" condition="Container.Content(addons)">
@@ -762,8 +762,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</focusedlayout>
 					<focusedlayout height="120" width="1140" condition="![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(addons) | Container.Content(seasons) | Container.Content(videos)]">
@@ -827,8 +827,8 @@
 							<width>55</width>
 							<height>55</height>
 							<aspectratio>keep</aspectratio>
-							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+							<texture diffuse="tajo/mask_cover3.png" colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+							<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 						</control>
 					</focusedlayout>
 				</control>
@@ -1171,49 +1171,53 @@
 				</control>
 			</control>
 		</control>
-		<control type="image">
-			<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
-			<animation effect="slide" start="0,0" end="0,55" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
-			<visible>!Container.Content(addons)</visible>
-			<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
-			<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
-			<left>106</left>
-			<top>133</top>
-			<width>60</width>
-			<height>60</height>
-			<colordiffuse>ccffffff</colordiffuse>
-			<texture background="true">$VAR[mediaicons_path]extras.png</texture>
-			<aspectratio>keep</aspectratio>
-		</control>
-		<control type="label">
-			<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
-			<animation effect="slide" start="0,0" end="0,55" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
-			<visible>!Container.Content(addons)</visible>
-			<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
-			<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
-			<align>left</align>
-			<left>111</left>
-			<top>160</top>
-			<width min="20" max="300">auto</width>
-			<height>34</height>
-			<include condition="!Skin.HasSetting(Coloured.icons)">TextGrey2</include>
-			<textcolor>ffdadada</textcolor>
-			<shadowcolor>black</shadowcolor>
-			<font>font_Extras</font>
-			<label>$LOCALIZE[31014]</label>
-		</control>
-		<control type="image">
-			<animation effect="fade" start="0" end="100" time="100">Visible</animation>
-			<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
-			<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
-			<visible>ListItem.HasVideoVersions</visible>
-			<left>111</left>
-			<top>136</top>
-			<width>50</width>
-			<height>47</height>
-			<colordiffuse>bbffffff</colordiffuse>
-			<texture background="true">$VAR[mediaicons_path]versions.png</texture>
-			<aspectratio>stretch</aspectratio>
+		<control type="group">
+			<left>-20</left>
+			<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
+			<control type="image">
+				<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
+				<animation effect="slide" start="0,0" end="0,55" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
+				<visible>!Container.Content(addons)</visible>
+				<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
+				<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
+				<left>106</left>
+				<top>133</top>
+				<width>60</width>
+				<height>60</height>
+				<colordiffuse>ccffffff</colordiffuse>
+				<texture background="true">$VAR[mediaicons_path]extras.png</texture>
+				<aspectratio>keep</aspectratio>
+			</control>
+			<control type="label">
+				<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
+				<animation effect="slide" start="0,0" end="0,55" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
+				<visible>!Container.Content(addons)</visible>
+				<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
+				<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
+				<align>left</align>
+				<left>111</left>
+				<top>160</top>
+				<width min="20" max="300">auto</width>
+				<height>34</height>
+				<include condition="!Skin.HasSetting(Coloured.icons)">TextGrey2</include>
+				<textcolor>ffdadada</textcolor>
+				<shadowcolor>black</shadowcolor>
+				<font>font_Extras</font>
+				<label>$LOCALIZE[31014]</label>
+			</control>
+			<control type="image">
+				<animation effect="fade" start="0" end="100" time="100">Visible</animation>
+				<visible>Control.IsVisible(50) + !Window.IsActive(addoninformation)</visible>
+				<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
+				<visible>ListItem.HasVideoVersions</visible>
+				<left>111</left>
+				<top>136</top>
+				<width>50</width>
+				<height>47</height>
+				<colordiffuse>bbffffff</colordiffuse>
+				<texture background="true">$VAR[mediaicons_path]versions.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
 		</control>
 	</include>
 	<!-- Music List -->
@@ -1228,8 +1232,8 @@
 				<top>-40</top>
 				<control type="list" id="4723">
 					<visible>[Container.Content(musicvideos) | String.StartsWith(container.folderpath,library://video/musicvideos/) | String.StartsWith(container.folderpath,videodb://musicvideos)] + Container.Content(albums)</visible>
-					<itemlayout />
-					<focusedlayout />
+					<itemlayout/>
+					<focusedlayout/>
 					<content>$INFO[Container(50).ListItem.FolderPath]</content>
 				</control>
 				<control type="label">
@@ -1254,7 +1258,7 @@
 					<width>500</width>
 					<font>font15d</font>
 					<align>center</align>
-					<texturefocus />
+					<texturefocus/>
 					<onup>50</onup>
 					<onup>Control.Move(50,-1)</onup>
 					<ondown>50</ondown>
@@ -2420,6 +2424,21 @@
 					<label>[COLOR $INFO[Skin.String(theme_text)]][B]$LOCALIZE[132]: [/COLOR][/B][COLOR=FFFFFAF0][B]$INFO[Container(6942).NumItems][/B][/COLOR]</label>
 				</control>
 				<control type="textbox">
+					<visible>Container.Content(artists) + !String.StartsWith(ListItem.Label,*) + !Control.HasFocus(6942)</visible>
+					<visible>!ListItem.IsParentFolder</visible>
+					<visible>!String.IsEmpty(ListItem.DBID)</visible>
+					<visible>System.IdleTime(2) + !Integer.IsEqual(Container(6725).NumItems,0)</visible>
+					<animation effect="fade" start="0" end="100" delay="750" time="100" reversible="false">Visible</animation>
+					<top>855</top>
+					<left>-35</left>
+					<width>600</width>
+					<height>50</height>
+					<aligny>top</aligny>
+					<align>center</align>
+					<font>font15</font>
+					<label>[COLOR $INFO[Skin.String(theme_text)]][B]$LOCALIZE[20389]: [/COLOR][/B][COLOR=FFFFFAF0][B]$INFO[Container(6725).NumItems][/B][/COLOR]</label>
+				</control>
+				<control type="textbox">
 					<visible>Container.Content(artists) + !String.StartsWith(ListItem.Label,*) + Control.HasFocus(6942)</visible>
 					<top>540</top>
 					<left>-35</left>
@@ -2552,7 +2571,7 @@
 					<width>500</width>
 					<font>font15d</font>
 					<align>center</align>
-					<texturefocus />
+					<texturefocus/>
 					<onup>6987</onup>
 					<onup>Control.Move(6987,-1)</onup>
 					<ondown>6987</ondown>
@@ -3538,7 +3557,10 @@
 							<width>1140</width>
 							<height>120</height>
 							<texture diffuse="tajo/mask_cover3.png">listselect_fo.png</texture>
-							ç<colordiffuse>Skin.String(flat_back)</colordiffuse><visible>Control.HasFocus(50)</visible><include>VisibleFadeAnimation</include></control>
+							ç<colordiffuse>Skin.String(flat_back)</colordiffuse>
+							<visible>Control.HasFocus(50)</visible>
+							<include>VisibleFadeAnimation</include>
+						</control>
 						<control type="image">
 							<left>15</left>
 							<top>8</top>

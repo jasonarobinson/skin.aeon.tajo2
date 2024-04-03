@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <includes>
 	<!--##################################################################################   VISTA WALL - ID 597   ##################################################################################-->
 	<include name="ViewWall">
@@ -180,8 +179,8 @@
 								<top>6</top>
 								<width>40</width>
 								<height>40</height>
-								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 							</control>
 							<control type="image">
 								<visible>!ListItem.IsParentFolder</visible>
@@ -263,8 +262,8 @@
 								<top>19</top>
 								<width>40</width>
 								<height>40</height>
-								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 							</control>
 						</control>
 					</itemlayout>
@@ -278,7 +277,7 @@
 							<left>4</left>
 							<top>6</top>
 							<animation type="Focus" reversible="false">
-								<effect type="zoom" delay="400" center="90,10" start="100" end="115" time="300" tween="cubic" easing="out" />
+								<effect type="zoom" delay="400" center="90,10" start="100" end="115" time="300" tween="cubic" easing="out"/>
 							</animation>
 							<control type="image">
 								<left>-7</left>
@@ -324,8 +323,8 @@
 								<top>6</top>
 								<width>40</width>
 								<height>40</height>
-								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 							</control>
 							<control type="image">
 								<visible>!ListItem.IsParentFolder</visible>
@@ -358,7 +357,7 @@
 						<control type="group">
 							<left>5</left>
 							<animation type="Focus" reversible="false">
-								<effect type="zoom" delay="400" center="145,125" start="100" end="112" time="300" tween="cubic" easing="out" />
+								<effect type="zoom" delay="400" center="145,125" start="100" end="112" time="300" tween="cubic" easing="out"/>
 							</animation>
 							<control type="image">
 								<left>-6</left>
@@ -411,8 +410,8 @@
 								<top>19</top>
 								<width>40</width>
 								<height>40</height>
-								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$VAR[watched_style]</texture>
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+								<texture colordiffuse="$INFO[Skin.String(mark_color)]">$INFO[Skin.String(Overlay.Path)]overlaywatched.png</texture>
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) + !Skin.HasSetting(noshow_watched)</visible>
 							</control>
 						</control>
 					</focusedlayout>
@@ -568,7 +567,7 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<font>font28b</font>
-						<label>[B]$VAR[value_ground17_label]: [/B][COLOR=FFFFFAF0]$VAR[value_ground17_value][/COLOR] • [B]$LOCALIZE[180]: [/B][COLOR=FFFFFAF0]$VAR[ItemDuration][/COLOR]</label>
+						<label>[B]$VAR[value_ground17_label,,: ][/B][COLOR=FFFFFAF0]$VAR[value_ground17_value,, • ][/COLOR][B]$LOCALIZE[180]: [/B][COLOR=FFFFFAF0]$VAR[ItemDuration][/COLOR]</label>
 						<textcolor>Skin.String(theme_text)</textcolor>
 					</control>
 					<control type="textbox">
@@ -653,49 +652,51 @@
 						<font>titlemus</font>
 						<label>$INFO[ListItem.TvShowTitle]</label>
 					</control>
-					<control type="image">
-						<animation effect="fade" start="100" end="0" time="1000" reversible="false" condition="Skin.HasSetting(playTrailer) + !String.IsEmpty(ListItem.Trailer) + !VideoPlayer.IsFullscreen + Player.Playing + Player.HasVideo + Player.HasVideo + !String.Contains(Player.Filenameandpath,theme.mp3)">Conditional</animation>
-						<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
-						<animation effect="slide" start="0,0" end="-65,0" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
+					<control type="group">
+						<left>-20</left>
 						<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-						<visible>!Control.HasFocus(59760) + !Control.HasFocus(5919)</visible>
-						<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
-						<left>546</left>
-						<top>-101</top>
-						<width>60</width>
-						<height>60</height>
-						<colordiffuse>ccffffff</colordiffuse>
-						<texture background="true">$VAR[mediaicons_path]extras.png</texture>
-						<aspectratio>keep</aspectratio>
-					</control>
-					<control type="label">
-						<animation effect="fade" start="100" end="0" time="1000" reversible="false" condition="Skin.HasSetting(playTrailer) + !String.IsEmpty(ListItem.Trailer) + !VideoPlayer.IsFullscreen + Player.Playing + !String.Contains(Player.Filenameandpath,theme.mp3)">Conditional</animation>
-						<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
-						<animation effect="slide" start="0,0" end="-65,0" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
-						<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-						<visible>!Control.HasFocus(59760) + !Control.HasFocus(5919)</visible>
-						<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
-						<align>left</align>
-						<left>551</left>
-						<top>-74</top>
-						<width min="20" max="300">auto</width>
-						<height>34</height>
-						<include condition="!Skin.HasSetting(Coloured.icons)">TextGrey2</include>
-						<textcolor>ffdadada</textcolor>
-						<shadowcolor>black</shadowcolor>
-						<font>font_Extras</font>
-						<label>$LOCALIZE[31014]</label>
-					</control>
-					<control type="image">
-						<animation effect="fade" start="0" end="100" time="100">Visible</animation>
-						<visible>ListItem.HasVideoVersions</visible>
-						<left>551</left>
-						<top>-98</top>
-						<width>50</width>
-						<height>47</height>
-						<colordiffuse>bbffffff</colordiffuse>
-						<texture background="true">$VAR[mediaicons_path]versions.png</texture>
-						<aspectratio>stretch</aspectratio>
+						<control type="image">
+							<animation effect="fade" start="100" end="0" time="1000" reversible="false" condition="Skin.HasSetting(playTrailer) + !String.IsEmpty(ListItem.Trailer) + !VideoPlayer.IsFullscreen + Player.Playing + Player.HasVideo + Player.HasVideo + !String.Contains(Player.Filenameandpath,theme.mp3)">Conditional</animation>
+							<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
+							<animation effect="slide" start="0,0" end="-65,0" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
+							<visible>!Control.HasFocus(59760) + !Control.HasFocus(5919)</visible>
+							<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
+							<left>546</left>
+							<top>-101</top>
+							<width>60</width>
+							<height>60</height>
+							<colordiffuse>ccffffff</colordiffuse>
+							<texture background="true">$VAR[mediaicons_path]extras.png</texture>
+							<aspectratio>keep</aspectratio>
+						</control>
+						<control type="label">
+							<animation effect="fade" start="100" end="0" time="1000" reversible="false" condition="Skin.HasSetting(playTrailer) + !String.IsEmpty(ListItem.Trailer) + !VideoPlayer.IsFullscreen + Player.Playing + !String.Contains(Player.Filenameandpath,theme.mp3)">Conditional</animation>
+							<visible>[[!String.IsEmpty(Window(Home).Property(extras_yes)) | Integer.IsGreater(Container(3322).NumItems,0)] + Skin.HasSetting(SearchExtras)] | ListItem.HasVideoExtras</visible>
+							<animation effect="slide" start="0,0" end="-65,0" time="0" condition="ListItem.HasVideoVersions">Conditional</animation>
+							<visible>!Control.HasFocus(59760) + !Control.HasFocus(5919)</visible>
+							<animation effect="fade" start="0" end="100" delay="600" time="200">Visible</animation>
+							<align>left</align>
+							<left>551</left>
+							<top>-74</top>
+							<width min="20" max="300">auto</width>
+							<height>34</height>
+							<include condition="!Skin.HasSetting(Coloured.icons)">TextGrey2</include>
+							<textcolor>ffdadada</textcolor>
+							<shadowcolor>black</shadowcolor>
+							<font>font_Extras</font>
+							<label>$LOCALIZE[31014]</label>
+						</control>
+						<control type="image">
+							<animation effect="fade" start="0" end="100" time="100">Visible</animation>
+							<visible>ListItem.HasVideoVersions</visible>
+							<left>551</left>
+							<top>-98</top>
+							<width>50</width>
+							<height>47</height>
+							<colordiffuse>bbffffff</colordiffuse>
+							<texture background="true">$VAR[mediaicons_path]versions.png</texture>
+							<aspectratio>stretch</aspectratio>
+						</control>
 					</control>
 					<control type="textbox">
 						<visible>ListItem.IsCollection</visible>
@@ -1037,7 +1038,7 @@
 							<top>6</top>
 							<left>9</left>
 							<animation type="Focus" reversible="false">
-								<effect type="zoom" delay="400" center="130,100" start="100" end="124" time="300" tween="cubic" easing="out" />
+								<effect type="zoom" delay="400" center="130,100" start="100" end="124" time="300" tween="cubic" easing="out"/>
 							</animation>
 							<control type="image">
 								<visible>Container.Content(artists)</visible>
@@ -1380,6 +1381,7 @@
 					<visible>Container.Content(artists) + !String.IsEmpty(listitem.artist)</visible>
 					<control type="textbox">
 						<visible>String.IsEmpty(ListItem.Appearances)</visible>
+						<visible>![System.IdleTime(3) + !Integer.IsEqual(Container(6725).NumItems,0) + !String.IsEmpty(ListItem.DBID)]</visible>
 						<top>372</top>
 						<left>25</left>
 						<height>40</height>
@@ -1389,6 +1391,20 @@
 						<align>left</align>
 						<textcolor>Skin.String(theme_text)</textcolor>
 						<label>[B]$LOCALIZE[132]: [COLOR=FFFFFAF0]$INFO[Container(5971).NumItems][/B][/COLOR]</label>
+					</control>
+					<control type="textbox">
+						<visible>String.IsEmpty(ListItem.Appearances)</visible>
+						<visible>System.IdleTime(3) + !Integer.IsEqual(Container(6725).NumItems,0)</visible>
+						<visible>!String.IsEmpty(ListItem.DBID)</visible>
+						<top>372</top>
+						<left>25</left>
+						<height>40</height>
+						<width>510</width>
+						<font>font13</font>
+						<aligny>center</aligny>
+						<align>left</align>
+						<textcolor>Skin.String(theme_text)</textcolor>
+						<label>[B]$LOCALIZE[132]: [COLOR=FFFFFAF0]$INFO[Container(5971).NumItems][/B][/COLOR]       [B]$LOCALIZE[20389]: [/B][COLOR=FFFFFAF0][B]$INFO[Container(6725).NumItems][/B][/COLOR]</label>
 					</control>
 					<control type="textbox">
 						<visible>!String.IsEmpty(ListItem.Appearances)</visible>

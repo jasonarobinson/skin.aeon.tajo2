@@ -89,14 +89,25 @@
 		</control>
 		<control type="label">
 			<visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
-			<top>30</top>
-			<left>5</left>
-			<width>1910</width>
+			<top>113</top>
+			<left>90</left>
+			<width>1200</width>
 			<height>60</height>
 			<font>font35</font>
 			<align>center</align>
 			<textcolor>white</textcolor>
 			<label>[B][UPPERCASE]$VAR[Content_Type] $INFO[Container.NumItems,(,)][/UPPERCASE][/B]</label>
+		</control>
+		<control type="textbox">
+			<textcolor>Skin.String(theme_text)</textcolor>
+			<label>[B]$INFO[Container(9000).ListItemAbsolute(0).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(0).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(1).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(1).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(2).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(2).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(3).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(3).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(4).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(4).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(5).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(5).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(6).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(6).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(7).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(7).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(8).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(8).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(9).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(9).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(10).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(10).Label2,,    ][/COLOR][B]$INFO[Container(9000).ListItemAbsolute(11).Label,,: ][/B][COLOR white]$INFO[Container(9000).ListItemAbsolute(11).Label2,,    ][/COLOR]</label>
+			<top>-8</top>
+			<left>90</left>
+			<width>1220</width>
+			<height>145</height>
+			<align>center</align>
+			<aligny>center</aligny>
+			<font>fontmusic2</font>
 		</control>
 		<control type="group">
 			<centerleft>50%</centerleft>
@@ -105,12 +116,14 @@
 				<left>100</left>
 				<top>-40</top>
 				<control type="panel" id="50">
-					<top>180</top>
+					<top>220</top>
 					<width>1140</width>
 					<height>840</height>
 					<onleft>SetProperty(MediaMenu,True,home)</onleft>
 					<onleft>SetFocus(9050)</onleft>
-					<onright>78</onright>
+					<onright condition="Integer.IsGreater(Container(50).NumItems,7)">78</onright>
+					<onright condition="!Integer.IsGreater(Container(50).NumItems,7)">SetProperty(MediaMenu,True,home)</onright>
+					<onright condition="!Integer.IsGreater(Container(50).NumItems,7)">SetFocus(9050)</onright>
 					<onup>50</onup>
 					<ondown>50</ondown>
 					<viewtype label="535">list</viewtype>
@@ -931,12 +944,13 @@
 			<visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
 			<include>ScrollBar_Vertical</include>
 			<left>1240</left>
-			<top>140</top>
+			<top>180</top>
 			<height>830</height>
 			<onup>78</onup>
 			<ondown>78</ondown>
 			<onleft>50</onleft>
-			<onright>78</onright>
+			<onright>SetProperty(MediaMenu,True,home)</onright>
+			<onright>SetFocus(9050)</onright>
 		</control>
 		<control type="group">
 			<left>-500</left>
@@ -969,8 +983,8 @@
 				<focusedcolor>Skin.String(theme_text)</focusedcolor>
 				<onclick>ClearProperty(MediaMenu,Home)</onclick>
 				<onclick>SetFocus(50)</onclick>
-				<texturefocus />
-				<texturenofocus />
+				<texturefocus/>
+				<texturenofocus/>
 				<visible>system.getbool(input.enablemouse)</visible>
 			</control>
 			<control type="image">
@@ -1022,7 +1036,9 @@
 					<description>Settings button</description>
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[5]</label>
+					<onclick>SetProperty(Term_current,$INFO[Window.Property(GlobalSearch.SearchString)],home)</onclick>
 					<onclick>Addon.OpenSettings(script.globalsearch)</onclick>
+					<onclick>RunScript(script.globalsearch,searchstring=$INFO[Window(home).Property(Term_current)])</onclick>
 				</control>
 				<control type="button" id="612">
 					<description>Go to playlist</description>
@@ -1055,7 +1071,6 @@
 				<control type="panel" id="9000">
 					<width>400</width>
 					<height>600</height>
-					<onleft>noop</onleft>
 					<onright>ClearProperty(MediaMenu,Home)</onright>
 					<onright>50</onright>
 					<onup>2001</onup>

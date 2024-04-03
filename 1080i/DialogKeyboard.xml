@@ -36,8 +36,8 @@
 				<align>center</align>
 				<font>font15</font>
 				<textcolor>grey2</textcolor>
-				<texturefocus />
-				<texturenofocus />
+				<texturefocus/>
+				<texturenofocus/>
 			</control>
 			<control type="group" id="4000">
 				<left>30</left>
@@ -445,7 +445,7 @@
 					</control>
 					<control type="button" id="305">
 						<left>504</left>
-						<label>←</label>
+						<label>&#x2190;</label>
 						<onup>166</onup>
 						<ondown condition="!Control.IsVisible(5000)">106</ondown>
 						<ondown condition="Control.IsVisible(5000)">5000</ondown>
@@ -455,7 +455,7 @@
 					</control>
 					<control type="button" id="306">
 						<left>630</left>
-						<label>→</label>
+						<label>&#x2192;</label>
 						<onup>167</onup>
 						<ondown condition="!Control.IsVisible(5000)">107</ondown>
 						<ondown condition="Control.IsVisible(5000)">5000</ondown>

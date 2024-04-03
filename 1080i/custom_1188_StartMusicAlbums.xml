@@ -11,5 +11,5 @@
 	<visible>Skin.HasSetting(PlayPreviewM)</visible>
 	<visible>!Player.HasVideo</visible>
 	<visible>!ListItem.IsParentFolder</visible>
-	<controls />
+	<controls/>
 </window>
