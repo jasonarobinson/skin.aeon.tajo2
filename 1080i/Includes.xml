@@ -4652,7 +4652,7 @@
 					</control>
 				</control>
 			</focusedlayout>
-			<content>plugin://plugin.video.themoviedb.helper?info=posters&amp;tmdb_type=$VAR[Type_info]&amp;$VAR[Type_TMDB]</content>
+			<content>plugin://plugin.video.themoviedb.helper?info=posters&amp;tmdb_type=$VAR[Type_Info]&amp;$VAR[Type_TMDB]</content>
 		</control>
 	</include>
 	<include name="CustomFanartList">
@@ -4722,7 +4722,7 @@
 					</control>
 				</control>
 			</focusedlayout>
-			<content>plugin://plugin.video.themoviedb.helper?info=fanart&amp;tmdb_type=$VAR[Type_info]&amp;$VAR[Type_TMDB]</content>
+			<content>plugin://plugin.video.themoviedb.helper?info=fanart&amp;tmdb_type=$VAR[Type_Info]&amp;$VAR[Type_TMDB]</content>
 		</control>
 	</include>
 	<include name="ExtendedMovieSetPanel">
