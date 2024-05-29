@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: KODI Skins\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-03-12 18:56+0000\n"
+"PO-Revision-Date: 2024-05-29 02:04+0000\n"
 "Last-Translator: José Antonio Alvarado <jalvarado0.eses@gmail.com>\n"
 "Language-Team: Spanish (Spain) <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-tajo/es_es/>\n"
 "Language: es_es\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.5.4\n"
 
 msgctxt "Addon Summary"
 msgid "Aeon Tajo"
@@ -95,7 +95,7 @@ msgstr "Establecer ruta a la carpeta fanart del género de vídeo"
 
 msgctxt "#31016"
 msgid "Poster"
-msgstr "Carátula"
+msgstr "Póster"
 
 msgctxt "#31017"
 msgid "Set path to music genre fanart folder"
@@ -155,7 +155,7 @@ msgstr "Episodios recientes"
 
 msgctxt "#31031"
 msgid "Random movies"
-msgstr "Peliculas aleatorías"
+msgstr "Películas al azar"
 
 msgctxt "#31032"
 msgid "Recommended movies"
@@ -231,11 +231,11 @@ msgstr "Seleccionar InfoLine"
 
 msgctxt "#31050"
 msgid "Sort: Ascending"
-msgstr "Ordenar: Ascendente"
+msgstr "Orden: Ascendente"
 
 msgctxt "#31051"
 msgid "Sort: Descending"
-msgstr "Ordenar: Descendente"
+msgstr "Orden: Descendente"
 
 msgctxt "#31052"
 msgid "Movie library statistics"
@@ -271,7 +271,7 @@ msgstr "Instale el add-on Artist Slideshow para activar esta función"
 
 msgctxt "#31060"
 msgid "This file is stacked, select the part you want to play from."
-msgstr "Este archivo está agrupado, seleccione la parte desde la que desea reproducir."
+msgstr "Este archivo está agrupado, seleccione la parte que desea reproducir."
 
 msgctxt "#31061"
 msgid "Favourites statistics"
@@ -287,7 +287,7 @@ msgstr "Fanart de series aleatorio"
 
 msgctxt "#31064"
 msgid "Random video fanart"
-msgstr "Fanart de videos aleatorio"
+msgstr "Fanart de vídeos aleatorio"
 
 msgctxt "#31065"
 msgid "Random music fanart"
@@ -299,7 +299,7 @@ msgstr "Fanart aleatorio"
 
 msgctxt "#31067"
 msgid "Update rating"
-msgstr "Actualizar calificación"
+msgstr "Actualizar valoración"
 
 msgctxt "#31068"
 msgid "CD Wall"
@@ -319,7 +319,7 @@ msgstr "Al navegar por la colección"
 
 msgctxt "#31072"
 msgid "On open video info"
-msgstr "Al abrir la información del video"
+msgstr "Al abrir la información del vídeo"
 
 msgctxt "#31073"
 msgid "Move menu item"
@@ -335,7 +335,7 @@ msgstr "Características adicionales no disponibles"
 
 msgctxt "#31076"
 msgid "Landscape"
-msgstr "Paisaje"
+msgstr "Apaisado"
 
 msgctxt "#31077"
 msgid "ShowCase"
@@ -355,7 +355,7 @@ msgstr "Gestionar submenú"
 
 msgctxt "#31081"
 msgid "Enable custom submenus"
-msgstr "Habilitar submenúes personalizados"
+msgstr "Activar submenús personalizados"
 
 msgctxt "#31082"
 msgid "Detach RSS feed from the main menu"
@@ -363,7 +363,7 @@ msgstr "Separar información RSS del menú principal"
 
 msgctxt "#31083"
 msgid "Enable Next Aired information in the videolibrary"
-msgstr "Activar información de Next Aired en la colección de videos"
+msgstr "Activar información de Próxima emisión en la biblioteca de vídeos"
 
 msgctxt "#31084"
 msgid "Conditional weather"
@@ -371,7 +371,7 @@ msgstr "Clima condicional"
 
 msgctxt "#31085"
 msgid "Musicvideo library statistics"
-msgstr "Estadísticas de la colección de videos musicales"
+msgstr "Estadísticas de la biblioteca de vídeos musicales"
 
 msgctxt "#31086"
 msgid "Icon"
@@ -379,15 +379,15 @@ msgstr "Icono"
 
 msgctxt "#31087"
 msgid "Banner"
-msgstr "Pancarta"
+msgstr "Banner"
 
 msgctxt "#31088"
 msgid "BannerWall"
-msgstr "Muro de Pancartas"
+msgstr "Muro de banners"
 
 msgctxt "#31089"
 msgid "Play item on startup"
-msgstr "Reproducir elemento al inicio"
+msgstr "Reproducir elemento al iniciar"
 
 msgctxt "#31090"
 msgid "Seconds"
@@ -407,7 +407,7 @@ msgstr "Activar LowList"
 
 msgctxt "#31094"
 msgid "List view layout"
-msgstr "Ver lista de diseño"
+msgstr "Diseño de lista"
 
 msgctxt "#31095"
 msgid "Slim List"
@@ -419,15 +419,15 @@ msgstr "Salas de concierto"
 
 msgctxt "#31097"
 msgid "Movie playlist statistics"
-msgstr "Estadísticas de la colección de películas"
+msgstr "Estadísticas de la biblioteca de películas"
 
 msgctxt "#31098"
 msgid "TV Show playlist statistics"
-msgstr "Estadísticas de la colección de series"
+msgstr "Estadísticas de la biblioteca de series"
 
 msgctxt "#31099"
 msgid "Musicvideo playlist statistics"
-msgstr "Estadísticas de la colección de videos musicales"
+msgstr "Estadísticas de la biblioteca de vídeos musicales"
 
 msgctxt "#31100"
 msgid "View:"
@@ -463,7 +463,7 @@ msgstr "Persistente"
 
 msgctxt "#31108"
 msgid "Enable artist information feed (if available)"
-msgstr "Habilitar información de artista (si está disponible)"
+msgstr "Activar información de artista (si está disponible)"
 
 msgctxt "#31109"
 msgid "Unwatched episode count"
@@ -507,7 +507,7 @@ msgstr "Descargar extrafanart"
 
 msgctxt "#31119"
 msgid "Show the movies from this director in your library or view online information on this director on TMDb?"
-msgstr "¿Mostrar las películas en su colección de este director o ver la información sobre este director en TMDb?"
+msgstr "¿Mostrar las películas de este director en su biblioteca o ver información online sobre este director en TMDb?"
 
 msgctxt "#31120"
 msgid "TMDb"
@@ -527,11 +527,11 @@ msgstr "Reseña del álbum"
 
 msgctxt "#31124"
 msgid "Show Background \"Now Playing\" Video"
-msgstr "Mostrar video \"Reproduciendo\" como fondo"
+msgstr "Mostrar como fondo vídeo en reproducción"
 
 msgctxt "#31125"
 msgid "Show Background \"Now Playing\" Visualisation"
-msgstr "Mostrar visualización \"Reproduciendo\" como fondo"
+msgstr "Mostrar como fondo visualización en reproducción"
 
 msgctxt "#31127"
 msgid "LiveTV Mod Settings"
@@ -539,11 +539,11 @@ msgstr "Ajustes de LiveTV Mod"
 
 msgctxt "#31128"
 msgid "Channels View"
-msgstr "Vista de Canales"
+msgstr "Vista de canales"
 
 msgctxt "#31129"
 msgid "Hide Fanart in full screen visualisation"
-msgstr "Ocultar Fanart en pantalla completa"
+msgstr "Ocultar Fanart en visualización a pantalla completa"
 
 msgctxt "#31130"
 msgid "Use \"Enigma2-style\" channel OSD"
@@ -579,7 +579,7 @@ msgstr "Ocultar información de cifrado"
 
 msgctxt "#31138"
 msgid "Hide tuner information"
-msgstr "Ocultar información del sintonizador"
+msgstr "Ocultar información de sintonizador"
 
 msgctxt "#31139"
 msgid "Hide signal information"
@@ -603,7 +603,7 @@ msgstr "Ocultar Grabaciones"
 
 msgctxt "#31144"
 msgid "Hide Timer"
-msgstr "Ocultar Programaciones"
+msgstr "Ocultar Temporizador"
 
 msgctxt "#31145"
 msgid "Hide Search"
@@ -820,7 +820,7 @@ msgstr "Volver a la lista de reproducción predefinida"
 
 msgctxt "#31300"
 msgid "Overview"
-msgstr "Visión general"
+msgstr "Descripción general"
 
 msgctxt "#31301"
 msgid "Last Updated"
@@ -836,15 +836,15 @@ msgstr "Memoria Usada:"
 
 msgctxt "#31317"
 msgid "Set Fanart Path"
-msgstr "Selecciona ruta del fanart"
+msgstr "Establece ruta de fanart"
 
 msgctxt "#31320"
 msgid "Last Logged In"
-msgstr "Última Sesión el"
+msgstr "Último Inicio de Sesión"
 
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
-msgstr "Selector de Canción de Karaoke"
+msgstr "Selector de canción de Karaoke"
 
 msgctxt "#31328"
 msgid "Recently Added"
@@ -924,7 +924,7 @@ msgstr "[B]CONFIGURAR AJUSTES DE CONTENIDO[/B][CR][CR]Establecer acción predete
 
 msgctxt "#31421"
 msgid "Select your Kodi user profile[CR]to login and continue"
-msgstr "Seleccione su perfil de usuario de Kodi[CR]para ingresar y continuar"
+msgstr "Selecciona tu perfil de usuario de Kodi[CR]para iniciar sesión y continuar"
 
 msgctxt "#31427"
 msgid "Skin Shortcuts is responsible for handling all aspects of the main menu."
@@ -932,19 +932,19 @@ msgstr "Sirve para personalizar todos los aspectos del menú principal."
 
 msgctxt "#31428"
 msgid "The Grab Fanart script provides the random fanart slideshows for the main menu."
-msgstr "El script Grab Fanart provee de presentación de fanarts aleatorios para el menú principal."
+msgstr "El script Grab Fanart proporciona presentaciones de diapositivas de fanart aleatorias para el menú principal."
 
 msgctxt "#31429"
 msgid "Library Data Provider is a service that runs in the background to provide library data for widgets and live backgrounds as well as playlist statistics for infolines."
-msgstr "Library Data Provider es un servicio que se ejecuta en segundo plano para proporcionar datos de biblioteca para widgets y fondos en directo, así como estadísticas de listas de reproducción para infolines."
+msgstr "Library Data Provider es un servicio que se ejecuta en segundo plano para proporcionar datos de biblioteca para widgets y fondos en movimiento, así como estadísticas de listas de reproducción para líneas de información."
 
 msgctxt "#31430"
 msgid "Resource image addon for displaying the default white studio icons throughout the skin."
-msgstr "Add-on de recursos de imagen para mostrar los iconos blancos de estudio en la skin."
+msgstr "Add-on de recursos de imagen para mostrar los íconos de estudio blancos predeterminados en todo el skin."
 
 msgctxt "#31431"
 msgid "Resource image addon for displaying the default white recording label icons throughout the skin."
-msgstr "Add-on de recursos de imagen para mostrar los iconos blancos de sello discográfico en la skin."
+msgstr "Add-on de recursos de imagen para mostrar los íconos de estudio discográfico blancos predeterminados en todo el skin."
 
 msgctxt "#31432"
 msgid "Provides numerous Widget options and extended cast and crew metadata."
@@ -952,7 +952,7 @@ msgstr "Provee numerosas opciones para los Widgets y metadatos extendidos del re
 
 msgctxt "#31433"
 msgid "Skin Info Service is used to display movie set information throughout the skin."
-msgstr "Servicio de Info Skin se usa para mostrar la información de películas en la skin."
+msgstr "Skin Info Service se utiliza para mostrar información de la colección de la película en todo el skin."
 
 msgctxt "#31434"
 msgid "Check MP3 Theme checks whether the user has put a theme.mp3 file in the corresponding movie/TV show folder to be played when browsing."
@@ -972,7 +972,7 @@ msgstr "Provee los datos necesarios para mostrar el reparto de actores en pelíc
 
 msgctxt "#31474"
 msgid "CU LRC Lyrics is used to download, sync, and display lyrics during fullscreen music playback."
-msgstr "CU LRC Lyrics se usa para descargar, sincronizar y mostrar las letras mientras se reproduce música."
+msgstr "CU LRC Lyrics se utiliza para descargar, sincronizar y mostrar letras durante la reproducción de música en pantalla completa."
 
 msgctxt "#31475"
 msgid "Play Trailer makes possible to play movie trailers through a context menu. "
@@ -988,7 +988,7 @@ msgstr "Provee imágenes de algunas actrices del reparto para mostrarse en vista
 
 msgctxt "#31478"
 msgid "Artist Slideshow is used to display artist fanart for both the home screen and during fullscreen music playback."
-msgstr "Se usa para mostrar fanarts de los intérpretes en la pantalla principal y mientras se reproduce música."
+msgstr "Artist Slideshow se utiliza para mostrar fanart del artista tanto en la pantalla de inicio como durante la reproducción de música en pantalla completa."
 
 msgctxt "#31479"
 msgid "AutoCompletion provides suggestions to be selected while using the virtual keyboard."
