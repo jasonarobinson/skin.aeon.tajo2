@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: KODI Skins\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-05-31 22:03+0000\n"
-"Last-Translator: roliverosc <roliverosc@hotmail.com>\n"
+"PO-Revision-Date: 2024-06-02 04:48+0000\n"
+"Last-Translator: Man Feed <manfeed10@gmail.com>\n"
 "Language-Team: Spanish (Spain) <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-tajo/es_es/>\n"
 "Language: es_es\n"
 "MIME-Version: 1.0\n"
@@ -851,7 +851,7 @@ msgstr "Cuando se activa, los widgets asociados con cada elemento del menú de i
 
 msgctxt "#31205"
 msgid "Lyrics Source"
-msgstr "Fuente para letras"
+msgstr "Origen para letras"
 
 msgctxt "#31206"
 msgid "Customization"
@@ -947,7 +947,7 @@ msgstr "Muestra las opciones del menú principal en un diseño vertical en lugar
 
 msgctxt "#31229"
 msgid "Set another video file as startup intro"
-msgstr ""
+msgstr "Establecer otro archivo de vídeo como introducción al inicio"
 
 msgctxt "#31230"
 msgid "Choose another video file to play when Kodi starts instead of Aeon Tajo default. It's recommended to choose a short one. To stop playback and start using Kodi right away, click or press any arrow key."
@@ -963,7 +963,7 @@ msgstr "Volver al vídeo de introducción predefinido"
 
 msgctxt "#31233"
 msgid "Clear the intro video file selected by the user and back to Aeon Tajo's default."
-msgstr "Descartar el archivo de vídeo de introducción seleccionado por el usuario y volver al valor predeterminado de Aeon Tajo"
+msgstr "Descartar el archivo de vídeo de introducción seleccionado por el usuario y volver al valor predeterminado de Aeon Tajo."
 
 msgctxt "#31234"
 msgid "Adds a layer that simulates falling snow on all Kodi screens, with four available intensity levels."
@@ -1735,7 +1735,7 @@ msgstr "Muestra los contenidos adicionales (archivos multimedia) colocados por e
 
 msgctxt "#32036"
 msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically sounds. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
-msgstr "Al navegar por una vista de video y hacer una pausa en una película o programa de televisión durante unos segundos, el tema principal suena automáticamente. Esta función requiere que el usuario coloque un archivo mp3 con el tema en la carpeta raíz de la película o serie. Este archivo debe llamarse theme.mp3"
+msgstr "Al navegar por una vista de video y hacer una pausa en una película o programa de televisión durante unos segundos, el tema principal suena automáticamente. Esta función requiere que el usuario coloque un archivo mp3 con el tema en la carpeta raíz de la película o serie. Este archivo debe llamarse theme.mp3."
 
 msgctxt "#32037"
 msgid "Shows the normal poster (poster.jpg) in movies and TV shows views."
@@ -1967,7 +1967,7 @@ msgstr "Mostrar un código de franjas de colores en los elementos de vídeo"
 
 msgctxt "#32094"
 msgid "Allows to quickly identify video file quality using a colour strip code when browsing movies and episodes in video views"
-msgstr "Permite identificar rápidamente la calidad del archivo de video usando un código de franjas de distintos colores al explorar películas y episodios en vistas de video."
+msgstr "Permite identificar rápidamente la calidad del archivo de video usando un código de franjas de distintos colores al explorar películas y episodios en vistas de video"
 
 msgctxt "#32095"
 msgid "Library using Global Search"
