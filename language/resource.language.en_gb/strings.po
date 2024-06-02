@@ -1847,7 +1847,7 @@ msgid "Display the additional features (media files) placed by the user in the '
 msgstr ""
 
 msgctxt "#32036"
-msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically sounds. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
+msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically plays in the background. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
 msgstr ""
 
 msgctxt "#32037"
