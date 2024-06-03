@@ -469,7 +469,7 @@ msgid "Unwatched episode count"
 msgstr ""
 
 msgctxt "#31110"
-msgid "Up next brings the option to watch right away the next episode of a tvshow (Netflix/Prime video style)."
+msgid "Up next brings the option to watch right away the next episode of a TV show (Netflix/Prime video style)."
 msgstr ""
 
 #: \1080i\variables.xml:612
@@ -719,7 +719,7 @@ msgstr ""
 
 #: /1080i/variables.xml:395
 msgctxt "#31161"
-msgid "Display title of movie/tvshow/artist on home screen if the background has a fanart slideshow as background"
+msgid "Display title of movie/TV show/artist on home screen if the background has a fanart slideshow as background"
 msgstr ""
 
 #: /1080i/variables.xml
@@ -1847,7 +1847,7 @@ msgid "Display the additional features (media files) placed by the user in the '
 msgstr ""
 
 msgctxt "#32036"
-msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically plays in the background. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
+msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically sounds. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
 msgstr ""
 
 msgctxt "#32037"
