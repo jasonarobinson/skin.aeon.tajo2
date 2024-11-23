@@ -1056,7 +1056,23 @@ msgctxt "#31240"
 msgid "Moderate"
 msgstr ""
 
-#empty strings from id 31241 to 31249
+msgctxt "#31241"
+msgid "Pixel format"
+msgstr ""
+
+msgctxt "#31242"
+msgid "System rendering speed"
+msgstr ""
+
+msgctxt "#31243"
+msgid "Hide actor's thumbnails"
+msgstr ""
+
+msgctxt "#31244"
+msgid "Show only a list of the actors' names, instead of also including their thumbnails."
+msgstr ""
+
+#empty strings from id 31245 to 31249
 
 msgctxt "#31250"
 msgid "Automatic Full Screen when playing music"
@@ -1102,7 +1118,11 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr ""
 
-#empty strings from id 31310 to 31316
+msgctxt "#31310"
+msgid "Available audio tracks"
+msgstr ""
+
+#empty strings from id 31311 to 31316
 
 msgctxt "#31317"
 msgid "Set Fanart Path"
@@ -1707,7 +1727,7 @@ msgid "When in idle state for two minutes within a media view, a fullscreen slid
 msgstr ""
 
 msgctxt "#32001"
-msgid "Play automatically movie trailers in video views"
+msgid "Play automatically trailers in video views"
 msgstr ""
 
 msgctxt "#32002"
@@ -1911,7 +1931,7 @@ msgid "Highlighted text colour"
 msgstr ""
 
 msgctxt "#32052"
-msgid "Watched mark colour"
+msgid "Marks colour"
 msgstr ""
 
 msgctxt "#32053"
@@ -2184,4 +2204,44 @@ msgstr ""
 
 msgctxt "#32120"
 msgid "Adjust lyrics"
+msgstr ""
+
+msgctxt "#32121"
+msgid "Hide resumable mark in video views"
+msgstr ""
+
+msgctxt "#32122"
+msgid "Hide unwatched mark in video views"
+msgstr ""
+
+msgctxt "#32123"
+msgid "Hide episodes unwatched mark in video views"
+msgstr ""
+
+msgctxt "#32124"
+msgid "Same director"
+msgstr ""
+
+msgctxt "#32125"
+msgid "'Down' to show similars"
+msgstr ""
+
+msgctxt "#32126"
+msgid "'Right' to show similars"
+msgstr ""
+
+msgctxt "#32127"
+msgid "Show logos"
+msgstr ""
+
+msgctxt "#32128"
+msgid "Show only titles"
+msgstr ""
+
+msgctxt "#32129"
+msgid "Play automatically video links in song views"
+msgstr ""
+
+msgctxt "#32130"
+msgid "When you browse song views and stop for a few seconds, the video link for that song will play automatically (if available)."
 msgstr ""

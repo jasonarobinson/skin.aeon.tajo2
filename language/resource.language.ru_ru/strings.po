@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: KODI Skins\n"
-"Report-Msgid-Bugs-To: http://trac.kodi.tv/\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2024-04-08 22:35+0000\n"
-"Last-Translator: Konon-cat <konon@spark-mail.ru>\n"
+"PO-Revision-Date: 2024-01-12 08:13+0000\n"
+"Last-Translator: Konon-cat"
 "Language-Team: Russian <https://kodi.weblate.cloud/projects/kodi-add-ons-skins/skin-aeon-tajo/ru_ru/>\n"
 "Language: ru_ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.3\n"
 
 msgctxt "Addon Summary"
 msgid "Aeon Tajo"
@@ -31,7 +31,7 @@ msgstr "Поддерживается управление мышью, хотя �
 
 msgctxt "#31000"
 msgid "Directed by"
-msgstr "Режиссер"
+msgstr "Режиссёр"
 
 msgctxt "#31001"
 msgid "Written by"
@@ -43,7 +43,7 @@ msgstr "Размытый эскиз альбома"
 
 msgctxt "#31003"
 msgid "Power Options"
-msgstr "Параметры питания"
+msgstr "Настройки питания"
 
 msgctxt "#31004"
 msgid "Working"
@@ -146,44 +146,44 @@ msgid "Live DVD Cases"
 msgstr "DVD-боксы"
 
 msgctxt "#31029"
-msgid "Recent Movies"
-msgstr ""
+msgid "Recent movies"
+msgstr "Последние фильмы"
 
 msgctxt "#31030"
-msgid "Recent Episodes"
-msgstr ""
+msgid "Recent episodes"
+msgstr "Последние серии"
 
 msgctxt "#31031"
-msgid "Random Movies"
-msgstr ""
+msgid "Random movies"
+msgstr "Случайные фильмы"
 
 msgctxt "#31032"
-msgid "Recommended Movies"
-msgstr ""
+msgid "Recommended movies"
+msgstr "Рекомендованные фильмы"
 
 msgctxt "#31033"
-msgid "Random Episodes"
-msgstr ""
+msgid "Random episodes"
+msgstr "Случайные серии"
 
 msgctxt "#31034"
-msgid "Recommended Episodes"
-msgstr ""
+msgid "Recommended episodes"
+msgstr "Рекомендованные серии"
 
 msgctxt "#31035"
-msgid "Random Songs"
-msgstr ""
+msgid "Random songs"
+msgstr "Случайные песни"
 
 msgctxt "#31036"
-msgid "Random Albums"
-msgstr ""
+msgid "Random albums"
+msgstr "Случайные альбомы"
 
 msgctxt "#31037"
-msgid "Recent Albums"
-msgstr ""
+msgid "Recent albums"
+msgstr "Последние альбомы"
 
 msgctxt "#31038"
-msgid "Recommended Albums"
-msgstr ""
+msgid "Recommended albums"
+msgstr "Рекомендованные альбомы"
 
 msgctxt "#31039"
 msgid "Actions"
@@ -479,7 +479,7 @@ msgstr "Похожие фильмы"
 
 msgctxt "#31112"
 msgid "Movies directed by"
-msgstr "Фильмы режиссера"
+msgstr "Фильмы режиссёра"
 
 msgctxt "#31113"
 msgid "Movies written by"
@@ -535,9 +535,8 @@ msgstr "Музыкальная визуализация в качестве фо
 
 msgctxt "#31126"
 msgid "Opacity level for widgets"
-msgstr ""
+msgstr "Уровень непрозрачности для виджетов"
 
-# empty string with id 31126
 msgctxt "#31127"
 msgid "LiveTV Mod Settings"
 msgstr "Настройки мода LiveTV"
@@ -627,8 +626,8 @@ msgid "List local library items"
 msgstr "Список элементов локальной медиатеки"
 
 msgctxt "#31149"
-msgid "Online info from TMDb"
-msgstr ""
+msgid "Online information from TMDb"
+msgstr "Онлайн информация от TMDb"
 
 msgctxt "#31150"
 msgid "Select studio logo artwork"
@@ -752,7 +751,7 @@ msgstr "Критики"
 
 msgctxt "#31180"
 msgid "Play main theme when browsing movies and TV shows"
-msgstr ""
+msgstr "Воспроизводить основную музыкальную тему при просмотре фильмов и сериалов"
 
 msgctxt "#31181"
 msgid "Display cast in video views"
@@ -760,7 +759,7 @@ msgstr "Показывать актёрский состав в представ
 
 msgctxt "#31182"
 msgid "Hide current time in media views"
-msgstr "Скрыть текущее время в представлениях медиафайлов"
+msgstr "Скрыть текущее время в представлениях мультимедиа"
 
 msgctxt "#31183"
 msgid "Hide number of items in media views"
@@ -768,88 +767,87 @@ msgstr "Скрыть количество элементов в представ
 
 msgctxt "#31184"
 msgid "Enable or disable video views"
-msgstr ""
+msgstr "Включить/отключить представления видео"
 
 msgctxt "#31185"
 msgid "Enable or disable music views"
-msgstr ""
+msgstr "Включить/отключить представления музыки"
 
 msgctxt "#31186"
 msgid "Disabling views that you don't use could speed up browsing in some devices"
-msgstr ""
+msgstr "Отключение неиспользуемых представлений может ускорить просмотр на некоторых устройствах."
 
 msgctxt "#31187"
 msgid "Available for:"
-msgstr ""
+msgstr "Доступно для:"
 
 msgctxt "#31188"
 msgid "Kiosk mode"
-msgstr ""
+msgstr "Режим киоска"
 
 msgctxt "#31189"
 msgid "Disables the side media menu in views and most options to change Kodi, so as to prevent unwanted modifications."
-msgstr ""
+msgstr "Отключает боковое медиа-меню и большинство опций Kodi в представлениях, чтобы предотвратить нежелательные изменения."
 
 msgctxt "#31190"
 msgid "In cinemas"
-msgstr ""
+msgstr "В кинотеатрах"
 
 msgctxt "#31191"
 msgid "In cinemas soon"
-msgstr ""
+msgstr "Скоро в кинотеатрах"
 
 msgctxt "#31192"
 msgid "Spotify"
-msgstr ""
+msgstr "Spotify"
 
 msgctxt "#31193"
 msgid "Show images of the best-known actresses"
-msgstr ""
+msgstr "Показывать изображения самых известных актрис"
 
 msgctxt "#31194"
 msgid "Search the Red Carpet add-on for images of the best-known actresses from the movie/TV show and display them alongside the cast."
-msgstr ""
+msgstr "Поиск в дополнении Red Carpet изображений самых известных актрис из фильмов/сериалов и показывать их рядом с актерами."
 
 msgctxt "#31195"
 msgid "Show logos of film studios in video views"
-msgstr ""
+msgstr "Показывать логотипы киностудий в представлениях видео"
 
 msgctxt "#31196"
 msgid "Show logos of record labels in music albums views"
-msgstr ""
+msgstr "Показывать логотипы звукозаписывающих компаний в представлениях музыкальных альбомов"
 
 msgctxt "#31197"
 msgid "Show home music widget"
-msgstr ""
+msgstr "Показывать виджет музыки на главном экране"
 
 msgctxt "#31198"
 msgid "Show home video widget"
-msgstr ""
+msgstr "Показывать виджет видео на главном экране"
 
 msgctxt "#31199"
 msgid "Colours, marks and home screen"
-msgstr ""
+msgstr "Цвета, метки и главный экран"
 
-# empty strings from id 31184 to 31199
 msgctxt "#31200"
 msgid "Is used to choose among different Kodi resource image pack to weather artwork and icons."
 msgstr "Используется для выбора пакетов изображений погоды и значков."
 
 msgctxt "#31201"
 msgid "Performance impact"
-msgstr ""
+msgstr "Влияние на производительность"
 
 msgctxt "#31202"
 msgid "Plays music in the background while in Home and Settings screens. A default song collection is provided, but a different song folder can be used."
-msgstr ""
+msgstr "Воспроизведение музыки в фоновом режиме на Главном экране и экране настроек. Установлена коллекция песен по умолчанию, но можно назначить свою папку."
 
 msgctxt "#31203"
 msgid "Select your own folder to use as background music. Make sure that it only contains music files."
-msgstr ""
+msgstr "Выберите свою собственную папку для использования в качестве фоновой музыки. Убедитесь, что она содержит только музыкальные файлы."
 
 msgctxt "#31204"
 msgid "When enabled, widgets linked to each home menu item will appear automatically. If disabled, widgets remain hidden until the corresponding arrow key is pressed."
-msgstr ""
+msgstr "Если эта функция включена, виджеты, связанные с каждым элементом главного меню, будут отображаться автоматически. Если этот параметр отключен, виджеты остаются скрытыми до тех пор, пока не будет нажата соответствующая клавиша со стрелкой."
 
 msgctxt "#31205"
 msgid "Lyrics Source"
@@ -857,61 +855,60 @@ msgstr "Источник текстов песен"
 
 msgctxt "#31206"
 msgid "Customization"
-msgstr ""
+msgstr "Индивидуальная настройка"
 
 msgctxt "#31207"
 msgid "Views"
-msgstr ""
+msgstr "Представления мультимедиа"
 
 msgctxt "#31208"
 msgid "Home screen"
-msgstr ""
+msgstr "Главный экран"
 
 msgctxt "#31209"
 msgid "Options"
-msgstr ""
+msgstr "Параметры"
 
 msgctxt "#31210"
 msgid "Select another image as default background"
-msgstr ""
+msgstr "Выбрать другое изображение в качестве фона по умолчанию"
 
 msgctxt "#31211"
 msgid "Changes the default Aeon Tajo background to another chosen by the user."
-msgstr ""
+msgstr "Изменяет фон Aeon Tajo выбранный по умолчанию на пользовательский."
 
 msgctxt "#31212"
 msgid "Current background path: "
-msgstr ""
+msgstr "Текущий путь для фона:"
 
 msgctxt "#31213"
 msgid "Reset skin default background"
-msgstr ""
+msgstr "Сбросить на фон по умолчанию"
 
 msgctxt "#31214"
 msgid "Resets the default background provided with Aeon Tajo."
-msgstr ""
+msgstr "Сбрасывает на фон по умолчанию, предоставленный в Aeon Tajo."
 
 msgctxt "#31215"
 msgid "Show the coloured version of the icons rather than the monochrome version."
-msgstr ""
+msgstr "Показывать цветную версию значков вместо монохромной версии."
 
 msgctxt "#31216"
 msgid "Displays background and fanart images with a subtle motion effect across the screen."
-msgstr ""
+msgstr "Включить эффект едва заметного движения изображений по экрану для фона и фанарта."
 
 msgctxt "#31217"
 msgid "Displays a list in the video views featuring thumbnail images of the main actors from the movie or TV show's cast."
-msgstr ""
+msgstr "Отображает списком миниатюры основных актеров фильма или сериала в представлениях видео."
 
 msgctxt "#31218"
 msgid "Search the Studio Icons add-on for logo images of the film studios of the movie/TV show, and if found, display them while browsing the video views."
-msgstr ""
+msgstr "Поиск логотипа киностудии для фильма/сериала в дополнении Studio Icons и, если найден, отображение его при просмотре представлений видео."
 
 msgctxt "#31219"
 msgid "Search for the album's record label logo using the RecordLabel Icons addon, and if found, display it when browsing the music album views."
-msgstr ""
+msgstr "Поиск логотипа звукозаписывающей компании для альбома в дополнении RecordLabel Icons и, если найден, отображение его при просмотре представлений музыкального альбома."
 
-# empty strings from id 31206 to 31219
 msgctxt "#31220"
 msgid "Show rating"
 msgstr "Показывать рейтинг"
@@ -942,61 +939,62 @@ msgstr "Дополнительные постеры"
 
 msgctxt "#31227"
 msgid "Sets the transparency level of the home menu widgets."
-msgstr ""
+msgstr "Устанавливает уровень прозрачности виджетов главного меню."
 
 msgctxt "#31228"
 msgid "Displays main menu options in a vertical layout instead of a horizontal one."
-msgstr ""
+msgstr "Отображает пункты главного меню в вертикальном виде, а не в горизонтальном."
 
 msgctxt "#31229"
 msgid "Set another video file as startup intro"
-msgstr ""
+msgstr "Установить другой видеофайл в качестве заставки при запуске"
 
 msgctxt "#31230"
 msgid "Choose another video file to play when Kodi starts instead of Aeon Tajo default. It's recommended to choose a short one. To stop playback and start using Kodi right away, click or press any arrow key."
-msgstr ""
+msgstr "Выберите другой видеофайл для воспроизведения при запуске Kodi вместо Aeon Tajo по умолчанию. Рекомендуется выбрать короткий. Чтобы остановить воспроизведение и сразу начать использовать Kodi, щелкните или нажмите любую клавишу со стрелкой."
 
 msgctxt "#31231"
 msgid "Plays an intro video when launching Kodi"
-msgstr ""
+msgstr "Воспроизведение вступительного видео при запуске Kodi"
 
 msgctxt "#31232"
 msgid "Clear current intro video file and back to default"
-msgstr ""
+msgstr "Отменить текущий вступительный видеофайл и вернуться к настройкам по умолчанию."
 
 msgctxt "#31233"
 msgid "Clear the intro video file selected by the user and back to Aeon Tajo's default."
-msgstr ""
+msgstr "Отменить вступительный видеофайл, выбранный пользователем, и вернитуться к настройкам по умолчанию Aeon Tajo."
 
 msgctxt "#31234"
 msgid "Adds a layer that simulates falling snow on all Kodi screens, with four available intensity levels."
-msgstr ""
+msgstr "Добавляет слой, имитирующий выпадение снега на всех экранах Kodi, с четырьмя доступными уровнями интенсивности."
 
 msgctxt "#31235"
 msgid "Override the current home menu backgrounds with this one"
-msgstr ""
+msgstr "Измените текущие фоны главного меню с помощью этого"
 
 msgctxt "#31236"
 msgid "The background selections made in the Setup Main Menu screen will be preserved. Disabling this option will restore all previous backgrounds. This option is particularly designed for use during special seasons."
-msgstr ""
+msgstr "Выбор фона, сделанный на экране главного меню настройки, будет сохранен. Отключение этой опции восстановит все предыдущие фоны. Эта опция специально разработана для использования в особые сезоны."
 
 msgctxt "#31237"
 msgid "No impact"
-msgstr ""
+msgstr "Без влияния"
 
 msgctxt "#31238"
 msgid "Very small"
-msgstr ""
+msgstr "Незначительно"
 
 msgctxt "#31239"
 msgid "Small"
-msgstr ""
+msgstr "Немного"
 
 msgctxt "#31240"
 msgid "Moderate"
-msgstr ""
+msgstr "Умерено"
 
-# empty strings from id 31227 to 31249
+#empty strings from id 31241 to 31249
+
 msgctxt "#31250"
 msgid "Automatic Full Screen when playing music"
 msgstr "Переходить в полноэкранный режим при воспроизведении музыки"
@@ -1007,7 +1005,7 @@ msgstr "Не проигрывать мелодии на главном экра�
 
 msgctxt "#31252"
 msgid "Always show home screen widgets"
-msgstr ""
+msgstr "Всегда показывать виджеты на главном экране"
 
 msgctxt "#31253"
 msgid "Choose user audio playlist *.m3u (max.10 songs)"
@@ -1015,7 +1013,9 @@ msgstr "Выбор пользовательского аудио плейлис�
 
 msgctxt "#31254"
 msgid "Clear user playlist (back to default)"
-msgstr "Очистить пользовательский плейлист (возврат к умолчанию)"
+msgstr "Очистить пользовательский плейлист (возврат к настройке по умолчанию)"
+
+#empty strings from id 31255 to 31299
 
 msgctxt "#31300"
 msgid "Overview"
@@ -1025,21 +1025,27 @@ msgctxt "#31301"
 msgid "Last Updated"
 msgstr "Обновлено"
 
+#empty strings from id 31302 to 31306
+
 msgctxt "#31307"
 msgid "Hide Fanart"
 msgstr "Скрыть фанарт"
 
 msgctxt "#31308"
 msgid "Next aired"
-msgstr ""
+msgstr "Следующий эфир"
 
 msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "Использовано памяти:"
 
+#empty strings from id 31310 to 31316
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "Установить путь к фанартам"
+
+#empty strings from id 31318 to 31319
 
 msgctxt "#31320"
 msgid "Last Logged In"
@@ -1049,9 +1055,13 @@ msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Выбор песен для караоке"
 
+#empty strings from id 31322 to 31327
+
 msgctxt "#31328"
 msgid "Recently Added"
 msgstr "Недавно добавленные"
+
+#empty strings from id 31329 to 31330
 
 msgctxt "#31331"
 msgid "Installed"
@@ -1062,6 +1072,7 @@ msgid "Not Installed"
 msgstr "Не установлено"
 
 # empty string with id 31333
+
 msgctxt "#31334"
 msgid "Required"
 msgstr "Обязательно"
@@ -1074,11 +1085,14 @@ msgctxt "#31336"
 msgid "Optional"
 msgstr "По желанию"
 
+#empty strings from id 31337 to 31389
+
 msgctxt "#31390"
 msgid "Skin default"
 msgstr "По умолчанию"
 
 # empty strings from id 31391 to 31399
+
 msgctxt "#31400"
 msgid "[B]CONFIGURE INTERFACE SETTINGS[/B][CR][CR]Change the skin · Set language and region · Setup remote controls[CR]Set up a screensaver · Setup master lock"
 msgstr "[B]НАСТРОЙКА ИНТЕРФЕЙСА[/B][CR][CR]Смена обложки - Установка языка и региона - Настройка пультов дистанционного управления[CR]Установка заставки - Установка защиты"
@@ -1089,7 +1103,9 @@ msgstr "Меню - нажмите 'OK'"
 
 msgctxt "#31402"
 msgid "Enable startup video intro"
-msgstr ""
+msgstr "Включить вступительное видео при запуске"
+
+#empty strings from id 31403 to 31404
 
 msgctxt "#31405"
 msgid "[B]MONITOR YOUR SYSTEM[/B][CR][CR]Check out your hardware · Monitor CPU usage[CR]Check Kodi revision number"
@@ -1103,6 +1119,8 @@ msgctxt "#31407"
 msgid "[B]SETUP PROFILES[/B][CR][CR]Setup and manage user profiles · Enable login screen[CR]Change password · Add a profile picture"
 msgstr "[B]НАСТРОЙКА ПРОФИЛЕЙ[/B][CR][CR]Настройка профилей пользователей · Включение экрана входа[CR]Изменение пароля · Добавление картинки профиля"
 
+#empty string with id 31408
+
 msgctxt "#31409"
 msgid "[B]CONFIGURE TV SETTINGS[/B][CR][CR]Change full screen info · Manage EPG data settings"
 msgstr "[B]НАСТРОЙКА ПАРАМЕТРОВ ТВ[/B][CR][CR]Настройка полноэкранной информации · Настройка отображения EPG"
@@ -1110,6 +1128,8 @@ msgstr "[B]НАСТРОЙКА ПАРАМЕТРОВ ТВ[/B][CR][CR]Настро�
 msgctxt "#31410"
 msgid "[B]CONFIGURE SERVICE SETTINGS[/B][CR][CR]Setup control of Kodi via UPnP and HTTP · Configure file sharing[CR]Enable Zeroconf · Configure AirPlay"
 msgstr "[B]НАСТРОЙКА ПАРАМЕТРОВ СЛУЖБ[/B][CR][CR]Настройка управления Kodi по UPnP и HTTP • Настройка доступа к файлам[CR]Включение Zeroconf • Настройка AirPlay"
+
+#empty string with id 31411
 
 msgctxt "#31412"
 msgid "Select section"
@@ -1127,11 +1147,14 @@ msgctxt "#31415"
 msgid "[B]CONFIGURE MEDIA SETTINGS[/B][CR][CR]Set default select action · Configure file list options · Configure metadata options[CR]Manage databases"
 msgstr "[B]НАСТРОЙКА ПАРАМЕТРОВ МУЛЬТИМЕДИА[/B][CR][CR]Установка действия выбора по умолчанию - Настройка параметров списка файлов - Настройка параметров метаданных[CR]Управление базами данных"
 
+#empty strings from id 31416 to 31420
+
 msgctxt "#31421"
 msgid "Select your Kodi user profile[CR]to login and continue"
 msgstr "Выберите профиль пользователя Kodi,[CR]чтобы войти и продолжить"
 
 # empty strings from id 31422 to 31426
+
 msgctxt "#31427"
 msgid "Skin Shortcuts is responsible for handling all aspects of the main menu."
 msgstr "Skin Shortcuts управляет всеми элементами главного меню."
@@ -1165,6 +1188,7 @@ msgid "Check MP3 Theme checks whether the user has put a theme.mp3 file in the c
 msgstr "Check MP3 Theme проверяет наличие файла theme.mp3 в соответствующей папке с фильмами/сериалами для воспроизведения при навигации."
 
 # empty strings from id 31435 to 31449
+
 msgctxt "#31450"
 msgid "  •  Open Settings "
 msgstr "  - Открыть настройки "
@@ -1174,6 +1198,7 @@ msgid "  •  Click to Install"
 msgstr "  - Нажмите, чтобы установить"
 
 # empty strings from id 31452 to 31472
+
 msgctxt "#31473"
 msgid "Embuary Helper provides the data to display the cast for movies and TV shows."
 msgstr "Embuary Helper предоставляет данные для отображения актёрского состава фильмов и сериалов."
@@ -1210,6 +1235,8 @@ msgctxt "#31481"
 msgid "Global Search makes possible to search among all the items (movies, TV shows, music, actors, etc.) in your collection."
 msgstr "Global Search позволяет выполнять поиск в вашей коллекции по всем разделам (фильмы, телепередачи, музыка, актеры и т.д.)."
 
+#empty strings from id 31482 to 31500
+
 msgctxt "#31501"
 msgid "Channel group"
 msgstr "Группа каналов"
@@ -1234,6 +1261,8 @@ msgctxt "#31506"
 msgid "Available[CR]Groups"
 msgstr "Доступные[CR]группы"
 
+#empty strings from id 31507 to 31510
+
 msgctxt "#31511"
 msgid "Channel Options"
 msgstr "Настройки канала"
@@ -1241,6 +1270,8 @@ msgstr "Настройки канала"
 msgctxt "#31512"
 msgid "Show similar movies in Shelf 3D view"
 msgstr "Показывать похожие фильмы в режиме Shelf 3D"
+
+#empty strings from id 31513 to 31900
 
 msgctxt "#31901"
 msgid "36 Hour Forecast"
@@ -1257,6 +1288,8 @@ msgstr "Прогноз на выходные"
 msgctxt "#31904"
 msgid "10 Day Forecast"
 msgstr "Прогноз на 10 дней"
+
+#empty strings from id 31905 to 31907
 
 msgctxt "#31908"
 msgid "Chance of Precipitation"
@@ -1296,7 +1329,7 @@ msgstr "Изменение способа прокрутки горизонта�
 
 msgctxt "#31917"
 msgid "When enabled text scrolls automatically. When disabled manual scrolling is required. Note that most textboxes don't have a manual button."
-msgstr ""
+msgstr "При включении текст прокручивается автоматически. При отключении требуется ручная прокрутка. Обратите внимание, что в большинстве текстовых полей нет кнопки ручного ввода."
 
 msgctxt "#31918"
 msgid "Projects the current playing video on the background behind the panels."
@@ -1362,9 +1395,13 @@ msgctxt "#31933"
 msgid "Select an item to display on the left top of the main menu"
 msgstr "Выберите элемент для отображения в левой верхней части главного меню"
 
+#empty string with id 31934
+
 msgctxt "#31935"
 msgid "Switch places with another menu item. Opens a dialog with a list of menu items to choose from."
 msgstr "Поменять местами с другим пунктом меню. Открывает диалоговое окно со списком пунктов меню для выбора."
+
+#empty string with id 31936
 
 msgctxt "#31937"
 msgid "Show the RSS feed on the bottom or top of the screen, depending on main menu position. Enabling this setting makes the submenu permanently visible."
@@ -1402,6 +1439,8 @@ msgctxt "#31945"
 msgid "This toggles the layout of the List view. Default is a 7 item layout with extended info, \"Slim List\" is a 14 item, more basic layout"
 msgstr "Это переключает макет представления списка. По умолчанию это 7-элементный макет с расширенной информацией, «Простой список» - это 14 элементов, более базовый макет"
 
+#empty strings from id 31946 to 31949
+
 msgctxt "#31950"
 msgid "WEATHER"
 msgstr "ПОГОДА"
@@ -1436,7 +1475,7 @@ msgstr "ПРИЛОЖЕНИЯ"
 
 msgctxt "#31958"
 msgid "PLAY DISC"
-msgstr "ИГРАТЬ ДИСК"
+msgstr "ВОСПРОИЗВЕСТИ ДИСК"
 
 msgctxt "#31959"
 msgid "SYSTEM"
@@ -1455,6 +1494,7 @@ msgid "This toggles the visibility of ratings in views of type List, LowList and
 msgstr "Выключает видимость рейтингов в шаблонах типов Список, LowList и TriPanel, за исключением случаев, когда они отсортированы по рейтингу."
 
 # empty string with id 31963
+
 msgctxt "#31964"
 msgid "NoTo"
 msgstr "Известен"
@@ -1477,7 +1517,7 @@ msgstr "Дополнения, используемые для расширени
 
 msgctxt "#31969"
 msgid "Skin options"
-msgstr ""
+msgstr "Параметры скина"
 
 msgctxt "#31970"
 msgid "Setup of melodies, the way of showing widgets, themes and cast for movies/TV shows and other options."
@@ -1485,7 +1525,7 @@ msgstr "Настройка мелодий, отображения виджето
 
 msgctxt "#31971"
 msgid "Colour of selected items"
-msgstr ""
+msgstr "Цвет выбранных элементов"
 
 msgctxt "#31972"
 msgid "Youtube"
@@ -1601,7 +1641,7 @@ msgstr "Заставка в стиле Netflix"
 
 msgctxt "#32000"
 msgid "When in idle state for two minutes within a media view, a fullscreen slideshow of movies, TV shows, or artists' fanarts will be displayed, according to the section being browsed."
-msgstr ""
+msgstr "После двух минут в режиме ожидания в представлених медиа будет отображаться полноэкранное слайд-шоу из фанартов фильмов, сериалов или исполнителей в соответствии с просматриваемым разделом."
 
 msgctxt "#32001"
 msgid "Play automatically movie trailers in video views"
@@ -1609,7 +1649,7 @@ msgstr "Автоматическое воспроизведение трейле
 
 msgctxt "#32002"
 msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the trailer automatically plays in a window."
-msgstr ""
+msgstr "Когда вы в представлениях видео при просматре фильма или сериала задерживаетесь на нём несколько секунд, в окне автоматически воспроизводится трейлер."
 
 msgctxt "#32003"
 msgid "All devices"
@@ -1625,11 +1665,11 @@ msgstr "Самые мощные устройства"
 
 msgctxt "#32006"
 msgid "Delay 5 seconds"
-msgstr ""
+msgstr "Задержка 5 секунд"
 
 msgctxt "#32007"
 msgid "Delay 12 seconds"
-msgstr ""
+msgstr "Задержка 12 секунд"
 
 msgctxt "#32008"
 msgid "Info view 2"
@@ -1645,19 +1685,19 @@ msgstr "Автоматическое воспроизведение песен �
 
 msgctxt "#32011"
 msgid "Enable automatic playback of songs from the current artist or album as background music while browsing music views."
-msgstr ""
+msgstr "Включите автоматическое воспроизведение песен текущего исполнителя или альбома в качестве фоновой музыки в представлении музыка."
 
 msgctxt "#32012"
 msgid "Set path to use another melodies music folder"
-msgstr ""
+msgstr "Установите путь для другой папки с музыкой"
 
 msgctxt "#32013"
 msgid "Clear current path and back to default melodies music folder"
-msgstr ""
+msgstr "Очистить текущий путь и вернуться к папки с музыкой по умолчанию."
 
 msgctxt "#32014"
 msgid "Play melodies while in Home & Settings screens"
-msgstr ""
+msgstr "Воспроизведение мелодий на главном экране и экране настроек."
 
 msgctxt "#32015"
 msgid "Show only background"
@@ -1665,7 +1705,7 @@ msgstr "Показывать только фон"
 
 msgctxt "#32016"
 msgid "TheMovieDb Helper provides data to display online ratings and additional information for movies and TV shows"
-msgstr ""
+msgstr "TheMovieDb Helper предоставляет данные для отображения онлайн-рейтингов и дополнительную информацию для фильмов и сериалов"
 
 msgctxt "#32017"
 msgid "Show online ratings for movies and TV shows"
@@ -1673,7 +1713,7 @@ msgstr "Показывать онлайн-рейтинги фильмов и с�
 
 msgctxt "#32018"
 msgid "You have to restart Kodi for this option to take effect once the option has been activated. TMDb and Trakt should work out of the box. Metacritic and Rottentomatoes ratings require an OMDb API key. Get an OMDb API Key at http://www.omdbapi.com/apikey.aspx and afterward input the OMDb API Key into the TheMovieDb Helper settings."
-msgstr ""
+msgstr "Вы должны перезапустить Kodi, чтобы эта опция вступила в силу после ее активации. TMDb и Trakt должны работать из коробки. Для рейтингов Metacritic и Rottentomatoes требуется ключ API OMDb. Получите ключ OMDb API по адресу http://www.omdbapi.com/apikey.aspx и после этого введите ключ OMDb API в настройки помощника TheMovieDb."
 
 msgctxt "#32019"
 msgid "Resource image addon for displaying coloured studio icons throughout the skin."
@@ -1681,7 +1721,7 @@ msgstr "Дополнение для отображения цветных зна
 
 msgctxt "#32020"
 msgid "Show colour icons for audio/video information"
-msgstr ""
+msgstr "Показывать цветные значки для аудио/видео информации"
 
 msgctxt "#32021"
 msgid "Show extra features for movies and TV shows"
@@ -1689,7 +1729,7 @@ msgstr "Показать дополнительные данные для фил
 
 msgctxt "#32022"
 msgid "Display the additional features (media files) placed by the user in the 'extras' folder for a movie or TV show. Remember to modify your advancedsettings.xml file if needed."
-msgstr ""
+msgstr "Отображение дополнительных функций (медиафайлов), размещенных пользователем в папке «extras» для фильма или сериала. Не забудьте изменить файл advancedsettings.xml."
 
 msgctxt "#32023"
 msgid "Show extras"
@@ -1697,11 +1737,11 @@ msgstr "Показать дополнительную информацию"
 
 msgctxt "#32024"
 msgid "Enable shifting colours effect in the default Aeon Tajo's background"
-msgstr ""
+msgstr "Включить эффект смены цветов на фоне Aeon Tajo по умолчанию"
 
 msgctxt "#32025"
 msgid "Activate a shifting colours effect in the default Aeon Tajo's background (only in the Home screen)."
-msgstr ""
+msgstr "Активируйте эффект смены цветов на фоне Aeon Tajo по умолчанию (только на главном экране)."
 
 msgctxt "#32026"
 msgid "Name of user's additional features folder (if different to 'extras')"
@@ -1717,15 +1757,15 @@ msgstr "Выбрать изображение"
 
 msgctxt "#32029"
 msgid "Show Music videos"
-msgstr "Музыкальные клипы"
+msgstr "Показывать музыкальные клипы"
 
 msgctxt "#32030"
 msgid "Show Albums"
-msgstr "Альбомы"
+msgstr "Показывать альбомы"
 
 msgctxt "#32031"
 msgid "Show Songs"
-msgstr "Песни"
+msgstr "Показывать песни"
 
 msgctxt "#32032"
 msgid "Blurred album image as background"
@@ -1741,11 +1781,11 @@ msgstr "Показать дополнительные данные для муз
 
 msgctxt "#32035"
 msgid "Display the additional features (media files) placed by the user in the 'extras' folder for a music album. Remember to modify your advancedsettings.xml file if needed."
-msgstr ""
+msgstr "Отображение дополнительных функций (медиафайлов), размещенных пользователем в папке «extras» для музыкального альбома. Не забудьте изменить файл advancedsettings.xml."
 
 msgctxt "#32036"
-msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically plays in the background. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
-msgstr ""
+msgid "When you browse the video views and pause on a movie or TV show for a few seconds, the main theme automatically sounds. This feature requires the user to place an mp3 file with the theme in the root folder of the movie or TV show. This file must be named theme.mp3."
+msgstr "Когда вы в представлениях видео при просматре фильма или сериала задерживаетесь на нём несколько секунд, автоматически звучит основная тема. Эта функция требует, чтобы пользователь поместил mp3-файл с темой в корневую папку фильма или сериала. Этот файл должен иметь имя theme.mp3."
 
 msgctxt "#32037"
 msgid "Shows the normal poster (poster.jpg) in movies and TV shows views."
@@ -1757,7 +1797,7 @@ msgstr "Отображение анимированного постера (anim
 
 msgctxt "#32039"
 msgid "Shows the available extra posters (poster1.jpg, poster2.jpg, poster3.jpg...) in movies and TV shows views."
-msgstr ""
+msgstr "Показывает доступные дополнительные постеры (poster1.jpg, poster2.jpg, poster3.jpg...) в представлениях фильмов и сериалов."
 
 msgctxt "#32040"
 msgid "Thanks for using Aeon Tajo, I really hope you enjoy it! Creating and maintaining a skin for Kodi is very hard and requires hundreds of hours of work. If you like Aeon Tajo and you’re willing to support it, you’ll get:[CR][CR] [B]***[/B] Exclusive access to hidden Aeon Tajo’s features, such as browsing and playing of the user’s extra content directly from media views, and some more. [CR] [B]***[/B] Frequent updates of Aeon Tajo, containing new features and bug fixes. [CR] [B]***[/B] Videos, media packs and articles with detailed instructions to take advantage of the many features of Aeon Tajo to the full. [CR][CR]For more information, visit [B][COLOR=themecolor]patreon.com[/B][/COLOR] and search for the creator [COLOR=themecolor][B]Aeon Tajo[/B][/COLOR], or go to [COLOR=themecolor][B]patreon.com/aeontajo[/B][/COLOR]. Thanks!"
@@ -1769,7 +1809,7 @@ msgstr "Размытое изображение альбома в качеств
 
 msgctxt "#32042"
 msgid "Hide watched mark in video views"
-msgstr ""
+msgstr "Скрыть отметку «Просмотрено» в представлениях видео"
 
 msgctxt "#32043"
 msgid "Disclaimer: Aeon Tajo does not provide any media content or sources. Users must provide their own content. Support will not be provided for any 'builds' nor online addons that offer copyrighted content."
@@ -1793,493 +1833,292 @@ msgstr "Выбрать + Правый джойстик"
 
 msgctxt "#32048"
 msgid "Vertical Home menu"
-msgstr ""
+msgstr "Вертикальное главное меню"
 
 msgctxt "#32049"
 msgid "Eject disc"
-msgstr ""
+msgstr "Извлечь диск"
 
 msgctxt "#32050"
 msgid "Play with PreShow"
-msgstr ""
+msgstr "Воспроизвести с предварительным просмотром"
 
 msgctxt "#32051"
 msgid "Highlighted text colour"
-msgstr ""
+msgstr "Цвет выделенного текста"
 
 msgctxt "#32052"
 msgid "Watched mark colour"
-msgstr ""
+msgstr "Цвет отметки "Просмотрено""
 
 msgctxt "#32053"
 msgid "Current"
-msgstr ""
+msgstr "Текущий"
 
 msgctxt "#32054"
 msgid "Selected"
-msgstr ""
+msgstr "Выбрано"
 
 msgctxt "#32055"
 msgid "Watched mark shape"
-msgstr ""
+msgstr "Форма отметки "Просмотрено""
 
 msgctxt "#32056"
 msgid "Sliding background fanarts"
-msgstr ""
+msgstr "Скользящие фанарты"
 
 msgctxt "#32057"
 msgid "Kodi add-ons settings"
-msgstr ""
+msgstr "Настройки дополнений Kodi"
 
 msgctxt "#32058"
 msgid "Install and update add-ons"
-msgstr ""
+msgstr "Установка и обновление дополнений"
 
 msgctxt "#32059"
 msgid "Download add-ons"
-msgstr ""
+msgstr "Скачать дополнения"
 
 msgctxt "#32060"
 msgid "Show Browser"
-msgstr ""
+msgstr "Показать браузер"
 
 msgctxt "#32061"
 msgid "Hide Browser"
-msgstr ""
+msgstr "Скрыть браузер"
 
 msgctxt "#32062"
 msgid "Narrow view"
-msgstr ""
+msgstr "Узкий вид"
 
 msgctxt "#32063"
 msgid "Wide view"
-msgstr ""
+msgstr "Широкий вид"
 
 msgctxt "#32064"
 msgid "Actors in other movies and TV shows"
-msgstr ""
+msgstr "Актеры в других фильмах и сериалах"
 
 msgctxt "#32065"
 msgid "Show similar movies/TV shows and artists/albums"
-msgstr ""
+msgstr "Показывать похожие фильмы/сериалы и исполнителей/альбомы"
 
 msgctxt "#32066"
 msgid "Opens a new window in some video/music views showing other movies/TV shows or artists/albums similar or related to the current item."
-msgstr ""
+msgstr "Открывает новое окно в некоторых режимах просмотра видео/музыки, в котором отображаются другие фильмы/телешоу или исполнители/альбомы, похожие на текущий элемент или связанные с ним."
 
 msgctxt "#32067"
 msgid "Show similar"
-msgstr ""
+msgstr "Показать похожие"
 
 msgctxt "#32068"
 msgid "Classic"
-msgstr ""
+msgstr "Классический"
 
 msgctxt "#32069"
 msgid "Similar albums"
-msgstr ""
+msgstr "Похожие альбомы"
 
 msgctxt "#32070"
 msgid "No similar found"
-msgstr ""
+msgstr "Аналогов не найдено"
 
 msgctxt "#32071"
 msgid "Wikipedia"
-msgstr ""
+msgstr "Википедия"
 
 msgctxt "#32072"
 msgid "Click to select and open article's links"
-msgstr ""
+msgstr "Нажмите, чтобы выбрать и открыть ссылки на статьи"
 
 msgctxt "#32073"
 msgid "Click to search..."
-msgstr ""
+msgstr "Нажмите для поиска..."
 
 msgctxt "#32074"
 msgid "Fetch music video links"
-msgstr ""
+msgstr "Поиск ссылок на музыкальные клипы"
 
 msgctxt "#32075"
 msgid "[B]CONFIGURE GAME SETTINGS[/B][CR][CR]Change gameplay options[CR]Keyboard settings · Configure rewind settings"
-msgstr ""
+msgstr "[B]НАСТРОЙКИ ИГРЫ[/B][CR][CR]Изменение параметров игрового процесса[CR]Настройки клавиатуры · Настройка параметров перемотки"
 
 msgctxt "#32076"
 msgid "Narrow list"
-msgstr ""
+msgstr "Узкий список"
 
 msgctxt "#32077"
 msgid "Wide list"
-msgstr ""
+msgstr "Широкий список"
 
 msgctxt "#32078"
 msgid "Update videolinks"
-msgstr ""
+msgstr "Обновить ссылки на видео"
 
 msgctxt "#32079"
 msgid "Play all music videos"
-msgstr ""
+msgstr "Воспроизвести все музыкальные клипы"
 
 msgctxt "#32080"
 msgid "No bookmarks created yet"
-msgstr ""
+msgstr "Закладки ещё не созданы"
 
 msgctxt "#32081"
 msgid "Choose where to start"
-msgstr ""
+msgstr "Выберите, с чего начать"
 
 msgctxt "#32082"
 msgid "Browse the list and click"
-msgstr ""
+msgstr "Просмотрите список и нажмите"
 
 msgctxt "#32083"
 msgid "Show OSD controls"
-msgstr ""
+msgstr "Показать элементы управления экранным меню"
 
 msgctxt "#32084"
 msgid "Preparing list of music videos, please wait..."
-msgstr ""
+msgstr "Готовим список музыкальных клипов, пожалуйста, подождите..."
 
 msgctxt "#32085"
 msgid "Songs party mode"
-msgstr ""
+msgstr "Режим вечеринки с песнями"
 
 msgctxt "#32086"
 msgid "Videolinks party mode"
-msgstr ""
+msgstr "Режим вечеринки с видеоссылками"
 
 msgctxt "#32087"
 msgid "No videolinks found"
-msgstr ""
+msgstr "Ссылки на видео не найдены"
 
 msgctxt "#32088"
 msgid "Click or arrow keys while playing to show the OSD"
-msgstr ""
+msgstr "Щёлкните или нажмите клавиши со стрелками во время воспроизведения, чтобы отобразить экранное меню."
 
 msgctxt "#32089"
 msgid "While playing..."
-msgstr ""
+msgstr "Во время воспроизведения..."
 
 msgctxt "#32090"
 msgid "Click or arrow keys to show the OSD"
-msgstr ""
+msgstr "Щёлкните или нажмите клавиши со стрелками, чтобы отобразить экранное меню."
 
 msgctxt "#32091"
 msgid "Shows the normal thumb (folder.jpg) in artists and albums music views."
-msgstr ""
+msgstr "Показывает обычную миниатюру (folder.jpg) в представлениях исполнителей и музыкальных альбомов."
 
 msgctxt "#32092"
 msgid "Shows the animated thumb (animatedthumb.gif) in artists and albums music views."
-msgstr ""
+msgstr "Показывает анимированную миниатюру (animatedthumb.gif) в представлениях исполнителей и музыкальных альбомов."
 
 msgctxt "#32093"
 msgid "Show a colour strip code on video elements"
-msgstr ""
+msgstr "Показывать код цветной полосы на видеоэлементах"
 
 msgctxt "#32094"
 msgid "Allows to quickly identify video file quality using a colour strip code when browsing movies and episodes in video views"
-msgstr ""
+msgstr "Позволяет быстро определить качество видеофайла по коду цветной полосы при просмотре фильмов и эпизодов в представлениях видео."
 
 msgctxt "#32095"
 msgid "Library using Global Search"
-msgstr ""
+msgstr "Библиотека с использованием глобального поиска"
 
 msgctxt "#32096"
 msgid "TheMovieDB"
-msgstr ""
+msgstr "TheMovieDB"
 
 msgctxt "#32097"
 msgid "Most Voted Movies"
-msgstr ""
+msgstr "Фильмы, получившие наибольшее количество голосов"
 
 msgctxt "#32098"
 msgid "Crew"
-msgstr ""
+msgstr "Съёмочная группа"
 
 msgctxt "#32099"
 msgid "Most Voted Shows"
-msgstr ""
+msgstr "Сериалы, получившие наибольшее количество голосов"
 
 msgctxt "#32100"
 msgid "Random Shows"
-msgstr ""
+msgstr "Случайный сериал"
 
 msgctxt "#32101"
 msgid "Random Artists"
-msgstr ""
+msgstr "Случайные исполнители"
 
 msgctxt "#32102"
 msgid "Online info from TheMovieDB.org for videos"
-msgstr ""
+msgstr "Онлайн информация от TheMovieDB.org для видео"
 
 msgctxt "#32103"
 msgid "Get online info from TheMovieDB.org in movie and TVshow's info screen and widgets"
-msgstr ""
+msgstr "Получать онлайн-информацию с TheMovieDB.org на информационном экране и виджетах фильмов и сериалов."
 
 msgctxt "#32104"
 msgid "Snow effect - Off"
-msgstr ""
+msgstr "Эффект снега - Выкл."
 
 msgctxt "#32105"
 msgid "Snow effect - Light"
-msgstr ""
+msgstr "Снегопад - Слабый"
 
 msgctxt "#32106"
 msgid "Snow effect - Medium"
-msgstr ""
+msgstr "Снегопад - Средний"
 
 msgctxt "#32107"
 msgid "Snow effect - Heavy"
-msgstr ""
+msgstr "Снегопад - Сильный"
 
 msgctxt "#32108"
 msgid "Snow effect - Blizzard"
-msgstr ""
+msgstr "Снегопад - Метель"
 
 msgctxt "#32109"
 msgid "Click or arrow keys to exit"
-msgstr ""
+msgstr "Щёлкните или нажмите клавиши со стрелками для выхода"
 
 msgctxt "#32110"
 msgid "Rewind"
-msgstr ""
+msgstr "Перемотка назад"
 
 msgctxt "#32111"
 msgid "Fast forward"
-msgstr ""
+msgstr "Перемотка вперед"
 
 msgctxt "#32112"
 msgid "Step back"
-msgstr ""
+msgstr "Шаг назад"
 
 msgctxt "#32113"
 msgid "Step forward"
-msgstr ""
+msgstr "Шаг вперед"
 
 msgctxt "#32114"
 msgid "Previous chapter"
-msgstr ""
+msgstr "Предыдущая глава"
 
 msgctxt "#32115"
 msgid "Next chapter"
-msgstr ""
+msgstr "Следующая глава"
 
 msgctxt "#32116"
 msgid "Previous channel"
-msgstr ""
+msgstr "Предыдущий канал"
 
 msgctxt "#32117"
 msgid "Next channel"
-msgstr ""
+msgstr "Следующий канал"
 
 msgctxt "#32118"
 msgid "Show lyrics"
-msgstr ""
+msgstr "Показать тексты песен"
 
 msgctxt "#32119"
 msgid "Hide lyrics"
-msgstr ""
+msgstr "Скрыть тексты песен"
 
 msgctxt "#32120"
 msgid "Adjust lyrics"
-msgstr ""
-
-#~ msgctxt "#31029"
-#~ msgid "Recent movies"
-#~ msgstr "Последние фильмы"
-
-#~ msgctxt "#31030"
-#~ msgid "Recent episodes"
-#~ msgstr "Последние серии"
-
-#~ msgctxt "#31031"
-#~ msgid "Random movies"
-#~ msgstr "Случайные фильмы"
-
-#~ msgctxt "#31032"
-#~ msgid "Recommended movies"
-#~ msgstr "Рекомендованные фильмы"
-
-#~ msgctxt "#31033"
-#~ msgid "Random episodes"
-#~ msgstr "Случайные серии"
-
-#~ msgctxt "#31034"
-#~ msgid "Recommended episodes"
-#~ msgstr "Рекомендованные серии"
-
-#~ msgctxt "#31035"
-#~ msgid "Random songs"
-#~ msgstr "Случайные песни"
-
-#~ msgctxt "#31036"
-#~ msgid "Random albums"
-#~ msgstr "Случайные альбомы"
-
-#~ msgctxt "#31037"
-#~ msgid "Recent albums"
-#~ msgstr "Последние альбомы"
-
-#~ msgctxt "#31038"
-#~ msgid "Recommended albums"
-#~ msgstr "Рекомендованные альбомы"
-
-#~ msgctxt "#31149"
-#~ msgid "Online information from TMDb"
-#~ msgstr "Онлайн информация от TMDb"
-
-#~ msgctxt "#31180"
-#~ msgid "Play local 'theme.mp3' file when browsing Movies and TV shows"
-#~ msgstr "Проигрывать локальный файл 'theme.mp3' при навигации по фильмам и сериалам"
-
-#~ msgctxt "#31252"
-#~ msgid "Always show widgets"
-#~ msgstr "Всегда показывать виджеты"
-
-#~ msgctxt "#31402"
-#~ msgid "Enable startup intro"
-#~ msgstr "Включить интро при запуске"
-
-#~ msgctxt "#31917"
-#~ msgid "When enabled text scrolls automatically. When disabled manual scrolling is required. Note that not every textbox has a manual button."
-#~ msgstr "Когда активировано - текст прокручивается автоматически. При отключении - требуется ручная прокрутка. Обратите внимание: не все текстовые поля имеют кнопку прокрутки."
-
-#~ msgctxt "#31969"
-#~ msgid "General options"
-#~ msgstr "Общие параметры"
-
-#~ msgctxt "#31971"
-#~ msgid "Color for items selected"
-#~ msgstr "Цвет для выбранных элементов"
-
-#~ msgctxt "#32000"
-#~ msgid "Displays a fullscreen slideshow of movies, TV shows or artists' fanarts (depending on the section the user is browsing) when 2 minutes go by in idle state inside a media view"
-#~ msgstr "Показывает полноэкранное слайд-шоу из фильмов, сериалов или фанарта исполнителей (в зависимости от раздела, который просматривает пользователь), после 2-х минутного простоя при просмотре мультимедиа"
-
-#~ msgctxt "#32002"
-#~ msgid "Plays the movie trailer automatically in a window after some seconds when browsing through movie views"
-#~ msgstr "Автоматическое воспроизведение трейлера фильма в окне представления видео через несколько секунд"
-
-#~ msgctxt "#32006"
-#~ msgid " - Delay 5 seconds"
-#~ msgstr " - Задержка 5 секунд"
-
-#~ msgctxt "#32007"
-#~ msgid " - Delay 12 seconds"
-#~ msgstr " - Задержка 12 секунд"
-
-#~ msgctxt "#32011"
-#~ msgid "Plays automatically songs belonging to the current artist or album when browsing through music views"
-#~ msgstr "Автоматическое воспроизведение композиций, принадлежащих текущему исполнителю или альбому, при просмотре музыкальных представлений"
-
-#~ msgctxt "#32012"
-#~ msgid "Set path to user's home music folder"
-#~ msgstr "Установите путь к домашней папке музыки пользователя"
-
-#~ msgctxt "#32013"
-#~ msgid "Clear user's path (back to default)"
-#~ msgstr "Очистить путь пользователя (вернуться к умолчанию)"
-
-#~ msgctxt "#32014"
-#~ msgid "Play melodies while in Home Screen"
-#~ msgstr "Воспроизведение мелодий на главном экране"
-
-#~ msgctxt "#32016"
-#~ msgid "TheMovieDb Helper provides data to display online ratings for movies and TV shows"
-#~ msgstr "TheMovieDb Helper предоставляет данные для отображения онлайн-рейтингов фильмов и сериалов"
-
-#~ msgctxt "#32018"
-#~ msgid "You may have to restart Kodi. TMDb and Trakt should work out of the box. Metacritic and Rottentomatoes ratings require an OMDb API key. Get an OMDb API Key at http://www.omdbapi.com/apikey.aspx then input the OMDb API Key into the TheMovieDb Helper settings."
-#~ msgstr "Возможно, вам придётся перезапустить Kodi. TMDb и Trakt должны работать из коробки. Для рейтингов Metacritic и Rottentomatoes необходимо получить ключ API OMDb (сайт http://www.omdbapi.com/apikey.aspx) и затем ввести его в настройках TheMovieDb Helper."
-
-#~ msgctxt "#32020"
-#~ msgid "Display coloured icons"
-#~ msgstr "Отображать цветные значки"
-
-#~ msgctxt "#32022"
-#~ msgid "Show the additional features that the user put in the movie (or TV show) 'extras' folder. Don't forget to adapt your advancedsetting.xml file accordingly."
-#~ msgstr "Показать дополнительные данные, которые пользователь поместил в папку 'extras' фильма (или сериала). Не забудьте соответственно скорректировать свой файл advancedsetting.xml."
-
-#~ msgctxt "#32024"
-#~ msgid "Enable shifting colours in home screen"
-#~ msgstr "Включить возможность смены цветов на главном экране"
-
-#~ msgctxt "#32025"
-#~ msgid "Enable shifting colours in home screen menu and in the default background."
-#~ msgstr "Включить возможность смены цветов в меню главного экрана и в используемом по умолчанию фоне."
-
-#~ msgctxt "#32035"
-#~ msgid "Show the additional features that the user put in the music album 'extras' folder. Don't forget to adapt your advancedsetting.xml file accordingly."
-#~ msgstr "Показать дополнительные данные, которые пользователь поместил в папку 'extras' музыкального альбома. Не забудьте соответственно скорректировать свой файл advancedsetting.xml."
-
-#~ msgctxt "#32036"
-#~ msgid "When browsing movies (and TV shows), plays automatically the file 'theme.mp3' if it exists in the movie folder."
-#~ msgstr "При выборе фильмов (и сериалов) автоматически воспроизводится файл 'theme.mp3', если он имеется в соответствующей папке с фильмом."
-
-#~ msgctxt "#32039"
-#~ msgid "Shows all the extra posters (poster1.jpg, poster2.jpg, poster3.jpg...) in movies and TV shows views."
-#~ msgstr "Отображение всех дополнительных постеров (poster1.jpg, poster2.jpg, poster3.jpg...) в представлениях фильмов и сериалов."
-
-#~ msgctxt "#32042"
-#~ msgid "Hide watched icon in video views"
-#~ msgstr "Скрыть значок просмотра в представлениях видео"
-
-#~ msgctxt "#32040"
-#~ msgid "Thanks for using Aeon Tajo, I really hope you enjoy it! Creating and maintaining a skin for Kodi is quite hard and requires hundreds of hours of work (Aeon Tajo has over 60,000 lines of code and hundreds of images). Only a few can devote so much time; despite their earnest efforts, “real life”, that is, their family and their job, usually gets in their way. That is why many developers fail to finish their skins or can’t keep them up to date, so they stop working on the newest Kodi versions.[CR][CR]I think it would be a pity if Aeon Tajo disappeared too. If you want to help avoid it and let this skin keep improving, and if you would also like to enjoy some extra options, visit [B][COLOR=themecolor]patreon.com[/B][/COLOR] and search for the creator [COLOR=themecolor][B]Aeon Tajo[/B][/COLOR], or go to [COLOR=themecolor][B]patreon.com/aeontajo[/B][/COLOR] to get more information. Thank you very much![CR][CR]Manuel"
-#~ msgstr "Спасибо за использование Aeon Tajo. Я очень надеюсь, что он вам понравится! Создание и поддержка обложки для Kodi - довольно сложная задача, требующая сотен часов работы (Aeon Tajo содержит более 60 000 строк кода и сотни изображений). Лишь немногие могут посвятить этому столько времени; несмотря на их искренние усилия, \"реальная жизнь\", то есть семья и работа, обычно встает на их пути. Вот почему многие разработчики не успевают закончить свои скины или не могут поддерживать их в актуальном состоянии, поэтому они прекращают работу над новыми версиями Kodi.[CR][CR]Я думаю, будет жаль, если Aeon Tajo тоже исчезнет. Если вы хотите помочь избежать этого и позволить этому скину продолжать совершенствоваться, а также если вы хотите насладиться некоторыми дополнительными опциями, посетите [B][COLOR=themecolor]patreon.com[/B][/COLOR] и найдите создателя [COLOR=themecolor][B]Aeon Tajo[/B][/COLOR], или зайдите на [COLOR=themecolor][B]patreon.com/aeontajo[/B][/COLOR], чтобы получить больше информации. Большое спасибо![CR][CR]Мануэль"
-
-#~ msgctxt "#31180"
-#~ msgid "Play local 'theme.mp3' file when browsing Movies and Tvshows"
-#~ msgstr "Воспроизводить локальный файл 'theme.mp3' во время выбора фильмов и сериалов"
-
-#~ msgctxt "#31434"
-#~ msgid "Check MP3 Theme checks whether the user has put a theme.mp3 file in the corresponding movie/tvshow folder to be played when browsing."
-#~ msgstr "Check MP3 Theme проверяет, поместил ли пользователь в соответствующую папку фильма/сериала файл theme.mp3 для воспроизведения при навигации."
-
-# empty strings from id 31452 to 31472
-#~ msgctxt "#31473"
-#~ msgid "Embuary Helper provides the data to display the cast for movies and tvshows."
-#~ msgstr "Embuary Helper предоставляет данные для отображения актёрского состава фильмов и сериалов."
-
-#~ msgctxt "#31481"
-#~ msgid "Global Search makes possible to search among all the items (movies, tvshows, music, actors, etc.) in your collection."
-#~ msgstr "Global Search позволяет искать среди всех элементов (фильмов, сериалов, музыки, актёров и т.д.) в вашей коллекции."
-
-#~ msgctxt "#31970"
-#~ msgid "Setup of melodies, the way of showing widgets, themes and cast for movies/tvshows and other options."
-#~ msgstr "Установка мелодий, способ отображения виджетов, темы и актёрский состав для фильмов/сериалов и другие опции."
-
-#~ msgctxt "#31975"
-#~ msgid "More tv shows featuring"
-#~ msgstr "Другие сериалы с участием"
-
-#~ msgctxt "#32000"
-#~ msgid "Displays a fullscreen slideshow of movies, tvshows or artists' fanarts (depending on the section the user is browsing) when 2 minutes go by in idle state inside a media view"
-#~ msgstr "Показывает полноэкранное слайд-шоу из фильмов, сериалов или фанарта исполнителей (в зависимости от раздела, который просматривает пользователь), когда проходит 2 минуты в состоянии простоя при просмотре мультимедиа"
-
-#~ msgctxt "#32016"
-#~ msgid "TheMovieDb Helper provides data to display online ratings for movies and tvshows"
-#~ msgstr "TheMovieDb Helper предоставляет данные для отображения онлайн-рейтингов фильмов и сериалов"
-
-#~ msgctxt "#32017"
-#~ msgid "Show online ratings for movies and tvshows"
-#~ msgstr "Показывать онлайн-рейтинги фильмов и сериалов"
-
-#~ msgctxt "#32020"
-#~ msgid "Display coloured icons."
-#~ msgstr "Отображать цветные значки."
-
-#~ msgctxt "#32021"
-#~ msgid "Show extra features for movies."
-#~ msgstr "Показать дополнительные возможности для фильмов."
-
-#~ msgctxt "#32022"
-#~ msgid "Show in the context menu the extra features that exist in the movie's extra folder."
-#~ msgstr "Показать в контекстном меню дополнительные функции, существующие в дополнительной папке фильма."
-
-#~ msgctxt "#31200"
-#~ msgid "The Image Resource Select Add-on is used to choose a Kodi resource image pack similiar to weather artwork and icons."
-#~ msgstr "Дополнение Image Resource Select для выбора набора изображений для ресурсов подобно изображениям и иконкам для приложения \"погода\"."
-
-#~ msgctxt "#31476"
-#~ msgid "TV - Show Next Aired provides information of previous and next to air episodes in your library. It also provides a TV Guide for the next week or two."
-#~ msgstr "TV - Show Next Aired предоставляет информацию о предыдущих и последующих сериях в вашей библиотеке. Также предоставляет телепрограмму на следующие одну или две недели."
+msgstr "Отредактировать текст песни"
