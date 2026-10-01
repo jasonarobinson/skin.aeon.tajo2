@@ -83,6 +83,14 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
 .pace { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--sunk); white-space: nowrap; }
 .pace.ahead { color: var(--ok); }
 .pace.behind { color: var(--over); }
+.clocklabel { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.endbtn { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--accent); text-align: left; }
+.endbtn b { font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.1; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.endbtn svg { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; }
+.endpanel { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--line); padding-top: 10px; }
+.endpanel label { font-size: 13px; font-weight: 700; color: var(--muted); }
+.endrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); width: 100%; min-width: 0; -webkit-appearance: none; appearance: none; }
 .clock { font-family: var(--font-display); font-weight: 700; font-size: clamp(76px, 24vw, 130px); line-height: .9; letter-spacing: -.01em; text-align: center; }
 .clocksub { text-align: center; color: var(--muted); font-size: 15px; }
 .bar { height: 8px; background: var(--sunk); border-radius: 999px; overflow: hidden; }
@@ -190,13 +198,23 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
       <div class="seglabel" id="segLabel">Ready</div>
       <div class="pace" id="pace">60:00 study</div>
     </div>
+    <div class="clocklabel" id="clockLabel">Study time available</div>
     <div class="clock num" id="clock">0:00</div>
     <div class="clocksub num" id="clockSub">Tap a paragraph number or Start</div>
     <div class="bar"><i id="segBar"></i></div>
     <div class="overall num">
       <div><span>Elapsed</span><b id="oElapsed">0:00</b></div>
       <div><span>Remaining</span><b id="oRemain">60:00</b></div>
-      <div><span>End by</span><b id="oEnd">—</b></div>
+      <div><span>Ends at</span><button class="endbtn" id="endBtn" aria-label="Change the end time"><b id="oEnd">—</b><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></button></div>
+    </div>
+    <div class="endpanel" id="endPanel" hidden>
+      <label for="endInput">End the study at</label>
+      <div class="endrow">
+        <input type="time" id="endInput" step="60">
+        <button class="btn primary" id="endSet">Set</button>
+      </div>
+      <button class="btn" id="endAuto">Use automatic end time</button>
+      <p class="hint" id="endWhy"></p>
     </div>
   </section>
 
@@ -238,14 +256,15 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     <div class="grid2">
       <div class="field"><label for="fParas">Paragraphs</label><input type="number" id="fParas" min="1" max="40" inputmode="numeric"></div>
       <div class="field"><label for="fReview">Review questions</label><input type="number" id="fReview" min="0" max="10" inputmode="numeric"></div>
-      <div class="field"><label for="fEnd">Meeting ends at</label><input type="time" id="fEnd"></div>
+      <div class="field"><label for="fDay">Meeting day</label><select id="fDay"><option value="0">Sunday</option><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></div>
+      <div class="field"><label for="fUsualEnd">Meeting usually ends</label><input type="time" id="fUsualEnd" step="60"></div>
       <div class="field"><label for="fTotal">Study length (min)</label><input type="number" id="fTotal" min="5" max="120" inputmode="numeric"></div>
       <div class="field"><label for="fIntro">Introduction (min)</label><input type="number" id="fIntro" min="0" max="10" step="0.5" inputmode="decimal"></div>
       <div class="field"><label for="fGroups">Studied together</label><input type="text" id="fGroups" placeholder="e.g. 3-4, 7-8" autocomplete="off"></div>
       <div class="field"><label for="fWarn">Warn when (sec) left</label><input type="number" id="fWarn" min="5" max="120" inputmode="numeric"></div>
     </div>
     <button class="btn" id="useOfficial" hidden>Use the official counts from WOL</button>
-    <p class="hint">The study is timed to finish at the meeting end time. If that time has already passed or is more than 4 hours away, it runs for the study length from when you press Start.</p>
+    <p class="hint">On the meeting day, from 2 hours before the usual end time, the study ends at the usual end time. Any other time it ends one study length after you start. Tap the end time on the main screen to set a different one for today.</p>
     <label class="toggle"><input type="checkbox" id="fVibrate"> Vibrate at warning and overtime (Android)</label>
     <div class="msg" id="setupMsg"></div>
 
@@ -276,7 +295,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   var KEY = "wt-timer.v1";
 
   // ---------- Storage ----------
-  var store = { lessons: {}, prefs: { warn: 20, vibrate: false, endTime: "12:40" }, session: null };
+  var store = { lessons: {}, prefs: { warn: 20, vibrate: false, meetingDay: 6, usualEnd: "12:40", customEnd: null }, session: null };
   try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); store.lessons = p.lessons || {}; store.prefs = Object.assign(store.prefs, p.prefs || {}); store.session = p.session || null; } } catch (e) {}
   // Earlier versions saved every field for a week; keep only what was really changed.
   Object.keys(store.lessons).forEach(function (k) {
@@ -311,7 +330,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     if (/^\d+(\.\d+)?$/.test(s)) return Math.round(parseFloat(s) * 60);
     return NaN;
   }
-  function clockTime(ms) { var d = new Date(ms); var h = d.getHours(), m = d.getMinutes(); return ((h + 11) % 12 + 1) + ":" + pad2(m); }
+  function clockTime(ms) { var d = new Date(ms); var h = d.getHours(), m = d.getMinutes(); return ((h + 11) % 12 + 1) + ":" + pad2(m) + (h < 12 ? " AM" : " PM"); }
 
   // ---------- Lesson + segments ----------
   var thisMonday = ymd(mondayOf(new Date()));
@@ -425,16 +444,28 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   function now() { return Date.now(); }
   function elapsedMs() { return S.base + (S.running ? now() - S.runFrom : 0); }
 
-  // The study ends at the meeting end time you set (default 12:40 PM) when that is later today
-  // and within 4 hours; otherwise it runs for the study length after you press Start.
-  function endTimeAfter(fromMs) {
-    var m = /^(\d{1,2}):(\d{2})$/.exec(store.prefs.endTime || "");
-    if (!m) return null;
-    var d = new Date(fromMs); d.setHours(+m[1], +m[2], 0, 0);
-    var diff = d.getTime() - fromMs;
-    return diff > 60000 && diff <= 4 * 3600000 ? d.getTime() : null;
+  // When does the study end?
+  //  1. An end time you typed for today always wins.
+  //  2. On your meeting day, from 2 hours before the usual end time, it ends at the usual end time (12:40 PM).
+  //  3. Any other time it ends one study length (60 minutes) from now.
+  function hhmm(t) { var m = /^(\d{1,2}):(\d{2})/.exec(t || ""); return m ? [+m[1], +m[2]] : null; }
+  function atTime(fromMs, t) { var h = hhmm(t); if (!h) return null; var d = new Date(fromMs); d.setHours(h[0], h[1], 0, 0); return d.getTime(); }
+  function customEndToday(fromMs) {
+    var c = store.prefs.customEnd;
+    return c && c.date === ymd(new Date(fromMs)) ? atTime(fromMs, c.time) : null;
   }
-  function plannedEnd(fromMs) { return endTimeAfter(fromMs) || fromMs + lesson().total * 60000; }
+  function meetingEnd(fromMs) {
+    if (new Date(fromMs).getDay() !== +store.prefs.meetingDay) return null;
+    var e = atTime(fromMs, store.prefs.usualEnd);
+    return e && fromMs < e && fromMs >= e - 2 * 3600000 ? e : null;
+  }
+  function endInfo(fromMs) {
+    var c = customEndToday(fromMs); if (c) return { at: c, why: "custom" };
+    var m = meetingEnd(fromMs); if (m) return { at: m, why: "meeting" };
+    return { at: fromMs + lesson().total * 60000, why: "length" };
+  }
+  function plannedEnd(fromMs) { return endInfo(fromMs).at; }
+  var DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   // Seconds available for the whole study: time used so far plus time left until the end.
   function budget() {
     if (S.finished && S.finalBudget) return S.finalBudget;
@@ -446,7 +477,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   function start() {
     if (S.started) return;
     S.started = true; S.running = true; S.runFrom = now(); S.base = 0; S.finished = false;
-    S.endAt = plannedEnd(S.runFrom);
+    S.startWall = S.runFrom; S.endAt = plannedEnd(S.runFrom);
     store.session = S;
     keepAwake();
   }
@@ -553,12 +584,17 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     var remain = total - E;
     $("oRemain").textContent = remain >= 0 ? fmt(remain) : "+" + fmt(-remain);
     $("oRemain").style.color = remain < 0 ? "var(--over)" : "";
-    $("oEnd").textContent = S.finished ? clockTime(S.endAt || now()) : clockTime(S.started && S.endAt ? S.endAt : now() + Math.max(0, remain) * 1000);
+    var endAt = S.started && S.endAt ? S.endAt : plannedEnd(now());
+    $("oEnd").textContent = clockTime(endAt);
+    var info = endInfo(now());
+    $("endWhy").textContent = customEndToday(now()) ? "You set this end time for today." :
+      info.why === "meeting" ? "Automatic: " + DAYS[+store.prefs.meetingDay] + " meeting ends at " + clockTime(info.at) + "." :
+      "Automatic: " + lesson().total + " minutes from when you start.";
 
     // Pace: projected finish (current part at its plan, rest at plan) against the plan length
     var pace = $("pace"); pace.className = "pace";
     var planLen = base.reduce(function (a, b) { return a + b; }, 0);
-    if (!S.started) { pace.textContent = endTimeAfter(now()) ? fmt(total) + " until end" : fmt(total) + " study"; }
+    if (!S.started) { pace.textContent = info.why === "length" ? l.total + " min from start" : "Ends " + clockTime(info.at); }
     else if (S.finished) { var d0 = E - total; pace.textContent = Math.abs(d0) < 15 ? "Right on time" : d0 > 0 ? "Over " + fmt(d0) : "Early " + fmt(-d0); pace.classList.add(d0 > 15 ? "behind" : "ahead"); }
     else {
       var proj = E + Math.max(0, base[S.cur] - segElapsed);
@@ -573,12 +609,14 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     $("doneBanner").hidden = !S.finished;
     if (!S.started) {
       $("segLabel").textContent = "Ready";
-      $("clock").textContent = fmt(base[0] || 0);
-      $("clockSub").textContent = (segs[0] ? segs[0].label + " · " : "") + l.paragraphs + " paragraphs, " + l.review + " review questions";
+      $("clockLabel").textContent = "Study time available";
+      $("clock").textContent = fmt(total);
+      $("clockSub").textContent = l.paragraphs + " paragraphs, " + l.review + " review questions \u00b7 about " + fmt(base[segs[0] && segs[0].kind === "intro" ? 1 : 0] || 0) + " each";
       $("segBar").style.width = "0%";
       $("nextText").textContent = "Start";
     } else if (S.finished) {
       $("segLabel").textContent = "Finished";
+      $("clockLabel").textContent = "Total study time";
       $("clock").textContent = fmt(E);
       $("clockSub").textContent = "Total time for the study";
       $("segBar").style.width = "100%";
@@ -588,8 +626,9 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     } else {
       var seg = segs[S.cur], left = segAlloc - segElapsed;
       $("segLabel").textContent = seg.label;
+      $("clockLabel").textContent = left >= 0 ? "Time left for this " + (seg.kind === "rq" ? "question" : seg.kind === "intro" ? "introduction" : "paragraph") : "Over time on this " + (seg.kind === "rq" ? "question" : seg.kind === "intro" ? "introduction" : "paragraph");
       $("clock").textContent = left >= 0 ? fmt(Math.ceil(left)) : "+" + fmt(-left);
-      $("clockSub").textContent = (left >= 0 ? "left of " : "over its ") + fmt(segAlloc) + " · " + fmt(segElapsed) + " used";
+      $("clockSub").textContent = fmt(segAlloc) + " allotted \u00b7 " + fmt(segElapsed) + " used";
       $("segBar").style.width = Math.min(100, segAlloc > 0 ? segElapsed / segAlloc * 100 : 100) + "%";
       var warnAt = Math.min(store.prefs.warn, segAlloc * 0.5);
       if (left <= 0) { stage.classList.add("over"); if (S.running && S.warned !== "over") { S.warned = "over"; buzz([300, 120, 300]); save(); } }
@@ -610,7 +649,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     $("fTitle").value = l.title || "";
     $("fParas").value = l.paragraphs; $("fReview").value = l.review; $("fTotal").value = l.total;
     $("fGroups").value = groupsText(l.groups);
-    $("fEnd").value = store.prefs.endTime || "";
+    $("fDay").value = String(store.prefs.meetingDay); $("fUsualEnd").value = store.prefs.usualEnd || "";
     $("fIntro").value = l.intro || 0; $("fWarn").value = store.prefs.warn; $("fVibrate").checked = !!store.prefs.vibrate;
     $("setupMsg").textContent = "";
     buildCustomList();
@@ -715,10 +754,34 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   $("fTotal").addEventListener("change", function () { setNumber("total", $("fTotal").value); });
   $("fIntro").addEventListener("change", function () { setNumber("intro", $("fIntro").value); });
   $("fWarn").addEventListener("change", function () { var n = Math.round(+$("fWarn").value); if (n >= 5 && n <= 120) { store.prefs.warn = n; save(); render(); } else $("setupMsg").textContent = "Warning must be 5 to 120 seconds."; });
-  $("fEnd").addEventListener("change", function () {
-    store.prefs.endTime = $("fEnd").value || "";
-    if (S.started && !S.finished) { var e = endTimeAfter(now()); S.endAt = e || S.endAt; reallocCurrent(); }
+  $("fDay").addEventListener("change", function () { store.prefs.meetingDay = +$("fDay").value; save(); render(); });
+  $("fUsualEnd").addEventListener("change", function () { if ($("fUsualEnd").value) { store.prefs.usualEnd = $("fUsualEnd").value; save(); render(); } });
+
+  // End time panel on the main screen
+  function pad2t(ms) { var d = new Date(ms); return pad2(d.getHours()) + ":" + pad2(d.getMinutes()); }
+  function openEnd() {
+    var p = $("endPanel");
+    if (!p.hidden) { p.hidden = true; return; }
+    $("endInput").value = pad2t(S.started && S.endAt ? S.endAt : plannedEnd(now()));
+    p.hidden = false;
+  }
+  function applyEnd(at) {
+    if (S.started && !S.finished) { S.endAt = at; reallocCurrent(); }
     save(); render();
+  }
+  $("endBtn").addEventListener("click", openEnd);
+  $("endSet").addEventListener("click", function () {
+    var v = $("endInput").value;
+    if (!hhmm(v)) { $("endWhy").textContent = "Pick a time first."; return; }
+    var at = atTime(now(), v);
+    if (at <= now()) { $("endWhy").textContent = "That time has already passed today. Pick a later time."; return; }
+    store.prefs.customEnd = { date: ymd(new Date()), time: v };
+    $("endPanel").hidden = true; applyEnd(at);
+  });
+  $("endAuto").addEventListener("click", function () {
+    store.prefs.customEnd = null;
+    var at = S.started && !S.finished ? meetingEnd(now()) || (S.startWall || now()) + lesson().total * 60000 : plannedEnd(now());
+    $("endPanel").hidden = true; applyEnd(at);
   });
   $("fVibrate").addEventListener("change", function () { store.prefs.vibrate = $("fVibrate").checked; save(); });
   $("clearCustoms").addEventListener("click", function () { ov().customs = {}; save(); padBuilt = ""; buildCustomList(); reallocCurrent(); render(); });
