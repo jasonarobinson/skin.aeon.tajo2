@@ -125,6 +125,8 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
 .key.cur small { color: var(--accent-ink); }
 .key.rq b { font-size: 20px; }
 .key.intro b { font-size: 16px; }
+.key.group { grid-column: span 2; }
+.source { font-size: 13px; color: var(--muted); margin-top: 2px; }
 .padsep { grid-column: 1 / -1; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
 .hint { font-size: 13px; color: var(--muted); }
 
@@ -161,6 +163,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     <div class="lesson">
       <div class="eyebrow" id="weekLabel">Week of —</div>
       <div class="title" id="lessonTitle">Watchtower Study</div>
+      <div class="source" id="sourceLine" hidden></div>
     </div>
     <button class="iconbtn" id="openSetup" aria-label="Lesson setup and custom times">
       <svg viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
@@ -237,8 +240,10 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
       <div class="field"><label for="fReview">Review questions</label><input type="number" id="fReview" min="0" max="10" inputmode="numeric"></div>
       <div class="field"><label for="fTotal">Total minutes</label><input type="number" id="fTotal" min="5" max="120" inputmode="numeric"></div>
       <div class="field"><label for="fIntro">Introduction (min)</label><input type="number" id="fIntro" min="0" max="10" step="0.5" inputmode="decimal"></div>
+      <div class="field"><label for="fGroups">Studied together</label><input type="text" id="fGroups" placeholder="e.g. 3-4, 7-8" autocomplete="off"></div>
       <div class="field"><label for="fWarn">Warn when (sec) left</label><input type="number" id="fWarn" min="5" max="120" inputmode="numeric"></div>
     </div>
+    <button class="btn" id="useOfficial" hidden>Use the official counts from WOL</button>
     <label class="toggle"><input type="checkbox" id="fVibrate"> Vibrate at warning and overtime (Android)</label>
     <div class="msg" id="setupMsg"></div>
 
@@ -271,6 +276,14 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   // ---------- Storage ----------
   var store = { lessons: {}, prefs: { warn: 20, vibrate: false }, session: null };
   try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); store.lessons = p.lessons || {}; store.prefs = Object.assign(store.prefs, p.prefs || {}); store.session = p.session || null; } } catch (e) {}
+  // Earlier versions saved every field for a week; keep only what was really changed.
+  Object.keys(store.lessons).forEach(function (k) {
+    var o = store.lessons[k];
+    if (!o || o.v) return;
+    if (o.paragraphs === 18 && o.review === 3) { delete o.paragraphs; delete o.review; }
+    if (!o.title || (SEED[k] && o.title === SEED[k].title)) delete o.title;
+    delete o.unverified; o.v = 2;
+  });
   function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
 
   // ---------- Dates ----------
@@ -303,22 +316,73 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   var live = store.session && store.session.started && !store.session.finished;
   var weekKey = live ? store.session.weekKey : thisMonday;
 
+  // Official lesson details (title, counts, grouped paragraphs) per week. They come from the
+  // page's data store when it is available, else from the copy cached on this phone.
+  var OFFICIAL = {};
+  try { OFFICIAL = JSON.parse(localStorage.getItem(KEY + ".official") || "{}") || {}; } catch (e) {}
+  function cleanOfficial(d) {
+    if (!d || typeof d !== "object") return null;
+    var o = {};
+    if (typeof d.title === "string") o.title = d.title.slice(0, 200);
+    if (isInt(d.paragraphs, 1, 40)) o.paragraphs = d.paragraphs;
+    if (isInt(d.review, 0, 10)) o.review = d.review;
+    o.groups = cleanGroups(d.groups, o.paragraphs || 40);
+    if (typeof d.checked === "string") o.checked = d.checked.slice(0, 40);
+    return o.paragraphs ? o : null;
+  }
+  function isInt(v, lo, hi) { return typeof v === "number" && v === Math.round(v) && v >= lo && v <= hi; }
+  function cleanGroups(g, max) {
+    if (!Array.isArray(g)) return [];
+    var out = [], last = 0;
+    g.forEach(function (x) {
+      if (Array.isArray(x) && isInt(x[0], 1, max) && isInt(x[1], 1, max) && x[1] > x[0] && x[0] > last) { out.push([x[0], x[1]]); last = x[1]; }
+    });
+    return out;
+  }
+  function parseGroups(text, max) {
+    var out = [];
+    String(text || "").split(/[,;\s]+/).forEach(function (t) { var m = t.match(/^(\d+)[-\u2013](\d+)$/); if (m) out.push([+m[1], +m[2]]); });
+    out.sort(function (a, b) { return a[0] - b[0]; });
+    return cleanGroups(out, max);
+  }
+  function groupsText(g) { return (g || []).map(function (x) { return x[0] + "-" + x[1]; }).join(", "); }
+  function pick() { for (var i = 0; i < arguments.length; i++) if (arguments[i] !== undefined && arguments[i] !== null) return arguments[i]; }
+
+  // What you change in setup is kept as overrides on top of the official details.
+  function ov() { var o = store.lessons[weekKey]; if (!o) { o = store.lessons[weekKey] = { customs: {}, v: 2 }; } if (!o.customs) o.customs = {}; return o; }
   function lessonFor(key) {
-    var saved = store.lessons[key];
-    if (saved) return saved;
-    var seed = SEED[key] || {};
-    var l = JSON.parse(JSON.stringify(DEFAULT_LESSON));
-    l.title = seed.title || ""; l.unverified = true;
+    var o = store.lessons[key] || {}, off = OFFICIAL[key] || null, seed = SEED[key] || {};
+    var l = {
+      title: pick(o.title, off && off.title, seed.title, ""),
+      paragraphs: pick(o.paragraphs, off && off.paragraphs, DEFAULT_LESSON.paragraphs),
+      review: pick(o.review, off && off.review, DEFAULT_LESSON.review),
+      total: pick(o.total, DEFAULT_LESSON.total),
+      intro: pick(o.intro, 0),
+      customs: o.customs || {}
+    };
+    l.groups = cleanGroups(pick(o.groups, off && off.groups, []), l.paragraphs);
+    l.mine = o.paragraphs != null || o.review != null || o.groups != null;
+    l.official = off;
+    l.unverified = !off && !l.mine && !o.confirmed;
     return l;
   }
   function lesson() { return lessonFor(weekKey); }
-  function commitLesson(l) { delete l.unverified; store.lessons[weekKey] = l; save(); }
+  function commitLesson() { save(); }
 
   function segments(l) {
     var s = [];
     if (l.intro > 0) s.push({ id: "I", label: "Introduction", short: "Intro", kind: "intro", custom: Math.round(l.intro * 60) });
-    for (var i = 1; i <= l.paragraphs; i++) s.push({ id: "P" + i, label: "Paragraph " + i, short: String(i), kind: "p", custom: num(l.customs["P" + i]) });
-    for (var j = 1; j <= l.review; j++) s.push({ id: "R" + j, label: "Review question " + j, short: "R" + j, kind: "rq", custom: num(l.customs["R" + j]) });
+    var gi = 0;
+    for (var i = 1; i <= l.paragraphs; i++) {
+      var g = l.groups[gi];
+      if (g && g[0] === i) {
+        var end = Math.min(g[1], l.paragraphs); gi++;
+        s.push({ id: "P" + i, label: "Paragraphs " + i + "\u2013" + end, short: i + "\u2013" + end, kind: "p group", w: end - i + 1, custom: num(l.customs["P" + i]) });
+        i = end; continue;
+      }
+      s.push({ id: "P" + i, label: "Paragraph " + i, short: String(i), kind: "p", w: 1, custom: num(l.customs["P" + i]) });
+    }
+    for (var j = 1; j <= l.review; j++) s.push({ id: "R" + j, label: "Review question " + j, short: "R" + j, kind: "rq", w: 1, custom: num(l.customs["R" + j]) });
     return s;
   }
   function num(v) { return typeof v === "number" && isFinite(v) ? v : null; }
@@ -326,19 +390,19 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   // Original plan: custom parts keep their time, everything else shares the rest evenly.
   function basePlan(segs, total) {
     var C = 0, A = 0;
-    segs.forEach(function (s) { if (s.custom != null) C += s.custom; else A++; });
+    segs.forEach(function (s) { if (s.custom != null) C += s.custom; else A += s.w || 1; });
     var share = A ? Math.max(0, (total - C) / A) : 0;
-    return segs.map(function (s) { return s.custom != null ? s.custom : share; });
+    return segs.map(function (s) { return s.custom != null ? s.custom : share * (s.w || 1); });
   }
   // Live split of R seconds across segs[from..]. Custom times are kept while there is room;
   // when time is too short, every remaining part shrinks in proportion to its planned share.
   function distribute(segs, base, from, R) {
     var rest = segs.slice(from), C = 0, A = 0;
-    rest.forEach(function (s) { if (s.custom != null) C += s.custom; else A++; });
+    rest.forEach(function (s) { if (s.custom != null) C += s.custom; else A += s.w || 1; });
     var out;
     if (A > 0 && R - C >= A * MIN_SEG) {
       var share = (R - C) / A;
-      out = rest.map(function (s) { return s.custom != null ? s.custom : share; });
+      out = rest.map(function (s) { return s.custom != null ? s.custom : share * (s.w || 1); });
     } else if (A === 0 && C <= R) {
       out = rest.map(function (s) { return s.custom; });
     } else {
@@ -411,7 +475,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   var padBuilt = "";
 
   function buildPad(segs) {
-    var sig = weekKey + "|" + segs.map(function (s) { return s.id; }).join(",");
+    var sig = weekKey + "|" + segs.map(function (s) { return s.id + s.short; }).join(",");
     if (sig === padBuilt) return;
     padBuilt = sig;
     var pad = $("pad"); pad.textContent = "";
@@ -437,6 +501,9 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     $("thisWeek").hidden = weekKey === thisMonday;
     $("lessonTitle").textContent = l.title || "Watchtower Study";
     $("verifyNotice").hidden = !l.unverified;
+    var src = $("sourceLine");
+    src.hidden = l.unverified;
+    src.textContent = (l.official && !l.mine ? "From WOL" : "Your counts") + " \u00b7 " + l.paragraphs + " paragraphs" + (l.groups.length ? " (" + groupsText(l.groups).replace(/-/g, "\u2013") + " together)" : "") + ", " + l.review + " review questions";
     $("wolLink").href = wolUrl(mon);
     buildPad(segs);
 
@@ -506,7 +573,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
       var warnAt = Math.min(store.prefs.warn, segAlloc * 0.5);
       if (left <= 0) { stage.classList.add("over"); if (S.running && S.warned !== "over") { S.warned = "over"; buzz([300, 120, 300]); save(); } }
       else if (left <= warnAt) { stage.classList.add("warn"); if (S.running && !S.warned) { S.warned = "warn"; buzz(200); save(); } }
-      $("nextText").textContent = S.cur >= segs.length - 1 ? "Finish" : "Next: " + segs[S.cur + 1].short.replace(/^(\d+)$/, "Para $1");
+      $("nextText").textContent = S.cur >= segs.length - 1 ? "Finish" : "Next: " + segs[S.cur + 1].short.replace(/^(\d+(\u2013\d+)?)$/, "Para $1");
     }
     var paused = S.started && !S.running && !S.finished;
     $("pauseText").textContent = paused ? "Resume" : "Pause";
@@ -521,22 +588,24 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     var l = lesson();
     $("fTitle").value = l.title || "";
     $("fParas").value = l.paragraphs; $("fReview").value = l.review; $("fTotal").value = l.total;
+    $("fGroups").value = groupsText(l.groups);
     $("fIntro").value = l.intro || 0; $("fWarn").value = store.prefs.warn; $("fVibrate").checked = !!store.prefs.vibrate;
     $("setupMsg").textContent = "";
     buildCustomList();
     $("sheet").hidden = false;
   }
   function closeSetup() {
-    var l = lesson();
-    if (l.unverified) commitLesson(l); // closing setup confirms this week's counts
+    if (lesson().unverified) { ov().confirmed = true; save(); } // closing setup confirms this week's counts
     $("sheet").hidden = true; render();
   }
   function customSum(l, exceptId) {
-    var c = 0; for (var k in l.customs) if (k !== exceptId && num(l.customs[k]) != null) c += l.customs[k];
+    var c = 0;
+    segments(l).forEach(function (s) { if (s.kind !== "intro" && s.id !== exceptId && s.custom != null) c += s.custom; });
     return c + Math.round((l.intro || 0) * 60);
   }
   function buildCustomList() {
     var l = lesson(), segs = segments(l), total = l.total * 60, base = basePlan(segs, total);
+    $("useOfficial").hidden = !(l.official && l.mine);
     var list = $("clist"); list.textContent = "";
     segs.forEach(function (s, i) {
       if (s.kind === "intro") return;
@@ -559,7 +628,8 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     $("budgetBar").style.width = Math.min(100, used / total * 100) + "%";
   }
   function setCustom(id, text) {
-    var l = lesson(), total = l.total * 60, msg = "";
+    var l = lesson(), total = l.total * 60, msg = "", o = ov();
+    l.customs = o.customs;
     var v = parseTime(text);
     if (v === null) delete l.customs[id];
     else if (isNaN(v)) { msg = "Use minutes and seconds like 2:30, or plain minutes like 2."; }
@@ -573,13 +643,14 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     padBuilt = ""; buildCustomList(); reallocCurrent(); render();
   }
   function setNumber(field, value) {
-    var l = lesson(), msg = "";
+    var l = lesson(), msg = "", o = ov();
     var n = parseFloat(value);
-    if (field === "paragraphs") { n = Math.round(n); if (!(n >= 1 && n <= 40)) return bad("Paragraphs must be 1 to 40."); l.paragraphs = n; for (var k in l.customs) if (/^P/.test(k) && +k.slice(1) > n) delete l.customs[k]; }
-    if (field === "review") { n = Math.round(n); if (!(n >= 0 && n <= 10)) return bad("Review questions must be 0 to 10."); l.review = n; for (var k2 in l.customs) if (/^R/.test(k2) && +k2.slice(1) > n) delete l.customs[k2]; }
-    if (field === "total") { n = Math.round(n); if (!(n >= 5 && n <= 120)) return bad("Total must be 5 to 120 minutes."); var need = customSum(l); if (need > n * 60) return bad("Custom times add up to " + fmt(need) + ". Lower them before setting the total below that."); l.total = n; }
-    if (field === "intro") { if (!(n >= 0 && n <= 10)) return bad("Introduction must be 0 to 10 minutes."); var others = customSum(l) - Math.round((l.intro || 0) * 60); if (others + n * 60 > l.total * 60) return bad("Not enough time left for that introduction."); l.intro = n; }
-    commitLesson(l); $("setupMsg").textContent = msg;
+    if (field === "paragraphs") { n = Math.round(n); if (!(n >= 1 && n <= 40)) return bad("Paragraphs must be 1 to 40."); o.paragraphs = n; o.review = l.review; for (var k in o.customs) if (/^P/.test(k) && +k.slice(1) > n) delete o.customs[k]; }
+    if (field === "review") { n = Math.round(n); if (!(n >= 0 && n <= 10)) return bad("Review questions must be 0 to 10."); o.review = n; o.paragraphs = l.paragraphs; for (var k2 in o.customs) if (/^R/.test(k2) && +k2.slice(1) > n) delete o.customs[k2]; }
+    if (field === "total") { n = Math.round(n); if (!(n >= 5 && n <= 120)) return bad("Total must be 5 to 120 minutes."); var need = customSum(l); if (need > n * 60) return bad("Custom times add up to " + fmt(need) + ". Lower them before setting the total below that."); o.total = n; }
+    if (field === "intro") { if (!(n >= 0 && n <= 10)) return bad("Introduction must be 0 to 10 minutes."); var others = customSum(l) - Math.round((l.intro || 0) * 60); if (others + n * 60 > l.total * 60) return bad("Not enough time left for that introduction."); o.intro = n; }
+    if (field === "groups") { o.groups = parseGroups(value, l.paragraphs); o.paragraphs = l.paragraphs; o.review = l.review; for (var k3 in o.customs) if (/^P/.test(k3)) delete o.customs[k3]; }
+    save(); l = lesson(); $("setupMsg").textContent = msg; $("fGroups").value = groupsText(l.groups);
     var segs = segments(l); if (S.cur >= segs.length) S.cur = segs.length - 1;
     padBuilt = ""; buildCustomList(); reallocCurrent(); render();
     function bad(m) { $("setupMsg").textContent = m; openSetupValues(); }
@@ -614,17 +685,39 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   $("noticeSetup").addEventListener("click", openSetup);
   $("closeSetup").addEventListener("click", closeSetup);
   $("sheet").addEventListener("click", function (e) { if (e.target === $("sheet")) closeSetup(); });
-  $("fTitle").addEventListener("change", function () { var l = lesson(); l.title = $("fTitle").value.trim(); commitLesson(l); render(); });
+  $("fTitle").addEventListener("change", function () { ov().title = $("fTitle").value.trim() || undefined; save(); render(); });
+  $("fGroups").addEventListener("change", function () { setNumber("groups", $("fGroups").value); });
+  $("useOfficial").addEventListener("click", function () { var o = ov(); delete o.paragraphs; delete o.review; delete o.groups; delete o.title; o.customs = {}; save(); padBuilt = ""; openSetup(); reallocCurrent(); render(); });
   $("fParas").addEventListener("change", function () { setNumber("paragraphs", $("fParas").value); });
   $("fReview").addEventListener("change", function () { setNumber("review", $("fReview").value); });
   $("fTotal").addEventListener("change", function () { setNumber("total", $("fTotal").value); });
   $("fIntro").addEventListener("change", function () { setNumber("intro", $("fIntro").value); });
   $("fWarn").addEventListener("change", function () { var n = Math.round(+$("fWarn").value); if (n >= 5 && n <= 120) { store.prefs.warn = n; save(); render(); } else $("setupMsg").textContent = "Warning must be 5 to 120 seconds."; });
   $("fVibrate").addEventListener("change", function () { store.prefs.vibrate = $("fVibrate").checked; save(); });
-  $("clearCustoms").addEventListener("click", function () { var l = lesson(); l.customs = {}; commitLesson(l); padBuilt = ""; buildCustomList(); reallocCurrent(); render(); });
+  $("clearCustoms").addEventListener("click", function () { ov().customs = {}; save(); padBuilt = ""; buildCustomList(); reallocCurrent(); render(); });
   $("weekDate").addEventListener("change", function () { var v = $("weekDate").value; if (v) setWeek(ymd(mondayOf(parseYmd(v)))); });
   $("thisWeek").addEventListener("click", function () { setWeek(thisMonday); });
   document.addEventListener("keydown", function (e) { if (!$("sheet").hidden) { if (e.key === "Escape") closeSetup(); return; } if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); next(); } });
+
+  // ---------- Official lesson data from the page's data store ----------
+  function applyOfficial(map) {
+    OFFICIAL = map;
+    try { localStorage.setItem(KEY + ".official", JSON.stringify(map)); } catch (e) {}
+    var segs = segments(lesson()); if (S.cur >= segs.length) S.cur = segs.length - 1;
+    padBuilt = ""; reallocCurrent(); render();
+  }
+  try {
+    if (window.claude && typeof window.claude.use === "function") {
+      window.claude.use("db").then(function (db) {
+        if (!db) return;
+        db.collection("lessons").onSnapshot(function (snap) {
+          var m = {};
+          snap.docs.forEach(function (d) { var c = d.exists && cleanOfficial(d.data()); if (c && /^\d{4}-\d{2}-\d{2}$/.test(d.id)) m[d.id] = c; });
+          applyOfficial(m);
+        }, function () {});
+      }).catch(function () {});
+    }
+  } catch (e) {}
 
   render();
   if (S.running) keepAwake();
