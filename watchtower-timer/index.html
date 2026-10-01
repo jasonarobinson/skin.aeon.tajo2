@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="WT Timer">
+<!-- APP:START -->
+<title>Watchtower Study Timer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: one narrow column for a phone on the lectern. Stage (current paragraph clock) on top, number pad below, setup in a sheet. */
+:root {
+  --bg: #e9edf1;
+  --surface: #ffffff;
+  --sunk: #dde3ea;
+  --ink: #15202b;
+  --muted: #5a6776;
+  --line: #cfd7e0;
+  --accent: #2c5a87;
+  --accent-ink: #ffffff;
+  --ok: #23734f;
+  --warn: #b26a00;
+  --warn-bg: #fff1d6;
+  --over: #b8302a;
+  --over-bg: #fde3e0;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --r: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1319; --surface: #161f29; --sunk: #1f2a36; --ink: #e6ecf2; --muted: #93a2b2;
+    --line: #2a3745; --accent: #7eb0e0; --accent-ink: #0d1319; --ok: #5cc28f;
+    --warn: #f2b13d; --warn-bg: #3a2c10; --over: #ff6f63; --over-bg: #3d1714;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1319; --surface: #161f29; --sunk: #1f2a36; --ink: #e6ecf2; --muted: #93a2b2;
+  --line: #2a3745; --accent: #7eb0e0; --accent-ink: #0d1319; --ok: #5cc28f;
+  --warn: #f2b13d; --warn-bg: #3a2c10; --over: #ff6f63; --over-bg: #3d1714;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+  padding: max(10px, env(safe-area-inset-top, 0px)) 16px max(20px, env(safe-area-inset-bottom, 0px));
+}
+.wrap { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Header */
+.head { display: flex; align-items: center; gap: 10px; }
+.head .lesson { flex: 1; min-width: 0; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.title { font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.1; text-wrap: balance; overflow-wrap: anywhere; }
+.iconbtn { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; }
+.iconbtn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.weekrow { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.datebox { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; font-weight: 600; font-size: 15px; }
+.datebox svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+.datebox input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; border: 0; font-size: 16px; }
+.chipbtn { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: transparent; font-size: 14px; font-weight: 600; color: var(--accent); }
+.notice { background: var(--warn-bg); color: var(--ink); border-radius: var(--r); padding: 10px 12px; font-size: 14px; display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap; }
+.notice a { color: var(--accent); font-weight: 600; }
+
+/* Stage */
+.stage { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; transition: background-color .2s; }
+.stage-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.seglabel { font-family: var(--font-display); font-size: 26px; font-weight: 600; }
+.pace { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--sunk); white-space: nowrap; }
+.pace.ahead { color: var(--ok); }
+.pace.behind { color: var(--over); }
+.clock { font-family: var(--font-display); font-weight: 700; font-size: clamp(76px, 24vw, 130px); line-height: .9; letter-spacing: -.01em; text-align: center; }
+.clocksub { text-align: center; color: var(--muted); font-size: 15px; }
+.bar { height: 8px; background: var(--sunk); border-radius: 999px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: inherit; }
+.overall { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 6px; border-top: 1px solid var(--line); }
+.overall div { display: flex; flex-direction: column; min-width: 0; }
+.overall b { font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.1; }
+.overall span { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+
+.stage.warn { background: var(--warn-bg); border-color: var(--warn); }
+.stage.warn .clock, .stage.warn .seglabel { color: var(--warn); }
+.stage.warn .bar > i { background: var(--warn); }
+.stage.over { background: var(--over-bg); border-color: var(--over); }
+.stage.over .clock, .stage.over .seglabel { color: var(--over); }
+.stage.over .bar > i { background: var(--over); }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+.stage.warn.running .clock { animation: blink 1s steps(2, jump-none) infinite; }
+.stage.over.running .clock { animation: blink .5s steps(2, jump-none) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .stage.warn.running .clock, .stage.over.running .clock { animation: none; text-decoration: underline; text-decoration-thickness: 4px; }
+}
+
+/* Controls */
+.controls { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); min-height: 56px; font-weight: 700; font-size: 17px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-size: 19px; }
+.btn.danger { color: var(--over); }
+.btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* Pad */
+.padhead { display: flex; justify-content: space-between; align-items: baseline; }
+.pad { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.key { position: relative; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; min-height: 54px; padding: 4px 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; }
+.key b { font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1; }
+.key small { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.key.custom small { color: var(--accent); font-weight: 700; }
+.key.done { background: var(--sunk); border-color: transparent; }
+.key.done b { color: var(--muted); }
+.key.cur { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.key.cur small { color: var(--accent-ink); }
+.key.rq b { font-size: 20px; }
+.key.intro b { font-size: 16px; }
+.padsep { grid-column: 1 / -1; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 6px; }
+.hint { font-size: 13px; color: var(--muted); }
+
+/* Sheet */
+.sheet { position: fixed; inset: 0; z-index: 10; background: rgba(8, 14, 20, .5); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-in { background: var(--bg); width: 100%; max-width: 560px; max-height: 92%; overflow-y: auto; -webkit-overflow-scrolling: touch; border-radius: 18px 18px 0 0; padding: 16px 16px max(20px, env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 14px; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.sheet h2 { font-family: var(--font-display); font-size: 26px; margin: 0; font-weight: 600; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: 13px; font-weight: 700; color: var(--muted); }
+.field input[type="text"], .field input[type="number"], .crow input { font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); width: 100%; min-width: 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.toggle { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.toggle input { width: 22px; height: 22px; accent-color: var(--accent); }
+.budget { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.budget .bar > i { background: var(--accent); }
+.budget-line { display: flex; justify-content: space-between; gap: 8px; font-size: 14px; flex-wrap: wrap; }
+.msg { font-size: 14px; color: var(--over); font-weight: 600; min-height: 1.2em; }
+.clist { display: flex; flex-direction: column; gap: 6px; }
+.crow { display: grid; grid-template-columns: 1fr 96px 44px; gap: 8px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 6px 6px 6px 12px; }
+.crow .lbl { font-weight: 600; }
+.crow .lbl small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; }
+.crow input { text-align: center; padding: 8px 6px; }
+.crow input.set { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.crow button { height: 40px; border-radius: 8px; border: 0; background: var(--sunk); font-size: 13px; font-weight: 700; color: var(--muted); }
+.done-banner { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; font-size: 15px; }
+</style>
+<!-- APP:HEAD-END -->
+</head>
+<body>
+<!-- APP:BODY-START -->
+<div class="wrap">
+  <header class="head">
+    <div class="lesson">
+      <div class="eyebrow" id="weekLabel">Week of —</div>
+      <div class="title" id="lessonTitle">Watchtower Study</div>
+    </div>
+    <button class="iconbtn" id="openSetup" aria-label="Lesson setup and custom times">
+      <svg viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+    </button>
+  </header>
+
+  <div class="weekrow">
+    <label class="datebox" for="weekDate">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      <span id="weekBtnText">Pick a week</span>
+      <input type="date" id="weekDate" aria-label="Pick any day in the study week">
+    </label>
+    <button class="chipbtn" id="thisWeek" hidden>Back to this week</button>
+  </div>
+
+  <div class="notice" id="verifyNotice" hidden>
+    <span>Confirm the paragraph and review-question counts for this week before you start.</span>
+    <a id="wolLink" href="https://wol.jw.org/" target="_blank" rel="noopener">Open on WOL</a>
+    <button class="chipbtn" id="noticeSetup" style="padding:2px 10px">Set counts</button>
+  </div>
+
+  <section class="stage" id="stage" aria-live="off">
+    <div class="stage-top">
+      <div class="seglabel" id="segLabel">Ready</div>
+      <div class="pace" id="pace">60:00 study</div>
+    </div>
+    <div class="clock num" id="clock">0:00</div>
+    <div class="clocksub num" id="clockSub">Tap a paragraph number or Start</div>
+    <div class="bar"><i id="segBar"></i></div>
+    <div class="overall num">
+      <div><span>Elapsed</span><b id="oElapsed">0:00</b></div>
+      <div><span>Remaining</span><b id="oRemain">60:00</b></div>
+      <div><span>End by</span><b id="oEnd">—</b></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="btn" id="pauseBtn">
+      <svg viewBox="0 0 24 24" id="pauseIcon"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      <span id="pauseText">Pause</span>
+    </button>
+    <button class="btn primary" id="nextBtn">
+      <span id="nextText">Start</span>
+      <svg viewBox="0 0 24 24"><path d="M8 5l9 7-9 7z"/></svg>
+    </button>
+  </div>
+
+  <div class="done-banner" id="doneBanner" hidden></div>
+
+  <div class="padhead">
+    <div class="eyebrow">Where are you?</div>
+    <div class="hint">Tap your paragraph</div>
+  </div>
+  <div class="pad" id="pad"></div>
+  <p class="hint">The clock never moves on by itself. Tap the paragraph you are on (or Next) and the remaining time is split again across what is left. Small times under each number are the current allotment.</p>
+
+  <div class="controls" style="grid-template-columns:1fr">
+    <button class="btn danger" id="resetBtn">Reset timer</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-in" role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+    <div class="sheet-head">
+      <h2 id="setupTitle">Lesson setup</h2>
+      <button class="btn primary" id="closeSetup" style="min-height:44px">Done</button>
+    </div>
+    <div class="field">
+      <label for="fTitle">Study article title</label>
+      <input type="text" id="fTitle" placeholder="e.g. Help Others Come to Know Jehovah">
+    </div>
+    <div class="grid2">
+      <div class="field"><label for="fParas">Paragraphs</label><input type="number" id="fParas" min="1" max="40" inputmode="numeric"></div>
+      <div class="field"><label for="fReview">Review questions</label><input type="number" id="fReview" min="0" max="10" inputmode="numeric"></div>
+      <div class="field"><label for="fTotal">Total minutes</label><input type="number" id="fTotal" min="5" max="120" inputmode="numeric"></div>
+      <div class="field"><label for="fIntro">Introduction (min)</label><input type="number" id="fIntro" min="0" max="10" step="0.5" inputmode="decimal"></div>
+      <div class="field"><label for="fWarn">Warn when (sec) left</label><input type="number" id="fWarn" min="5" max="120" inputmode="numeric"></div>
+    </div>
+    <label class="toggle"><input type="checkbox" id="fVibrate"> Vibrate at warning and overtime (Android)</label>
+    <div class="msg" id="setupMsg"></div>
+
+    <div class="budget">
+      <div class="eyebrow">Custom times</div>
+      <div class="budget-line num"><span id="budgetUsed">Custom: 0:00</span><span id="budgetLeft">Auto-shared: 60:00</span></div>
+      <div class="bar"><i id="budgetBar"></i></div>
+      <div class="hint">Type a time like 3:30 or 2 (minutes) to fix that part. Leave it blank to share the leftover time evenly. Custom times can never add up to more than the total.</div>
+    </div>
+    <div class="clist" id="clist"></div>
+    <button class="btn" id="clearCustoms">Clear all custom times</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // ---------- Known study articles (titles only; confirm counts in setup) ----------
+  var SEED = {
+    "2026-09-28": { title: "Help Others Come to Know Jehovah" },
+    "2026-12-07": { title: "Show Yourself Thankful—Why and How?" },
+    "2026-12-14": { title: "Treasure Your Share in Modern-Day Miracles" },
+    "2026-12-21": { title: "Together We “Take a Stand”" },
+    "2026-12-28": { title: "Examine the Scriptures Daily" }
+  };
+  var DEFAULT_LESSON = { title: "", paragraphs: 18, review: 3, total: 60, intro: 0, customs: {} };
+  var MIN_SEG = 15; // seconds: smallest share an auto paragraph gets before everything is squeezed
+  var KEY = "wt-timer.v1";
+
+  // ---------- Storage ----------
+  var store = { lessons: {}, prefs: { warn: 20, vibrate: false }, session: null };
+  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); store.lessons = p.lessons || {}; store.prefs = Object.assign(store.prefs, p.prefs || {}); store.session = p.session || null; } } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+
+  // ---------- Dates ----------
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function ymd(d) { return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
+  function parseYmd(s) { var a = s.split("-"); return new Date(+a[0], +a[1] - 1, +a[2]); }
+  function mondayOf(d) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); var dow = (x.getDay() + 6) % 7; x.setDate(x.getDate() - dow); return x; }
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function weekText(mon) {
+    var sun = new Date(mon); sun.setDate(sun.getDate() + 6);
+    var a = MON[mon.getMonth()] + " " + mon.getDate();
+    var b = (sun.getMonth() === mon.getMonth() ? "" : MON[sun.getMonth()] + " ") + sun.getDate();
+    return a + "–" + b + ", " + sun.getFullYear();
+  }
+  function wolUrl(mon) { return "https://wol.jw.org/en/wol/dt/r1/lp-e/" + mon.getFullYear() + "/" + (mon.getMonth() + 1) + "/" + mon.getDate(); }
+
+  // ---------- Time formatting ----------
+  function fmt(sec) { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ":" + pad2(sec % 60); }
+  function parseTime(s) {
+    s = String(s || "").trim(); if (!s) return null;
+    var m = s.match(/^(\d{1,3}):(\d{1,2})$/);
+    if (m) return +m[1] * 60 + +m[2];
+    if (/^\d+(\.\d+)?$/.test(s)) return Math.round(parseFloat(s) * 60);
+    return NaN;
+  }
+  function clockTime(ms) { var d = new Date(ms); var h = d.getHours(), m = d.getMinutes(); return ((h + 11) % 12 + 1) + ":" + pad2(m); }
+
+  // ---------- Lesson + segments ----------
+  var thisMonday = ymd(mondayOf(new Date()));
+  var live = store.session && store.session.started && !store.session.finished;
+  var weekKey = live ? store.session.weekKey : thisMonday;
+
+  function lessonFor(key) {
+    var saved = store.lessons[key];
+    if (saved) return saved;
+    var seed = SEED[key] || {};
+    var l = JSON.parse(JSON.stringify(DEFAULT_LESSON));
+    l.title = seed.title || ""; l.unverified = true;
+    return l;
+  }
+  function lesson() { return lessonFor(weekKey); }
+  function commitLesson(l) { delete l.unverified; store.lessons[weekKey] = l; save(); }
+
+  function segments(l) {
+    var s = [];
+    if (l.intro > 0) s.push({ id: "I", label: "Introduction", short: "Intro", kind: "intro", custom: Math.round(l.intro * 60) });
+    for (var i = 1; i <= l.paragraphs; i++) s.push({ id: "P" + i, label: "Paragraph " + i, short: String(i), kind: "p", custom: num(l.customs["P" + i]) });
+    for (var j = 1; j <= l.review; j++) s.push({ id: "R" + j, label: "Review question " + j, short: "R" + j, kind: "rq", custom: num(l.customs["R" + j]) });
+    return s;
+  }
+  function num(v) { return typeof v === "number" && isFinite(v) ? v : null; }
+
+  // Original plan: custom parts keep their time, everything else shares the rest evenly.
+  function basePlan(segs, total) {
+    var C = 0, A = 0;
+    segs.forEach(function (s) { if (s.custom != null) C += s.custom; else A++; });
+    var share = A ? Math.max(0, (total - C) / A) : 0;
+    return segs.map(function (s) { return s.custom != null ? s.custom : share; });
+  }
+  // Live split of R seconds across segs[from..]. Custom times are kept while there is room;
+  // when time is too short, every remaining part shrinks in proportion to its planned share.
+  function distribute(segs, base, from, R) {
+    var rest = segs.slice(from), C = 0, A = 0;
+    rest.forEach(function (s) { if (s.custom != null) C += s.custom; else A++; });
+    var out;
+    if (A > 0 && R - C >= A * MIN_SEG) {
+      var share = (R - C) / A;
+      out = rest.map(function (s) { return s.custom != null ? s.custom : share; });
+    } else if (A === 0 && C <= R) {
+      out = rest.map(function (s) { return s.custom; });
+    } else {
+      var ref = rest.map(function (s, i) { return s.custom != null ? s.custom : Math.max(MIN_SEG, base[from + i]); });
+      var sum = ref.reduce(function (a, b) { return a + b; }, 0) || 1;
+      var k = Math.max(0, R) / sum;
+      out = ref.map(function (v) { return v * k; });
+    }
+    return out;
+  }
+
+  // ---------- Session state ----------
+  // elapsed time = base + (running ? now - runFrom : 0); all segment marks are in elapsed ms.
+  function freshSession() { return { weekKey: weekKey, started: false, running: false, base: 0, runFrom: 0, cur: -1, segStart: 0, segAlloc: 0, done: {}, finished: false, warned: "" }; }
+  // Only one study runs at a time; browsing another week never clears a running one.
+  var S = store.session && store.session.weekKey === weekKey ? store.session : freshSession();
+
+  function now() { return Date.now(); }
+  function elapsedMs() { return S.base + (S.running ? now() - S.runFrom : 0); }
+
+  function start() {
+    if (S.started) return;
+    S.started = true; S.running = true; S.runFrom = now(); S.base = 0; S.finished = false;
+    store.session = S;
+    keepAwake();
+  }
+  function goTo(idx) {
+    var l = lesson(), segs = segments(l), total = l.total * 60;
+    if (idx < 0 || idx >= segs.length) return;
+    if (S.finished) return;
+    if (!S.started) start();
+    if (!S.running) resume();
+    var E = elapsedMs() / 1000;
+    if (S.cur >= 0 && S.cur !== idx) S.done[segs[S.cur].id] = true;
+    if (idx > S.cur) for (var k = Math.max(0, S.cur); k < idx; k++) S.done[segs[k].id] = true;
+    delete S.done[segs[idx].id];
+    if (S.cur !== idx) S.segStart = E * 1000;
+    S.cur = idx;
+    var base = basePlan(segs, total);
+    S.segAlloc = distribute(segs, base, idx, total - S.segStart / 1000)[0] * 1000;
+    S.warned = "";
+    save(); render();
+  }
+  function next() {
+    var segs = segments(lesson());
+    if (!S.started) { goTo(0); return; }
+    if (S.finished) return;
+    if (S.cur >= segs.length - 1) { finish(); return; }
+    goTo(S.cur + 1);
+  }
+  function finish() {
+    var segs = segments(lesson());
+    if (S.cur >= 0) S.done[segs[S.cur].id] = true;
+    S.base = elapsedMs(); S.running = false; S.finished = true;
+    save(); render(); releaseAwake();
+  }
+  function pause() { if (!S.running) return; S.base = elapsedMs(); S.running = false; save(); render(); }
+  function resume() { if (S.running || !S.started || S.finished) return; S.runFrom = now(); S.running = true; save(); render(); keepAwake(); }
+  function reset() { S = freshSession(); store.session = null; save(); render(); releaseAwake(); }
+
+  // ---------- Screen wake lock ----------
+  var lock = null;
+  function keepAwake() { try { if (navigator.wakeLock && !lock) navigator.wakeLock.request("screen").then(function (l) { lock = l; l.addEventListener("release", function () { lock = null; }); }).catch(function () {}); } catch (e) {} }
+  function releaseAwake() { try { if (lock) lock.release(); } catch (e) {} lock = null; }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible" && S.running) keepAwake(); });
+  function buzz(pattern) { if (!store.prefs.vibrate) return; try { if (navigator.vibrate) navigator.vibrate(pattern); } catch (e) {} }
+
+  // ---------- Rendering ----------
+  var $ = function (id) { return document.getElementById(id); };
+  var padBuilt = "";
+
+  function buildPad(segs) {
+    var sig = weekKey + "|" + segs.map(function (s) { return s.id; }).join(",");
+    if (sig === padBuilt) return;
+    padBuilt = sig;
+    var pad = $("pad"); pad.textContent = "";
+    var lastKind = "";
+    segs.forEach(function (s, i) {
+      if (s.kind === "rq" && lastKind !== "rq") { var sep = document.createElement("div"); sep.className = "padsep"; sep.textContent = "Review questions"; pad.appendChild(sep); }
+      lastKind = s.kind;
+      var b = document.createElement("button");
+      b.className = "key " + s.kind; b.id = "key-" + s.id; b.setAttribute("aria-label", s.label);
+      b.innerHTML = "<b></b><small class='num'></small>";
+      b.firstChild.textContent = s.short;
+      b.addEventListener("click", function () { goTo(i); });
+      pad.appendChild(b);
+    });
+  }
+
+  function render() {
+    var l = lesson(), segs = segments(l), total = l.total * 60, base = basePlan(segs, total);
+    var mon = parseYmd(weekKey);
+    $("weekLabel").textContent = (weekKey === thisMonday ? "This week · " : "Week of ") + weekText(mon);
+    $("weekBtnText").textContent = weekText(mon);
+    $("weekDate").value = weekKey;
+    $("thisWeek").hidden = weekKey === thisMonday;
+    $("lessonTitle").textContent = l.title || "Watchtower Study";
+    $("verifyNotice").hidden = !l.unverified;
+    $("wolLink").href = wolUrl(mon);
+    buildPad(segs);
+
+    var E = elapsedMs() / 1000;
+    var stage = $("stage");
+    stage.classList.remove("warn", "over", "running");
+    if (S.running) stage.classList.add("running");
+
+    // Allotments shown on the pad
+    var allocs = base.slice();
+    var segElapsed = 0, segAlloc = 0;
+    if (S.started && S.cur >= 0) {
+      segElapsed = E - S.segStart / 1000; segAlloc = S.segAlloc / 1000;
+      var afterCur = total - E - Math.max(0, segAlloc - segElapsed);
+      var fut = S.cur + 1 < segs.length ? distribute(segs, base, S.cur + 1, afterCur) : [];
+      allocs = segs.map(function (s, i) { return i < S.cur ? null : i === S.cur ? segAlloc : fut[i - S.cur - 1]; });
+    }
+    segs.forEach(function (s, i) {
+      var k = $("key-" + s.id); if (!k) return;
+      k.className = "key " + s.kind + (s.custom != null && s.kind !== "intro" ? " custom" : "") + (S.done[s.id] ? " done" : "") + (i === S.cur && !S.finished ? " cur" : "");
+      k.lastChild.textContent = S.done[s.id] && i !== S.cur ? "✓" : allocs[i] == null ? "" : fmt(allocs[i]);
+    });
+
+    // Overall
+    $("oElapsed").textContent = fmt(E);
+    var remain = total - E;
+    $("oRemain").textContent = remain >= 0 ? fmt(remain) : "+" + fmt(-remain);
+    $("oRemain").style.color = remain < 0 ? "var(--over)" : "";
+    $("oEnd").textContent = S.started && !S.finished ? clockTime(now() + Math.max(0, remain) * 1000) : "—";
+
+    // Pace: projected finish (current part at its plan, rest at plan) against the plan length
+    var pace = $("pace"); pace.className = "pace";
+    var planLen = base.reduce(function (a, b) { return a + b; }, 0);
+    if (!S.started) { pace.textContent = fmt(total) + " study"; }
+    else if (S.finished) { var d0 = E - total; pace.textContent = Math.abs(d0) < 15 ? "Right on time" : d0 > 0 ? "Over " + fmt(d0) : "Early " + fmt(-d0); pace.classList.add(d0 > 15 ? "behind" : "ahead"); }
+    else {
+      var proj = E + Math.max(0, base[S.cur] - segElapsed);
+      for (var i = S.cur + 1; i < segs.length; i++) proj += base[i];
+      var d = proj - planLen;
+      if (Math.abs(d) < 15) pace.textContent = "On time";
+      else if (d > 0) { pace.textContent = "Behind " + fmt(d); pace.classList.add("behind"); }
+      else { pace.textContent = "Ahead " + fmt(-d); pace.classList.add("ahead"); }
+    }
+
+    // Stage
+    $("doneBanner").hidden = !S.finished;
+    if (!S.started) {
+      $("segLabel").textContent = "Ready";
+      $("clock").textContent = fmt(base[0] || 0);
+      $("clockSub").textContent = (segs[0] ? segs[0].label + " · " : "") + l.paragraphs + " paragraphs, " + l.review + " review questions";
+      $("segBar").style.width = "0%";
+      $("nextText").textContent = "Start";
+    } else if (S.finished) {
+      $("segLabel").textContent = "Finished";
+      $("clock").textContent = fmt(E);
+      $("clockSub").textContent = "Total time for the study";
+      $("segBar").style.width = "100%";
+      $("nextText").textContent = "Finished";
+      var diff = E - total;
+      $("doneBanner").textContent = "Study finished in " + fmt(E) + (Math.abs(diff) < 15 ? ", right on time." : diff > 0 ? ", " + fmt(diff) + " over." : ", " + fmt(-diff) + " early.") + " Tap Reset timer to run it again.";
+    } else {
+      var seg = segs[S.cur], left = segAlloc - segElapsed;
+      $("segLabel").textContent = seg.label;
+      $("clock").textContent = left >= 0 ? fmt(Math.ceil(left)) : "+" + fmt(-left);
+      $("clockSub").textContent = (left >= 0 ? "left of " : "over its ") + fmt(segAlloc) + " · " + fmt(segElapsed) + " used";
+      $("segBar").style.width = Math.min(100, segAlloc > 0 ? segElapsed / segAlloc * 100 : 100) + "%";
+      var warnAt = Math.min(store.prefs.warn, segAlloc * 0.5);
+      if (left <= 0) { stage.classList.add("over"); if (S.running && S.warned !== "over") { S.warned = "over"; buzz([300, 120, 300]); save(); } }
+      else if (left <= warnAt) { stage.classList.add("warn"); if (S.running && !S.warned) { S.warned = "warn"; buzz(200); save(); } }
+      $("nextText").textContent = S.cur >= segs.length - 1 ? "Finish" : "Next: " + segs[S.cur + 1].short.replace(/^(\d+)$/, "Para $1");
+    }
+    var paused = S.started && !S.running && !S.finished;
+    $("pauseText").textContent = paused ? "Resume" : "Pause";
+    $("pauseIcon").innerHTML = paused ? '<path d="M8 5l9 7-9 7z"/>' : '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>';
+    $("pauseBtn").disabled = !S.started || S.finished;
+    $("pauseBtn").style.opacity = $("pauseBtn").disabled ? ".5" : "";
+    if (paused) { $("pace").textContent = "Paused"; $("pace").className = "pace"; }
+  }
+
+  // ---------- Setup sheet ----------
+  function openSetup() {
+    var l = lesson();
+    $("fTitle").value = l.title || "";
+    $("fParas").value = l.paragraphs; $("fReview").value = l.review; $("fTotal").value = l.total;
+    $("fIntro").value = l.intro || 0; $("fWarn").value = store.prefs.warn; $("fVibrate").checked = !!store.prefs.vibrate;
+    $("setupMsg").textContent = "";
+    buildCustomList();
+    $("sheet").hidden = false;
+  }
+  function closeSetup() {
+    var l = lesson();
+    if (l.unverified) commitLesson(l); // closing setup confirms this week's counts
+    $("sheet").hidden = true; render();
+  }
+  function customSum(l, exceptId) {
+    var c = 0; for (var k in l.customs) if (k !== exceptId && num(l.customs[k]) != null) c += l.customs[k];
+    return c + Math.round((l.intro || 0) * 60);
+  }
+  function buildCustomList() {
+    var l = lesson(), segs = segments(l), total = l.total * 60, base = basePlan(segs, total);
+    var list = $("clist"); list.textContent = "";
+    segs.forEach(function (s, i) {
+      if (s.kind === "intro") return;
+      var row = document.createElement("div"); row.className = "crow";
+      var lbl = document.createElement("div"); lbl.className = "lbl"; lbl.textContent = s.label;
+      var sm = document.createElement("small"); sm.className = "num"; sm.textContent = s.custom != null ? "Custom" : "Auto " + fmt(base[i]); lbl.appendChild(sm);
+      var inp = document.createElement("input"); inp.type = "text"; inp.id = "c-" + s.id; inp.inputMode = "decimal"; inp.autocomplete = "off";
+      inp.placeholder = fmt(base[i]); inp.value = s.custom != null ? fmt(s.custom) : ""; if (s.custom != null) inp.className = "set";
+      inp.setAttribute("aria-label", "Custom time for " + s.label);
+      inp.addEventListener("change", function () { setCustom(s.id, inp.value); });
+      var clr = document.createElement("button"); clr.textContent = "Auto"; clr.setAttribute("aria-label", "Use automatic time for " + s.label);
+      clr.addEventListener("click", function () { setCustom(s.id, ""); });
+      row.appendChild(lbl); row.appendChild(inp); row.appendChild(clr);
+      list.appendChild(row);
+    });
+    var used = customSum(l), left = total - used;
+    $("budgetUsed").textContent = "Custom: " + fmt(used) + " of " + fmt(total);
+    var autoCount = segs.filter(function (s) { return s.custom == null; }).length;
+    $("budgetLeft").textContent = autoCount ? "Shared by " + autoCount + " auto: " + fmt(left) : left > 0 ? "Unassigned: " + fmt(left) : "All time assigned";
+    $("budgetBar").style.width = Math.min(100, used / total * 100) + "%";
+  }
+  function setCustom(id, text) {
+    var l = lesson(), total = l.total * 60, msg = "";
+    var v = parseTime(text);
+    if (v === null) delete l.customs[id];
+    else if (isNaN(v)) { msg = "Use minutes and seconds like 2:30, or plain minutes like 2."; }
+    else {
+      var max = total - customSum(l, id);
+      if (v > max) { v = max; msg = "Capped at " + fmt(max) + ". That is all the time left in the " + l.total + " minutes."; }
+      if (v <= 0) { delete l.customs[id]; msg = "No time is left to assign. Lower another custom time first."; }
+      else l.customs[id] = v;
+    }
+    commitLesson(l); $("setupMsg").textContent = msg;
+    padBuilt = ""; buildCustomList(); reallocCurrent(); render();
+  }
+  function setNumber(field, value) {
+    var l = lesson(), msg = "";
+    var n = parseFloat(value);
+    if (field === "paragraphs") { n = Math.round(n); if (!(n >= 1 && n <= 40)) return bad("Paragraphs must be 1 to 40."); l.paragraphs = n; for (var k in l.customs) if (/^P/.test(k) && +k.slice(1) > n) delete l.customs[k]; }
+    if (field === "review") { n = Math.round(n); if (!(n >= 0 && n <= 10)) return bad("Review questions must be 0 to 10."); l.review = n; for (var k2 in l.customs) if (/^R/.test(k2) && +k2.slice(1) > n) delete l.customs[k2]; }
+    if (field === "total") { n = Math.round(n); if (!(n >= 5 && n <= 120)) return bad("Total must be 5 to 120 minutes."); var need = customSum(l); if (need > n * 60) return bad("Custom times add up to " + fmt(need) + ". Lower them before setting the total below that."); l.total = n; }
+    if (field === "intro") { if (!(n >= 0 && n <= 10)) return bad("Introduction must be 0 to 10 minutes."); var others = customSum(l) - Math.round((l.intro || 0) * 60); if (others + n * 60 > l.total * 60) return bad("Not enough time left for that introduction."); l.intro = n; }
+    commitLesson(l); $("setupMsg").textContent = msg;
+    var segs = segments(l); if (S.cur >= segs.length) S.cur = segs.length - 1;
+    padBuilt = ""; buildCustomList(); reallocCurrent(); render();
+    function bad(m) { $("setupMsg").textContent = m; openSetupValues(); }
+  }
+  function openSetupValues() { var l = lesson(); $("fParas").value = l.paragraphs; $("fReview").value = l.review; $("fTotal").value = l.total; $("fIntro").value = l.intro || 0; }
+  function reallocCurrent() {
+    if (!S.started || S.finished || S.cur < 0) return;
+    var l = lesson(), segs = segments(l), total = l.total * 60;
+    S.segAlloc = distribute(segs, basePlan(segs, total), S.cur, total - S.segStart / 1000)[0] * 1000;
+    save();
+  }
+
+  // ---------- Week picking ----------
+  function setWeek(key) {
+    if (key === weekKey) return;
+    weekKey = key;
+    S = store.session && store.session.weekKey === key ? store.session : freshSession();
+    padBuilt = ""; render();
+  }
+
+  // ---------- Wire up ----------
+  $("nextBtn").addEventListener("click", next);
+  $("pauseBtn").addEventListener("click", function () { S.running ? pause() : resume(); });
+  var resetArmed = 0;
+  $("resetBtn").addEventListener("click", function () {
+    if (!S.started) return;
+    if (now() - resetArmed < 3000) { resetArmed = 0; $("resetBtn").textContent = "Reset timer"; reset(); return; }
+    resetArmed = now(); $("resetBtn").textContent = "Tap again to reset";
+    setTimeout(function () { if (resetArmed && now() - resetArmed >= 3000) { resetArmed = 0; $("resetBtn").textContent = "Reset timer"; } }, 3100);
+  });
+  $("openSetup").addEventListener("click", openSetup);
+  $("noticeSetup").addEventListener("click", openSetup);
+  $("closeSetup").addEventListener("click", closeSetup);
+  $("sheet").addEventListener("click", function (e) { if (e.target === $("sheet")) closeSetup(); });
+  $("fTitle").addEventListener("change", function () { var l = lesson(); l.title = $("fTitle").value.trim(); commitLesson(l); render(); });
+  $("fParas").addEventListener("change", function () { setNumber("paragraphs", $("fParas").value); });
+  $("fReview").addEventListener("change", function () { setNumber("review", $("fReview").value); });
+  $("fTotal").addEventListener("change", function () { setNumber("total", $("fTotal").value); });
+  $("fIntro").addEventListener("change", function () { setNumber("intro", $("fIntro").value); });
+  $("fWarn").addEventListener("change", function () { var n = Math.round(+$("fWarn").value); if (n >= 5 && n <= 120) { store.prefs.warn = n; save(); render(); } else $("setupMsg").textContent = "Warning must be 5 to 120 seconds."; });
+  $("fVibrate").addEventListener("change", function () { store.prefs.vibrate = $("fVibrate").checked; save(); });
+  $("clearCustoms").addEventListener("click", function () { var l = lesson(); l.customs = {}; commitLesson(l); padBuilt = ""; buildCustomList(); reallocCurrent(); render(); });
+  $("weekDate").addEventListener("change", function () { var v = $("weekDate").value; if (v) setWeek(ymd(mondayOf(parseYmd(v)))); });
+  $("thisWeek").addEventListener("click", function () { setWeek(thisMonday); });
+  document.addEventListener("keydown", function (e) { if (!$("sheet").hidden) { if (e.key === "Escape") closeSetup(); return; } if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); next(); } });
+
+  render();
+  if (S.running) keepAwake();
+  setInterval(render, 250);
+})();
+</script>
+<!-- APP:BODY-END -->
+</body>
+</html>
