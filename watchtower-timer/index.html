@@ -238,12 +238,14 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     <div class="grid2">
       <div class="field"><label for="fParas">Paragraphs</label><input type="number" id="fParas" min="1" max="40" inputmode="numeric"></div>
       <div class="field"><label for="fReview">Review questions</label><input type="number" id="fReview" min="0" max="10" inputmode="numeric"></div>
-      <div class="field"><label for="fTotal">Total minutes</label><input type="number" id="fTotal" min="5" max="120" inputmode="numeric"></div>
+      <div class="field"><label for="fEnd">Meeting ends at</label><input type="time" id="fEnd"></div>
+      <div class="field"><label for="fTotal">Study length (min)</label><input type="number" id="fTotal" min="5" max="120" inputmode="numeric"></div>
       <div class="field"><label for="fIntro">Introduction (min)</label><input type="number" id="fIntro" min="0" max="10" step="0.5" inputmode="decimal"></div>
       <div class="field"><label for="fGroups">Studied together</label><input type="text" id="fGroups" placeholder="e.g. 3-4, 7-8" autocomplete="off"></div>
       <div class="field"><label for="fWarn">Warn when (sec) left</label><input type="number" id="fWarn" min="5" max="120" inputmode="numeric"></div>
     </div>
     <button class="btn" id="useOfficial" hidden>Use the official counts from WOL</button>
+    <p class="hint">The study is timed to finish at the meeting end time. If that time has already passed or is more than 4 hours away, it runs for the study length from when you press Start.</p>
     <label class="toggle"><input type="checkbox" id="fVibrate"> Vibrate at warning and overtime (Android)</label>
     <div class="msg" id="setupMsg"></div>
 
@@ -274,7 +276,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   var KEY = "wt-timer.v1";
 
   // ---------- Storage ----------
-  var store = { lessons: {}, prefs: { warn: 20, vibrate: false }, session: null };
+  var store = { lessons: {}, prefs: { warn: 20, vibrate: false, endTime: "12:40" }, session: null };
   try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); store.lessons = p.lessons || {}; store.prefs = Object.assign(store.prefs, p.prefs || {}); store.session = p.session || null; } } catch (e) {}
   // Earlier versions saved every field for a week; keep only what was really changed.
   Object.keys(store.lessons).forEach(function (k) {
@@ -423,14 +425,33 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   function now() { return Date.now(); }
   function elapsedMs() { return S.base + (S.running ? now() - S.runFrom : 0); }
 
+  // The study ends at the meeting end time you set (default 12:40 PM) when that is later today
+  // and within 4 hours; otherwise it runs for the study length after you press Start.
+  function endTimeAfter(fromMs) {
+    var m = /^(\d{1,2}):(\d{2})$/.exec(store.prefs.endTime || "");
+    if (!m) return null;
+    var d = new Date(fromMs); d.setHours(+m[1], +m[2], 0, 0);
+    var diff = d.getTime() - fromMs;
+    return diff > 60000 && diff <= 4 * 3600000 ? d.getTime() : null;
+  }
+  function plannedEnd(fromMs) { return endTimeAfter(fromMs) || fromMs + lesson().total * 60000; }
+  // Seconds available for the whole study: time used so far plus time left until the end.
+  function budget() {
+    if (S.finished && S.finalBudget) return S.finalBudget;
+    if (S.started && S.endAt) return elapsedMs() / 1000 + (S.endAt - now()) / 1000;
+    if (S.started) return lesson().total * 60;
+    return (plannedEnd(now()) - now()) / 1000;
+  }
+
   function start() {
     if (S.started) return;
     S.started = true; S.running = true; S.runFrom = now(); S.base = 0; S.finished = false;
+    S.endAt = plannedEnd(S.runFrom);
     store.session = S;
     keepAwake();
   }
   function goTo(idx) {
-    var l = lesson(), segs = segments(l), total = l.total * 60;
+    var l = lesson(), segs = segments(l);
     if (idx < 0 || idx >= segs.length) return;
     if (S.finished) return;
     if (!S.started) start();
@@ -441,7 +462,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     delete S.done[segs[idx].id];
     if (S.cur !== idx) S.segStart = E * 1000;
     S.cur = idx;
-    var base = basePlan(segs, total);
+    var total = budget(), base = basePlan(segs, total);
     S.segAlloc = distribute(segs, base, idx, total - S.segStart / 1000)[0] * 1000;
     S.warned = "";
     save(); render();
@@ -456,7 +477,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   function finish() {
     var segs = segments(lesson());
     if (S.cur >= 0) S.done[segs[S.cur].id] = true;
-    S.base = elapsedMs(); S.running = false; S.finished = true;
+    S.finalBudget = budget(); S.base = elapsedMs(); S.running = false; S.finished = true;
     save(); render(); releaseAwake();
   }
   function pause() { if (!S.running) return; S.base = elapsedMs(); S.running = false; save(); render(); }
@@ -493,7 +514,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   }
 
   function render() {
-    var l = lesson(), segs = segments(l), total = l.total * 60, base = basePlan(segs, total);
+    var l = lesson(), segs = segments(l), total = budget(), base = basePlan(segs, total);
     var mon = parseYmd(weekKey);
     $("weekLabel").textContent = (weekKey === thisMonday ? "This week · " : "Week of ") + weekText(mon);
     $("weekBtnText").textContent = weekText(mon);
@@ -532,12 +553,12 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     var remain = total - E;
     $("oRemain").textContent = remain >= 0 ? fmt(remain) : "+" + fmt(-remain);
     $("oRemain").style.color = remain < 0 ? "var(--over)" : "";
-    $("oEnd").textContent = S.started && !S.finished ? clockTime(now() + Math.max(0, remain) * 1000) : "—";
+    $("oEnd").textContent = S.finished ? clockTime(S.endAt || now()) : clockTime(S.started && S.endAt ? S.endAt : now() + Math.max(0, remain) * 1000);
 
     // Pace: projected finish (current part at its plan, rest at plan) against the plan length
     var pace = $("pace"); pace.className = "pace";
     var planLen = base.reduce(function (a, b) { return a + b; }, 0);
-    if (!S.started) { pace.textContent = fmt(total) + " study"; }
+    if (!S.started) { pace.textContent = endTimeAfter(now()) ? fmt(total) + " until end" : fmt(total) + " study"; }
     else if (S.finished) { var d0 = E - total; pace.textContent = Math.abs(d0) < 15 ? "Right on time" : d0 > 0 ? "Over " + fmt(d0) : "Early " + fmt(-d0); pace.classList.add(d0 > 15 ? "behind" : "ahead"); }
     else {
       var proj = E + Math.max(0, base[S.cur] - segElapsed);
@@ -589,6 +610,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
     $("fTitle").value = l.title || "";
     $("fParas").value = l.paragraphs; $("fReview").value = l.review; $("fTotal").value = l.total;
     $("fGroups").value = groupsText(l.groups);
+    $("fEnd").value = store.prefs.endTime || "";
     $("fIntro").value = l.intro || 0; $("fWarn").value = store.prefs.warn; $("fVibrate").checked = !!store.prefs.vibrate;
     $("setupMsg").textContent = "";
     buildCustomList();
@@ -658,7 +680,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   function openSetupValues() { var l = lesson(); $("fParas").value = l.paragraphs; $("fReview").value = l.review; $("fTotal").value = l.total; $("fIntro").value = l.intro || 0; }
   function reallocCurrent() {
     if (!S.started || S.finished || S.cur < 0) return;
-    var l = lesson(), segs = segments(l), total = l.total * 60;
+    var l = lesson(), segs = segments(l), total = budget();
     S.segAlloc = distribute(segs, basePlan(segs, total), S.cur, total - S.segStart / 1000)[0] * 1000;
     save();
   }
@@ -693,6 +715,11 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
   $("fTotal").addEventListener("change", function () { setNumber("total", $("fTotal").value); });
   $("fIntro").addEventListener("change", function () { setNumber("intro", $("fIntro").value); });
   $("fWarn").addEventListener("change", function () { var n = Math.round(+$("fWarn").value); if (n >= 5 && n <= 120) { store.prefs.warn = n; save(); render(); } else $("setupMsg").textContent = "Warning must be 5 to 120 seconds."; });
+  $("fEnd").addEventListener("change", function () {
+    store.prefs.endTime = $("fEnd").value || "";
+    if (S.started && !S.finished) { var e = endTimeAfter(now()); S.endAt = e || S.endAt; reallocCurrent(); }
+    save(); render();
+  });
   $("fVibrate").addEventListener("change", function () { store.prefs.vibrate = $("fVibrate").checked; save(); });
   $("clearCustoms").addEventListener("click", function () { ov().customs = {}; save(); padBuilt = ""; buildCustomList(); reallocCurrent(); render(); });
   $("weekDate").addEventListener("change", function () { var v = $("weekDate").value; if (v) setWeek(ymd(mondayOf(parseYmd(v)))); });
