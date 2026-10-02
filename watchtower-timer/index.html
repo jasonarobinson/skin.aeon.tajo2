@@ -85,11 +85,12 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); ou
 .pace.behind { color: var(--over); }
 .clocklabel { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .endbtn { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--accent); text-align: left; }
-.endbtn b { font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.1; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.endbtn b { white-space: nowrap; font-family: var(--font-display); font-size: 22px; font-weight: 600; line-height: 1.1; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .endbtn svg { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; }
 .endpanel { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--line); padding-top: 10px; }
 .endpanel label { font-size: 13px; font-weight: 700; color: var(--muted); }
 .endrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+#lessonPick { font-size: 16px; text-overflow: ellipsis; }
 input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); width: 100%; min-width: 0; -webkit-appearance: none; appearance: none; }
 .clock { font-family: var(--font-display); font-weight: 700; font-size: clamp(76px, 24vw, 130px); line-height: .9; letter-spacing: -.01em; text-align: center; }
 .clocksub { text-align: center; color: var(--muted); font-size: 15px; }
@@ -185,6 +186,10 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
       <input type="date" id="weekDate" aria-label="Pick any day in the study week">
     </label>
     <button class="chipbtn" id="thisWeek" hidden>Back to this week</button>
+  </div>
+  <div class="field">
+    <label for="lessonPick">Lesson</label>
+    <select id="lessonPick"></select>
   </div>
 
   <div class="notice" id="verifyNotice" hidden>
@@ -339,8 +344,16 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
 
   // Official lesson details (title, counts, grouped paragraphs) per week. They come from the
   // page's data store when it is available, else from the copy cached on this phone.
-  var OFFICIAL = {};
-  try { OFFICIAL = JSON.parse(localStorage.getItem(KEY + ".official") || "{}") || {}; } catch (e) {}
+  // Study articles from wol.jw.org built into the page (Monday of each week -> details), so the
+  // lessons work even when the page is opened as a plain file. Regenerate with fetch_lessons.py.
+  var BUILTIN = /*LESSONS*/{"2025-12-29":{"title":"Remember to Pray for Others","paragraphs":18,"review":3,"groups":"4-5, 10-11, 14-15, 17-18","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025604"},"2026-01-05":{"title":"Maintain Your Joy in Old Age","paragraphs":18,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025640"},"2026-01-12":{"title":"Maintain Your Joy as a Caregiver","paragraphs":19,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025642"},"2026-01-19":{"title":"Consider Our Sympathetic High Priest—Jesus","paragraphs":16,"review":3,"groups":"1-2, 3-4, 7-8","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025643"},"2026-01-26":{"title":"“You Are Someone Very Precious”!","paragraphs":19,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025644"},"2026-02-02":{"title":"The Book of Job Can Help You When You Suffer","paragraphs":17,"review":3,"groups":"1-2, 7-8","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025682"},"2026-02-09":{"title":"The Book of Job Can Help You When You Give Counsel","paragraphs":16,"review":3,"groups":"1-2, 14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025683"},"2026-02-16":{"title":"Imitate Jehovah’s Humility","paragraphs":18,"review":3,"groups":"6-7","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025684"},"2026-02-23":{"title":"How to Plan a Wedding That Brings Honor to Jehovah","paragraphs":20,"review":3,"groups":"1-2, 16-17","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2025685"},"2026-03-02":{"title":"Continue to Satisfy Your “Spiritual Need”","paragraphs":18,"review":3,"groups":"14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026240"},"2026-03-09":{"title":"You Can Successfully Fight Negative Feelings","paragraphs":20,"review":3,"groups":"1-2, 9-10, 13-14","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026241"},"2026-03-16":{"title":"Why We Need the Ransom","paragraphs":18,"review":3,"groups":"1-2, 4-5, 6-7","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026243"},"2026-03-23":{"title":"How Will You Respond to the Ransom?","paragraphs":18,"review":3,"groups":"1-2, 11-12, 17-18","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026244"},"2026-03-30":{"title":"Speak the Truth Graciously","paragraphs":16,"review":3,"groups":"7-8, 11-12","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026242"},"2026-04-06":{"title":"How to Help Our Unbelieving Relatives","paragraphs":21,"review":3,"groups":"1-2, 14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026281"},"2026-04-13":{"title":"Understanding the Meaning of Baptism","paragraphs":15,"review":3,"groups":"","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026282"},"2026-04-20":{"title":"Keep Working Toward Baptism","paragraphs":17,"review":3,"groups":"7-8","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026283"},"2026-04-27":{"title":"Are You Prepared for Challenges After Baptism?","paragraphs":17,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026280"},"2026-05-04":{"title":"Improve Your “Art of Teaching” in the Ministry","paragraphs":16,"review":3,"groups":"11-12","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026320"},"2026-05-11":{"title":"Trust in the Sovereign Ruler of the Universe","paragraphs":20,"review":3,"groups":"2-3, 8-9, 14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026321"},"2026-05-18":{"title":"How Will You Fight Your Distractions?","paragraphs":20,"review":3,"groups":"1-2, 4-6","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026322"},"2026-05-25":{"title":"Show Insight and You “Will Find Success”","paragraphs":18,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026323"},"2026-06-01":{"title":"Why You Can Be Happy When You Are Hated","paragraphs":17,"review":3,"groups":"2-3, 7-8, 9-10","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026324"},"2026-06-08":{"title":"“The God of Truth” Always Fulfills His Purpose","paragraphs":16,"review":3,"groups":"","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026365"},"2026-06-15":{"title":"Maintain the Right View of Adversity","paragraphs":17,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026366"},"2026-06-22":{"title":"Learn From “the God of All Comfort”","paragraphs":17,"review":3,"groups":"14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026367"},"2026-06-29":{"title":"Keep Strengthening Your Friendship With Your Mate","paragraphs":17,"review":3,"groups":"3-4, 6-7, 8-9, 12-13, 14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026368"},"2026-07-06":{"title":"Bible Principles—Why Are They Important?","paragraphs":18,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026400"},"2026-07-13":{"title":"Your Conscience—Use Bible Principles to Train It","paragraphs":20,"review":3,"groups":"1-2, 7-8, 15-16, 18-19","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026401"},"2026-07-20":{"title":"Make Wise Decisions Regarding Additional Education","paragraphs":18,"review":3,"groups":"1-2, 8-9","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026402"},"2026-07-27":{"title":"Stay Spiritually Strong While Getting Additional Education","paragraphs":20,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026403"},"2026-08-03":{"title":"Respect the Decisions of Others","paragraphs":17,"review":3,"groups":"1-2, 4-5, 6-7, 12-13","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026404"},"2026-08-10":{"title":"How to Remain Loyal When We Face Tests of Faith","paragraphs":18,"review":3,"groups":"1-2, 8-9, 17-18","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026442"},"2026-08-17":{"title":"How to Maintain Christian Friendships","paragraphs":20,"review":3,"groups":"","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026443"},"2026-08-24":{"title":"Benefit From the Field Service Group Arrangement","paragraphs":15,"review":3,"groups":"1-2, 11-12","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026444"},"2026-08-31":{"title":"Pay Attention to How You Listen","paragraphs":18,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026445"},"2026-09-07":{"title":"Learn From the Gibeonites","paragraphs":17,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026482"},"2026-09-14":{"title":"Find Comfort in the Book of Isaiah","paragraphs":16,"review":3,"groups":"1-2, 8-9","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026483"},"2026-09-21":{"title":"Are You Getting to Know Jehovah Better?","paragraphs":18,"review":3,"groups":"12-13, 17-18","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026484"},"2026-09-28":{"title":"Help Others Come to Know Jehovah","paragraphs":18,"review":3,"groups":"9-10, 12-13, 15-16","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026485"},"2026-10-05":{"title":"Resist Satan’s Tactics—Trust In Jehovah and In Jesus","paragraphs":18,"review":3,"groups":"6-7","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026520"},"2026-10-12":{"title":"You Can Win the Battle!","paragraphs":17,"review":3,"groups":"","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026521"},"2026-10-19":{"title":"An Appeal on the Basis of Love","paragraphs":18,"review":3,"groups":"4-5","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026522"},"2026-10-26":{"title":"Cherish “the Privilege of Fearlessly Rendering Sacred Service”","paragraphs":16,"review":3,"groups":"10-11","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026523"},"2026-11-02":{"title":"Trust In Jehovah for Protection","paragraphs":20,"review":3,"groups":"1-2, 5-6, 8-9, 12-13, 19-20","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026560"},"2026-11-09":{"title":"How to Develop “an Obedient Heart”","paragraphs":17,"review":3,"groups":"","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026561"},"2026-11-16":{"title":"Sharing the Good News in “All the Languages of the Nations”","paragraphs":17,"review":3,"groups":"5-6, 10-11","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026562"},"2026-11-23":{"title":"How the Priesthood Reveals Jehovah’s Love","paragraphs":20,"review":3,"groups":"9-10","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026565"},"2026-11-30":{"title":"Guard Against “the Spirit of the World”","paragraphs":17,"review":3,"groups":"2-3","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026566"},"2026-12-07":{"title":"Show Yourself Thankful—Why and How?","paragraphs":19,"review":3,"groups":"9-10, 11-12, 17-18","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026601"},"2026-12-14":{"title":"Treasure Your Share in Modern-Day Miracles","paragraphs":18,"review":3,"groups":"1-2, 9-10","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026602"},"2026-12-21":{"title":"Together We “Take a Stand”","paragraphs":20,"review":3,"groups":"5-6, 7-8","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026604"},"2026-12-28":{"title":"Examine the Scriptures Daily","paragraphs":20,"review":3,"groups":"1-2, 7-8, 14-15, 17-18","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026605"},"2027-01-04":{"title":"To Please Jehovah, Keep Training Your Conscience","paragraphs":18,"review":3,"groups":"3-4, 5-6, 10-11","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026642"},"2027-01-11":{"title":"“Shepherds Who Will Really Shepherd”","paragraphs":17,"review":3,"groups":"1-2, 4-5","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026643"},"2027-01-18":{"title":"Cultivate a Friendship With Jehovah and With Jesus","paragraphs":20,"review":3,"groups":"16-17","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026645"},"2027-01-25":{"title":"Cultivate Meaningful Friendships With Your Brothers and Sisters","paragraphs":17,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026646"},"2027-02-01":{"title":"See Yourself as Jehovah Does","paragraphs":17,"review":3,"groups":"","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026682"},"2027-02-08":{"title":"Keep Your Eyes “on the Things Unseen”","paragraphs":18,"review":3,"groups":"1-2, 5-6, 7-8","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026683"},"2027-02-15":{"title":"Like Jesus, Promote God’s Kingdom as the Real Solution","paragraphs":18,"review":3,"groups":"1-2, 14-15","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026684"},"2027-02-22":{"title":"Prepare Now for Tests of Your Neutrality","paragraphs":21,"review":3,"groups":"1-2","url":"https://wol.jw.org/en/wol/d/r1/lp-e/2026685"}}/*END-LESSONS*/;
+  var OFFICIAL = {}, BUILTIN_CLEAN = {};
+  function officialFrom(map) { var out = {}; for (var k in map) { var c = cleanOfficial(map[k]); if (c && /^\d{4}-\d{2}-\d{2}$/.test(k)) out[k] = c; } return out; }
+  function initOfficial() {
+    BUILTIN_CLEAN = officialFrom(BUILTIN);
+    var cached = {}; try { cached = JSON.parse(localStorage.getItem(KEY + ".official") || "{}") || {}; } catch (e) {}
+    OFFICIAL = Object.assign({}, BUILTIN_CLEAN, officialFrom(cached));
+  }
   function cleanOfficial(d) {
     if (!d || typeof d !== "object") return null;
     var o = {};
@@ -368,6 +381,8 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
   }
   function groupsText(g) { return (g || []).map(function (x) { return x[0] + "-" + x[1]; }).join(", "); }
   function pick() { for (var i = 0; i < arguments.length; i++) if (arguments[i] !== undefined && arguments[i] !== null) return arguments[i]; }
+
+  initOfficial();
 
   // What you change in setup is kept as overrides on top of the official details.
   function ov() { var o = store.lessons[weekKey]; if (!o) { o = store.lessons[weekKey] = { customs: {}, v: 2 }; } if (!o.customs) o.customs = {}; return o; }
@@ -550,6 +565,7 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
     $("weekLabel").textContent = (weekKey === thisMonday ? "This week · " : "Week of ") + weekText(mon);
     $("weekBtnText").textContent = weekText(mon);
     $("weekDate").value = weekKey;
+    buildLessonList();
     $("thisWeek").hidden = weekKey === thisMonday;
     $("lessonTitle").textContent = l.title || "Watchtower Study";
     $("verifyNotice").hidden = !l.unverified;
@@ -725,6 +741,24 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
   }
 
   // ---------- Week picking ----------
+  var lessonListBuilt = "";
+  function buildLessonList() {
+    var keys = Object.keys(OFFICIAL);
+    if (keys.indexOf(weekKey) < 0) keys.push(weekKey);
+    keys.sort();
+    var sig = keys.join(",");
+    var sel = $("lessonPick");
+    if (sig !== lessonListBuilt) {
+      lessonListBuilt = sig; sel.textContent = "";
+      keys.forEach(function (k) {
+        var d = parseYmd(k), o = OFFICIAL[k], opt = document.createElement("option");
+        opt.value = k;
+        opt.textContent = MON[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear() + (k === thisMonday ? " (this week)" : "") + " \u2014 " + (o ? o.title : (lessonFor(k).title || "No lesson details"));
+        sel.appendChild(opt);
+      });
+    }
+    sel.value = weekKey;
+  }
   function setWeek(key) {
     if (key === weekKey) return;
     weekKey = key;
@@ -786,12 +820,14 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
   $("fVibrate").addEventListener("change", function () { store.prefs.vibrate = $("fVibrate").checked; save(); });
   $("clearCustoms").addEventListener("click", function () { ov().customs = {}; save(); padBuilt = ""; buildCustomList(); reallocCurrent(); render(); });
   $("weekDate").addEventListener("change", function () { var v = $("weekDate").value; if (v) setWeek(ymd(mondayOf(parseYmd(v)))); });
+  $("lessonPick").addEventListener("change", function () { setWeek($("lessonPick").value); });
   $("thisWeek").addEventListener("click", function () { setWeek(thisMonday); });
   document.addEventListener("keydown", function (e) { if (!$("sheet").hidden) { if (e.key === "Escape") closeSetup(); return; } if (e.key === " " || e.key === "ArrowRight") { e.preventDefault(); next(); } });
 
   // ---------- Official lesson data from the page's data store ----------
   function applyOfficial(map) {
-    OFFICIAL = map;
+    OFFICIAL = Object.assign({}, BUILTIN_CLEAN, map);
+    lessonListBuilt = "";
     try { localStorage.setItem(KEY + ".official", JSON.stringify(map)); } catch (e) {}
     var segs = segments(lesson()); if (S.cur >= segs.length) S.cur = segs.length - 1;
     padBuilt = ""; reallocCurrent(); render();

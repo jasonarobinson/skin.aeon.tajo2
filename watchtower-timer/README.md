@@ -19,3 +19,6 @@ grouped paragraphs such as 9-10, and review questions). Usage:
 
 `lessons.json` is the current snapshot (weeks of Dec 29, 2025 through Feb 22, 2027), keyed by the
 Monday of each week. The published timer reads the same data from its `lessons` data store.
+
+The same data is built into `index.html` (between `/*LESSONS*/` and `/*END-LESSONS*/`), so the
+lessons work when the file is opened on its own. Pick a lesson from the **Lesson** list or the calendar.
