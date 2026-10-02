@@ -347,7 +347,7 @@ input[type="time"], select { font: inherit; font-size: 20px; min-height: 48px; p
     if (typeof d.title === "string") o.title = d.title.slice(0, 200);
     if (isInt(d.paragraphs, 1, 40)) o.paragraphs = d.paragraphs;
     if (isInt(d.review, 0, 10)) o.review = d.review;
-    o.groups = cleanGroups(d.groups, o.paragraphs || 40);
+    o.groups = typeof d.groups === "string" ? parseGroups(d.groups, o.paragraphs || 40) : cleanGroups(d.groups, o.paragraphs || 40);
     if (typeof d.checked === "string") o.checked = d.checked.slice(0, 40);
     return o.paragraphs ? o : null;
   }
